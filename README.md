@@ -1,5 +1,5 @@
 # JarvisBis
-Ironman en pls
+Ironman en pls;
 Liste des fonctions du reconnaisseur vocal :
 - Compagnon
 - Conseiller météo 
