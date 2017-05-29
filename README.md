@@ -1,5 +1,4 @@
 # JarvisBis
-    *		*		*		*		*		*		*		*		*
 Interface : 
 	Page d'accueil : - Agenda ( accéder directement à l'agenda )
 			 - Action ( effectuer une action directement )
@@ -14,6 +13,7 @@ Calendrier :
 		 
 Action : 
 	- rappel RDV
+	- Supprimer / annuler ( tout le temps/ une certaine periode / juste cette fois ci )
 	- annonce Météo 
 	- ajouter Agenda
 	- effectuer action 
@@ -30,3 +30,4 @@ A faire :
 	- lien avec les applications ( Agenda du telephone / Météo )
 	- code couleur 
 	- initiative
+-
