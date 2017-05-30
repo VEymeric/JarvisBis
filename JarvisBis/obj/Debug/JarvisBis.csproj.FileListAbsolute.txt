@@ -1,0 +1,8 @@
+c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\bin\Debug\JarvisBis.exe.config
+c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\bin\Debug\JarvisBis.exe
+c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\bin\Debug\JarvisBis.pdb
+c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\obj\Debug\JarvisBis.csprojResolveAssemblyReference.cache
+c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\obj\Debug\JarvisBis.exe
+c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\obj\Debug\JarvisBis.pdb
+c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\obj\Debug\JarvisBis.Speaker.resources
+c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\obj\Debug\JarvisBis.csproj.GenerateResource.Cache
