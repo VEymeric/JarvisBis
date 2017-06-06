@@ -1,0 +1,138 @@
+header
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+      
+      #margin : auto;
+     
+      background-color:#8FB876;
+     
+      
+     
+}
+
+.titre
+{
+	font-family: Century Gothic, sans-serif;
+	font-size: 6ex;
+	font-weight: normal;
+	
+	#text-align: center;
+	margin:auto;
+	
+	
+	#width:80%;
+	
+	background-color:#8945D6;
+}
+
+
+.retour
+{
+	max-width: 80px;
+	min-width: 50px;
+	#width:5%;
+	
+	text-align: center;
+	margin:auto;
+	background-color:#89B8D6;
+}
+
+
+body
+{
+	background-image: url("images/fond3_r.jpg");
+	
+	display: flex;
+	flex-direction: column;
+	
+	#height:500px;
+	
+	
+}
+
+
+#corps
+{
+	display: flex;
+	flex-direction: column;
+      
+      # justify-content: center;
+	#margin : auto;
+	
+	min-height:300px;
+	
+	
+      #background-image: url("fond3.jpg");
+      background-color:#89EED6;
+	#background-color:#D8D8D8;
+}
+
+
+.texte
+{
+	
+	font-family: Century Gothic, sans-serif;
+	font-size: 2ex;
+	font-weight: normal;
+	
+	display:flex;
+	flex-direction:column;
+	text-align: center;
+	
+	justify-content: center;
+	margin : auto;
+	
+	border:2px solid ;
+	
+	max-width:700px;
+	
+	
+	#width:50%;
+	#height:50%;
+}
+
+#cas_texte
+{
+	
+}
+
+div
+{
+	text-align: center;
+	font-family: Century Gothic, sans-serif;
+}
+.envoie
+{
+	text-decoration: none;
+	color: black;
+	font-size: 2ex;
+	font-weight: bold;
+	text-align: center;
+	
+	
+}
+
+.réponse
+{
+	border: black 1px solid;
+}
+
+
+
+footer
+{
+	font-family:  Georgia;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	
+    <head>
+       <title>JarvisBis</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="agenda.js"></script>
+		<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+		<link rel="stylesheet" href="StyleMainPage.css" />
+    </head>
+    
+    <header>
+		<div id= name ng-controller = "MainCtrl"> </div>
+		<div id = "heure"><script type="text/javascript" src="Horloge.js"></script>
+		</div>
+    </header>
+    
+  
+    
+    <body>
+    
+		<div  id=corps>
+			<figure id = icon>
+				<button id = agenda src="images/calendrier.png" ng-click = "calendar()"> </button>
+				<button id = action src="images/task.png" ng-click = "task()"> </button>
+				<!-- <a href="Task.html" ><img class = action src="images/task.png" alt="Logo Action" /></a> -->
+			</figure>
+		
+			<figure id = mic>
+				<button id = microphone  ng-click = "micro()"> </button>
+				
+				<figcaption class = miccap> Appuyez sur le micro pour enregistrer </figcaption>
+			</figure>
+		</div>
+		
+    </body>
+    
+ </html>

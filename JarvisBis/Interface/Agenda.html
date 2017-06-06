@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr" ng-app="Agenda">
-<head>
-  <title> Agenda </title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-  <script src="agenda.js"></script>
-  <link rel="stylesheet" href="StyleAgenda.css" />
-</head>
-  <header>
-    <div id= name ng-controller = "MainCtrl"> {{ title }}</div>
-  </header>
-  <body ng-app>
-    <figure id = coprs>
-      <button id = microphone  ng-click = "micro()"> </button>
-      <button id = agenda src="images/calendrier.png" ng-click = "calendar()"> </button>
-    </figure>
-  </body>
-</html>
+	
+    <head>
+		<title>Agenda</title>
+		<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+		<link rel="stylesheet" href="StyleAgenda.css" />
+    </head>
+    
+    <header>
+		<a href="MainPage.html" ><img class = retour src="icons/retour_1.png" alt="Icon Retour" /></a>
+		<div class = agenda>Agenga</div>
+    </header>
+    
+    <body ng-app>
+    
+		<figure id = icon>
+			
+			<button id = agenda src="images/calendrier.png" ng-click = "calendar()"> </button>
+		</figure>
+		
+    </body>
+    
+ </html>
