@@ -12,7 +12,7 @@ header
 
 #heure
 {
-	 border:2px solid grey;
+	border:2px solid grey;
       border-left: 7px solid grey;
       border-right: 7px solid grey;
       border-radius: 10px;
@@ -22,7 +22,7 @@ header
 	margin : auto;
 	
 	font-family:  Verdana,Impact, serif;
-	font-size: 9ex;
+	font-size: 6ex;
 	
 	max-width: 400px;
 	
@@ -43,10 +43,9 @@ body
 {
 	display: flex;
 	flex-direction: column;
-      border-radius: 10px;
-      #background-image: url("fond3.jpg");
-      #background-color:#89B8D6;
-	#background-color:#D8D8D8;
+       border-radius: 10px;
+       
+	
 }
 
 #icon
@@ -54,45 +53,46 @@ body
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	 align-items: center;
-	#width:50%;
-	#height:50%;
+	align-items: center;
+	
 }
+
+.bouton
+{
+	
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 255, 255, 0);
+	
+	border:none;
+	
+	#max-height: 80px;
+	max-width:80px;
+	
+}
+
+
 
 #mic 
 {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width:50%;
-	#height:50%;
 	justify-content: center;
      
      
 }
-.microphone
-{
-	background: url("images/micro.png");
-}
+
+
+
 .miccap
 {
 	font-family: Century Gothic, sans-serif;
-	font-size: 3ex;
+	font-size: 2ex;
 	font-weight: normal;
 	text-align: center;
 }
-.agenda
-{
-	background: url("images/calendrier.png");
-	width:50%;
-	max-width:200px;
-}
 
-.action
-{
-	width:50%;
-	max-width:200px;
-}
 
 
 footer
