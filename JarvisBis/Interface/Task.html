@@ -5,6 +5,10 @@
        <title>Task</title>
 		<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
 		<link rel="stylesheet" href="TaskStyle.css" />
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+		<script src="js/api_analyse_vocale.js" > </script>
+
     </head>
     
     <header>
@@ -15,29 +19,14 @@
     </header>
     
   
-    
-    <body>
-    
-		<div  id=corps >
-			
-			<form method="post" action="traitement.php" class="texte">
-			
-				<p>
-					<label for="case_texte">Ecrivez l'action que vous souhaitez réaliser:</label><br /><br />
-					<textarea name="action" id="case_texte" rows="3" placeholder="Ex: Faire un café dans 5 minutes."></textarea>
-				</p>
-				
-			</form>
-			
-			<div>
-				<a href = ? class = "envoie">   Envoyer</a>
-			
-				<p class="réponse"> (Texte décripté)</p>
-			</div>
-			
-		
-		</div>
-		
+    <body>    
+	<div>
+		<input id="input" type="text"> <button id="rec">Speak</button>
+		<br>Response<br> <textarea id="response" cols="40" rows="20"></textarea>
+		<br>Action<br> <textarea id="action" cols="20" rows="1"></textarea>
+		<br>Temps<br> <textarea id="temps" cols="20" rows="1"></textarea>
+		<br>Réponse<br> <textarea id="theanswer" cols="60" rows="1"></textarea>
+
+	</div>
     </body>
-    
- </html>
+</html>
