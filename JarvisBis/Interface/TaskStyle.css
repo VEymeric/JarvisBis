@@ -6,7 +6,7 @@ header
       
       #margin : auto;
      
-      background-color:#8FB876;
+      #background-color:#8FB876;
      
       
      
@@ -15,7 +15,7 @@ header
 .titre
 {
 	font-family: Century Gothic, sans-serif;
-	font-size: 6ex;
+	font-size: 4ex;
 	font-weight: normal;
 	
 	#text-align: center;
@@ -24,7 +24,7 @@ header
 	
 	#width:80%;
 	
-	background-color:#8945D6;
+	#background-color:#8945D6;
 }
 
 
@@ -36,9 +36,21 @@ header
 	
 	text-align: center;
 	margin:auto;
-	background-color:#89B8D6;
+	#background-color:#89B8D6;
 }
-
+.bouton
+{
+	
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 255, 255, 0);
+	
+	border:none;
+	
+	#max-height: 80px;
+	max-width:80px;
+	
+}
 
 body
 {
@@ -65,7 +77,7 @@ body
 	
 	
       #background-image: url("fond3.jpg");
-      background-color:#89EED6;
+      #background-color:#89EED6;
 	#background-color:#D8D8D8;
 }
 

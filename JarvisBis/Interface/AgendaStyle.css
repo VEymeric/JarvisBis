@@ -1,79 +1,3 @@
-@font-face {
-	font-family: 'Aardvark Cafe';
-	src: url('AardvarkCafe.eot');
-	src: url('AardvarkCafe.eot?#iefix') format('embedded-opentype'),
-		url('AardvarkCafe.woff') format('woff'),
-		url('AardvarkCafe.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Caviar Dreams';
-	src: url('CaviarDreams.eot');
-	src: url('CaviarDreams.eot?#iefix') format('embedded-opentype'),
-		url('CaviarDreams.woff') format('woff'),
-		url('CaviarDreams.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Captain Redemption';
-	src: url('CaptainRedemption.eot');
-	src: url('CaptainRedemption.eot?#iefix') format('embedded-opentype'),
-		url('CaptainRedemption.woff') format('woff'),
-		url('CaptainRedemption.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Stranger back in the Night';
-	src: url('StrangerbackintheNight.eot');
-	src: url('StrangerbackintheNight.eot?#iefix') format('embedded-opentype'),
-		url('StrangerbackintheNight.woff') format('woff'),
-		url('StrangerbackintheNight.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Quicksand';
-	src: url('Quicksand-Regular.eot');
-	src: local('Quicksand Regular'), local('Quicksand-Regular'),
-		url('Quicksand-Regular.eot?#iefix') format('embedded-opentype'),
-		url('Quicksand-Regular.woff') format('woff'),
-		url('Quicksand-Regular.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-    font-family: 'quicksandregular';
-    src: url('quicksand-regular.woff2') format('woff2'),
-         url('quicksand-regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-	font-family: 'Organique DEMO';
-	src: url('OrganiqueDEMO.eot');
-	src: url('OrganiqueDEMO.eot?#iefix') format('embedded-opentype'),
-		url('OrganiqueDEMO.woff') format('woff'),
-		url('OrganiqueDEMO.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: "BubblerOne";
-	src: url('BubblerOne-Regular.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
 
 header
 {
@@ -86,12 +10,37 @@ header
       
      
 }
+
+.titre
+{
+	font-family: Century Gothic, sans-serif;
+	font-size: 4ex;
+	font-weight: normal;
+	
+	#text-align: center;
+	margin:auto;
+}
+
+
 .retour
 {
 	max-width: 100px;
 	min-width: 50px;
 	width:25%;
-	background-color:#89B8D6;
+	#background-color:#89B8D6;
+}
+.bouton
+{
+	
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 255, 255, 0);
+	
+	border:none;
+	
+	#max-height: 80px;
+	max-width:80px;
+	
 }
 .agenda
 {
@@ -101,7 +50,7 @@ header
 	margin : auto;
 	
 	font-family:  Verdana,Impact, serif;
-	font-size: 3ex;
+	font-size: 2ex;
 	
 	max-width: 400px;
 	
