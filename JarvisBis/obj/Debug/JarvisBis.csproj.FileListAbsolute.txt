@@ -6,3 +6,4 @@ c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\Jarv
 c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\obj\Debug\JarvisBis.pdb
 c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\obj\Debug\JarvisBis.Speaker.resources
 c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\obj\Debug\JarvisBis.csproj.GenerateResource.Cache
+C:\Users\Ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\obj\Debug\JarvisBis.Properties.Resources.resources
