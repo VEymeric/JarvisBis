@@ -32,7 +32,6 @@
 
       <div id='calendar'></div>
 
-
 		<!-- <figure id = icon>
 			<button id = agenda src="images/calendrier.png" ng-click = "calendar()"> </button>
 		</figure> -->
