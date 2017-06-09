@@ -6,3 +6,14 @@ c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\Jarv
 c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\obj\Debug\JarvisBis.pdb
 c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\obj\Debug\JarvisBis.Speaker.resources
 c:\users\ptit bout de chouc\documents\visual studio 2017\Projects\JarvisBis\JarvisBis\obj\Debug\JarvisBis.csproj.GenerateResource.Cache
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\bin\Debug\JarvisBis.exe.config
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\bin\Debug\JarvisBis.exe
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\bin\Debug\JarvisBis.pdb
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\bin\Debug\ApiAiSDK.dll
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\bin\Debug\Newtonsoft.Json.dll
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\bin\Debug\Newtonsoft.Json.xml
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\obj\Debug\JarvisBis.csprojResolveAssemblyReference.cache
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\obj\Debug\JarvisBis.Speaker.resources
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\obj\Debug\JarvisBis.csproj.GenerateResource.Cache
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\obj\Debug\JarvisBis.exe
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\obj\Debug\JarvisBis.pdb
