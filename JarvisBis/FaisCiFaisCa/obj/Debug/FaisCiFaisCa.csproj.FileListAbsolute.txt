@@ -1,0 +1,14 @@
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\FaisCiFaisCa\bin\Debug\PackageInfo.xml
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\FaisCiFaisCa\bin\Debug\FaisCiFaisCa.exe.config
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\FaisCiFaisCa\bin\Debug\FaisCiFaisCa.XML
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\FaisCiFaisCa\bin\Debug\FaisCiFaisCa.exe
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\FaisCiFaisCa\bin\Debug\FaisCiFaisCa.pdb
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\FaisCiFaisCa\bin\Debug\Constellation.Common.dll
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\FaisCiFaisCa\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\FaisCiFaisCa\bin\Debug\Newtonsoft.Json.dll
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\FaisCiFaisCa\bin\Debug\Constellation.Common.xml
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\FaisCiFaisCa\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\FaisCiFaisCa\bin\Debug\Newtonsoft.Json.xml
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\FaisCiFaisCa\obj\Debug\FaisCiFaisCa.csprojResolveAssemblyReference.cache
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\FaisCiFaisCa\obj\Debug\FaisCiFaisCa.exe
+C:\Users\simon\Documents\ISEN\Projet\Jarvis\JarvisBis\JarvisBis\FaisCiFaisCa\obj\Debug\FaisCiFaisCa.pdb
