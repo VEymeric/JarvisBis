@@ -9,19 +9,15 @@ var trueHour  = now.getHours();
 var trueMinute  = now.getMinutes();
 var trueSeconde = now.getSeconds();
 var years,month,days,hour,minute,seconde;
-//var requirejs = require('requirejs');
-//requirejs.config({/*your config with shims,etc goes here*/});
-
-//var events = require("js/tableOfValue.js");
 window.onload = check;
 
-console.log(test);
-
 function check(){
+  console.log(" done ");
   for(var i=0;i<events.length;i++ ){
       var cut = events[i].date.split("-");
       if(cut[0] == trueYears && cut[1] == trueMonth && cut[0] == trueDays){
         var hour = events.Heure.split(":");
+        console.log(" ok ok");
         if(hour[0] == trueHour && hour[1] == trueMinute){
           valid(events[i]);
         }
@@ -29,6 +25,8 @@ function check(){
     }
     setTimeout("check()", 60000);
 }
+
+
 function valid(action){
 
 }/*
