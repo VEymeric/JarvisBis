@@ -69,35 +69,86 @@ function send() {
 		},
 		data: JSON.stringify({ query: text, lang: "fr-FR", sessionId: "somerandomthing" }),
 		success: function(data) {
-
-			setResponse(JSON.stringify(data, undefined, 2));
-			setAction(JSON.stringify(data.result.action, undefined, 2));
-			setAnswer(JSON.stringify(data.result.fulfillment.speech, undefined, 2));
-			if(data.result.parameters.Heure != null) {
-				setTemps(JSON.stringify(data.result.parameters.Heure[0], undefined, 2));
-			}else{
-				setTemps(JSON.stringify("now", undefined, 2));
-			}
+			AffichageAll(data);
+			
+			afficherRetour();
+			/* 
+				ECRIRE L'APPEL AUX FONCTIONS EXTERNE ICI 
+				PAR EXEMPLE POUR LIRE LA REPONSE
+				OU ENVOYER A CONSTELLATION
+			*/
 		},
 		error: function() {
 			setResponse("Internal Server Error");
+			setDebug("");
+			setAction("");
+			setReponse("");
+			setHeure("");
+			setDate("");
+			setType("");
 		}
 	});
-	setResponse("Loading...");
+	setDebug("Loading...");
+	setAction("Loading...");
+	setReponse("Loading...");
+	setHeure("");
+	setDate("");
+	setType("");
+
 }
 
-function setResponse(val) {
-	$("#response").text(val);
+function AffichageAll(data)	{
+	setDebug(JSON.stringify(data, undefined, 2));
+	setAction(JSON.stringify(data.result.action, undefined, 2));
+	setReponse(JSON.stringify(data.result.fulfillment.speech, undefined, 2));
+		
+	/*affiche les arguments*/
+	if(data.result.parameters.date != null && data.result.parameters.date != "") {
+		setDate(JSON.stringify(data.result.parameters.date, undefined, 2));
+	}else{
+		setDate(JSON.stringify("aujourd'hui", undefined, 2));
+	}
+	if(data.result.parameters.time != null && data.result.parameters.time != "") {
+		setHeure(JSON.stringify(data.result.parameters.time, undefined, 2));
+	}else{
+		setHeure(JSON.stringify("maintenant", undefined, 2));
+	}
+	if(data.result.parameters.type != null) {
+		setType(JSON.stringify(data.result.parameters.type, undefined, 2));
+	}else{
+		setType(JSON.stringify("undefined", undefined, 2));
+	}
+	afficherRetour();
+}
+function setDebug(val) {
+	$("#debug").text(val);
 }
 
 function setAction(val) {
 	$("#action").text(val);
 }
 
-function setTemps(val) {
-	$("#temps").text(val);
+function setReponse(val) {
+	$("#reponse").text(val);
 }
 
-function setAnswer(val) {
-	$("#theanswer").text(val);
+function setHeure(val) {
+	$("#heure").text(val);
+}
+function setDate(val) {
+	$("#date").text(val);
+}
+function setType(val) {
+	$("#type").text(val);
+}
+
+function afficherRetour(){
+	var textRetour = "";
+	textRetour += document.getElementById("action").value;
+	textRetour += ", " + document.getElementById("reponse").value;
+	textRetour += ", " + document.getElementById("date").value;
+	textRetour += ", " + document.getElementById("heure").value;
+	textRetour += ", " + document.getElementById("type").value;
+
+	$("#retourne").text(textRetour);
 }
