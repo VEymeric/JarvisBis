@@ -2,32 +2,39 @@
   // -> si oui evenement constellation
   // si non -> bat les couilles
 
-var annee   = now.getFullYear();
-var mois    = now.getMonth() + 1;
-var jour    = now.getDate();
-var heure   = now.getHours();
-var minute  = now.getMinutes();
-var seconde = now.getSeconds();
-
-function check() {
-
-
-
+var now = new Date();
+var trueYears = now.getFullYear();
+var trueMonth = now.getMonth() + 1;
+var trueDays = now.getDate();
+var trueHour = now.getHours();
+var trueMinute = now.getMinutes();
+var trueSeconde = now.getSeconds();
+var years, month, days, hour, minute, seconde;
+window.onload = check;
 
 
+function check(){
+  for(var i=0;i<events.length;i++ ){
+      var cut = events[i].date.split("-");
+      if(cut[0] == trueYears && cut[1] == trueMonth && cut[0] == trueDays){
+        var hour = events.Heure.split(":");
+        if(hour[0] == trueHour && hour[1] == trueMinute){
+          valid(events[i]);
+        }
+      }
+    }
+    setTimeout("check()", 60000);
 }
 
-
-function valid() {
-    
-    switch (action) {
+function valid(action){    
+    switch (action.action) {
         case "Allumer_télévision":
             break;
         case "Eteindre_télévision":
             break;
         case "Faire_café":
             break;
-        case "Démmarrer_cafetière":
+        case "Démarrer_cafetière":
             break;
         case "Allumer_lumière":
             constellation.server.sendMessage({ Scope: 'Package', Args: ['Hue'] }, 'SetState', [lightId, true]);
@@ -60,3 +67,12 @@ function valid() {
             break;
     }
 }
+/*
+function delete(){
+  for(var i=0;i<events.length;i++){
+    var cut = events[i].date.split("-");
+    if(cut[0] < trueYears && cut[1] < trueMonth && cut[2] < trueDays ){
+
+    }
+  }
+}*/
