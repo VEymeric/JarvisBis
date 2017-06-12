@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task</title>
+    <meta http-equiv="Content-Type" content="text/html" ; charset="utf-8" />
+    <link rel="stylesheet" href="TaskStyle.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/api_analyse_vocale.js"> </script>
+</head>
+
+<header>
+    <button class="bouton" onclick="Javascript:window.document.location.href='MainPage.html'" ng-click="retour()">
+        <img class="retour" src="icons/retour_1.png" alt="Icon Retour" />
+    </button>
+    <div class="titre">Task</div>
+</header>
+
+
+<body>
+    <div>
+        <input id="input" type="text"> <button id="rec">UNUSED BUTTON</button>
+        <br>Action<br>
+        <textarea id="action" cols="20" rows="1"></textarea>
+        <br>Arguments<br>
+        <textarea id="date" cols="20" rows="1"></textarea>
+        <textarea id="heure" cols="20" rows="1"></textarea>
+        <textarea id="type" cols="20" rows="1"></textarea>
+        <br>Réponse<br>
+        <textarea id="reponse" name="reponse" cols="60" rows="1"></textarea>
+        <br>Debug<br>
+        <textarea id="debug" cols="40" rows="20"></textarea>
+        <br>Retourne : <br>
+        <textarea id="retourne" cols="60" rows="1"></textarea>
+    </div>
+</body>
+</html>

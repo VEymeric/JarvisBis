@@ -1,0 +1,111 @@
+
+header
+{
+	display: flex;
+      text-align: center;
+      margin : auto;
+      #max-width: 200px;
+      #background-color:#8FB8D6;
+}
+
+h1
+{
+	font-family: Century Gothic, sans-serif;
+	font-size: 4ex;
+	font-weight: normal;
+	#text-align: center;
+	margin:auto;
+}
+
+.retour
+{
+	max-width: 100px;
+	min-width: 50px;
+	width:25%;
+	#background-color:#89B8D6;
+}
+
+.bouton
+{
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(255, 255, 255, 0);
+	border:none;
+	#max-height: 80px;
+	max-width:80px;
+}
+.agenda
+{
+	flex-shrink: 40;
+	text-align: center;
+	margin : auto;
+	font-family:  Verdana,Impact, serif;
+	font-size: 2ex;
+	max-width: 400px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+
+body
+{
+	background-image: url("images/fond3_r.jpg");
+}
+
+
+#corps
+{
+	display: flex;
+	flex-direction: column;
+      border-radius: 10px;
+      #background-image: url("fond3.jpg");
+      #background-color:#89B8D6;
+	#background-color:#D8D8D8;
+}
+
+#icon
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	 align-items: center;
+	#width:50%;
+	#height:50%;
+}
+
+#mic
+{
+	background: url("images/micro.png");
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width:50%;
+	#height:50%;
+	justify-content: center;
+}
+
+.miccap
+{
+	font-family: Century Gothic, sans-serif;
+	font-size: 3ex;
+	font-weight: normal;
+	text-align: center;
+}
+
+.agenda
+{
+	width:50%;
+	max-width:200px;
+}
+
+.action
+{
+	width:50%;
+	max-width:200px;
+}
+
+footer
+{
+	font-family:  Georgia;
+}

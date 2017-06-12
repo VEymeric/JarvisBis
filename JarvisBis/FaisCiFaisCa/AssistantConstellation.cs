@@ -22,7 +22,7 @@ namespace FaisCiFaisCa
             action = value;
         }
         */
-
+        /*
         public override void OnStart()
         {
             while (PackageHost.IsRunning)
@@ -51,6 +51,7 @@ namespace FaisCiFaisCa
                     case "Baisser_vollet":
                         break;
                     case "Augmenter_chauffage":
+
                         break;
                     case "Diminuer_chauffage":
                         break;
@@ -69,7 +70,7 @@ namespace FaisCiFaisCa
                 }
 
                 
-            }
-        }
+            } 
+        } */
     }
 }

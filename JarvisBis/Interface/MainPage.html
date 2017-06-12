@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>JarvisBis</title>
+			 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+			 <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+			 <link rel="stylesheet" href="MainPageStyle.css" />
+    </head>
+    <header>
+			<div id = "heure">
+				<script type="text/javascript" src="Horloge.js"></script>
+			</div>
+    </header>
+    <body>
+			<div  id=corps>
+				<figure id = icon>
+					<button class = "bouton"  onclick="Javascript:window.document.location.href='Agenda.html'">
+							<img class="bouton" src="images/calendrier.png"/>
+					</button>
+					<button class = "bouton"  onclick="Javascript:window.document.location.href='Task.html'">
+							<img class = "bouton"  src="images/task.png"/>
+						</button>
+				</figure>
+				<figure id = mic>
+					<button class = "bouton">
+						<img class = "bouton"  src="images/micro.png"/>
+					</button>
+					<figcaption class = miccap> Appuyez sur le micro pour enregistrer </figcaption>
+				</figure>
+			</div>
+    </body>
+ </html>
