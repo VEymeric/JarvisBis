@@ -1,33 +1,36 @@
 // vérifier si il n'y a pas d'évenement à cette heure la et cette date la
   // -> si oui evenement constellation
   // si non -> bat les couilles
-
-var now = new Date();
+/*
 var trueYears = now.getFullYear();
 var trueMonth = now.getMonth() + 1;
 var trueDays = now.getDate();
 var trueHour = now.getHours();
 var trueMinute = now.getMinutes();
-var trueSeconde = now.getSeconds();
-var years, month, days, hour, minute, seconde;
+var trueSeconde = now.getSeconds();*/
+
+
 window.onload = check;
 
-
 function check(){
-  for(var i=0;i<events.length;i++ ){
+
+    var now = new Date();
+    for(var i=0 ; i<events.length ; i++ ){        
       var cut = events[i].date.split("-");
-      if(cut[0] == trueYears && cut[1] == trueMonth && cut[0] == trueDays){
-        var hour = events.Heure.split(":");
-        if(hour[0] == trueHour && hour[1] == trueMinute){
-          valid(events[i]);
+      if (cut[0] == now.getFullYear() && cut[1] == now.getMonth() + 1 && cut[2] == now.getDate()) {
+        var hour = events[i].Heure.split(":");
+
+        if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
+            valid(events[i]);
         }
       }
     }
     setTimeout("check()", 60000);
 }
 
-function valid(action){    
-    switch (action.action) {
+function valid(event) {
+    console.log("action : "+ event.action);
+    switch (event.action) {
         case "Allumer_télévision":
             break;
         case "Eteindre_télévision":
@@ -37,10 +40,8 @@ function valid(action){
         case "Démarrer_cafetière":
             break;
         case "Allumer_lumière":
-            constellation.server.sendMessage({ Scope: 'Package', Args: ['Hue'] }, 'SetState', [lightId, true]);
             break;
         case "Eteindre_lumière":
-            constellation.server.sendMessage({ Scope: 'Package', Args: ['Hue'] }, 'SetState', [lightId, false]);
             break;
         case "Mettre_réveil":
             break;
@@ -63,7 +64,7 @@ function valid(action){
             break;
 
         default:
-            Console.WriteLine("Action inexistante. Rééssayez.");
+            console.log("Action inexistante. Rééssayez.");
             break;
     }
 }
