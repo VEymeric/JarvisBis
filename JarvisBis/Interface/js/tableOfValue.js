@@ -1,10 +1,8 @@
-var events = [];
-
 events= [
   {
     action: 'allume_lumière',
     date: '2017-06-12',
-    Heure: '11:00'
+    Heure: '12:00'
   },
   {
     action: 'augmenter_volume',

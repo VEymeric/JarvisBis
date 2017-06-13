@@ -1,5 +1,6 @@
 var accessToken = "c5a8a16acf314ec9be96a2da6d4b8f4d";
 var baseUrl = "https://api.api.ai/v1/";
+/* TEST MICRO DON'T WORK
 $(document).ready(function() {
 	$("#input").keypress(function(event) {
 		if (event.which == 13) {
@@ -55,7 +56,7 @@ function setInput(text) {
 
 function updateRec() {
 	$("#rec").text(recognition ? "Stop" : "Speak");
-}
+}*/
 
 function send() {
 	var text = $("#input").val();
@@ -70,8 +71,7 @@ function send() {
 		data: JSON.stringify({ query: text, lang: "fr-FR", sessionId: "somerandomthing" }),
 		success: function(data) {
 			AffichageAll(data);
-			
-			afficherRetour();
+			lancerEvent();
 			/* 
 				ECRIRE L'APPEL AUX FONCTIONS EXTERNE ICI 
 				PAR EXEMPLE POUR LIRE LA REPONSE
@@ -151,4 +151,29 @@ function afficherRetour(){
 	textRetour += ", " + document.getElementById("type").value;
 
 	$("#retourne").text(textRetour);
+}
+
+function modifierleJSON(){
+	/* ALED */
+}
+
+function lancerEvent(){
+	var tabEvent = [];
+	temp = document.getElementById("action").value;
+	temp = temp.substring(1, temp.length-1);
+	tabEvent['action'] = temp;
+
+	temp = document.getElementById("date").value;
+	temp = temp.substring(1, temp.length-1);
+	tabEvent['date'] = temp;
+
+	temp = document.getElementById("heure").value;
+	temp = temp.substring(1, temp.length-1);
+	tabEvent['heure'] = temp;
+
+	temp = document.getElementById("type").value;
+	temp = temp.substring(1, temp.length-1);
+	tabEvent['type'] = temp;
+
+	Valid(tabEvent);
 }
