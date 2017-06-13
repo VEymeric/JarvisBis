@@ -1,17 +1,18 @@
 var accessToken = "c5a8a16acf314ec9be96a2da6d4b8f4d";
 var baseUrl = "https://api.api.ai/v1/";
-/* TEST MICRO DON'T WORK
+/* TEST MICRO DON'T WORK*/
 $(document).ready(function() {
 	$("#input").keypress(function(event) {
 		if (event.which == 13) {
 			event.preventDefault();
 			send();
 		}
-	});
+	});/*
 	$("#rec").click(function(event) {
 		switchRecognition();
-	});
+	});*/
 });
+/*
 var recognition;
 function startRecognition() {
 	recognition = new webkitSpeechRecognition();
@@ -49,14 +50,15 @@ function switchRecognition() {
 	}
 }
 
-function setInput(text) {
-	$("#input").val(text);
-	send();
-}
+
 
 function updateRec() {
 	$("#rec").text(recognition ? "Stop" : "Speak");
 }*/
+function setInput(text) {
+	$("#input").val(text);
+	send();
+}
 
 function send() {
 	var text = $("#input").val();
@@ -70,8 +72,15 @@ function send() {
 		},
 		data: JSON.stringify({ query: text, lang: "fr-FR", sessionId: "somerandomthing" }),
 		success: function(data) {
+				alert("lol");
+
 			AffichageAll(data);
+				alert("lol--	");
+
 			lancerEvent();
+				alert("lol++");
+
+			modifierleJSON();
 			/* 
 				ECRIRE L'APPEL AUX FONCTIONS EXTERNE ICI 
 				PAR EXEMPLE POUR LIRE LA REPONSE
@@ -155,10 +164,23 @@ function afficherRetour(){
 
 function modifierleJSON(){
 	/* ALED */
+	alert("lol");
+	$.ajax({
+		url: "updateJson.php",
+		type: "POST",
+		data: {
+			action: tabEvent['action'],
+			date: tabEvent['date'],
+			heure: tabEvent['heure'],
+			type: tabEvent['type'],
+		}
+	}).done(function(ui) {
+		console.log(ui);
+	});
 }
 
 function lancerEvent(){
-	var tabEvent = [];
+	tabEvent = [];
 	temp = document.getElementById("action").value;
 	temp = temp.substring(1, temp.length-1);
 	tabEvent['action'] = temp;
@@ -175,5 +197,5 @@ function lancerEvent(){
 	temp = temp.substring(1, temp.length-1);
 	tabEvent['type'] = temp;
 
-	Valid(tabEvent);
+	//valid(tabEvent);
 }
