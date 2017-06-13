@@ -1,5 +1,4 @@
 var events = [];
-
 events= [
   {
     'action': 'allume_lumière',
