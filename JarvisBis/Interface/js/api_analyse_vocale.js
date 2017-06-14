@@ -1,6 +1,11 @@
 var accessToken = "c5a8a16acf314ec9be96a2da6d4b8f4d";
 var baseUrl = "https://api.api.ai/v1/";
 /* TEST MICRO DON'T WORK*/
+var tabEvent = [];
+var DEFAULT_DATE = Date.now();
+var DEFAULT_HEURE = "maintenant";
+var DEFAULT_VALUE = "undefined";
+var DEFAULT_ACTION = "input.unknown"
 $(document).ready(function() {
 	$("#input").keypress(function(event) {
 		if (event.which == 13) {
@@ -49,9 +54,6 @@ function switchRecognition() {
 		startRecognition();
 	}
 }
-
-
-
 function updateRec() {
 	$("#rec").text(recognition ? "Stop" : "Speak");
 }*/
@@ -72,20 +74,9 @@ function send() {
 		},
 		data: JSON.stringify({ query: text, lang: "fr-FR", sessionId: "somerandomthing" }),
 		success: function(data) {
-				alert("lol");
-
 			AffichageAll(data);
-				alert("lol--	");
-
-			lancerEvent();
-				alert("lol++");
-
-			modifierleJSON();
-			/* 
-				ECRIRE L'APPEL AUX FONCTIONS EXTERNE ICI 
-				PAR EXEMPLE POUR LIRE LA REPONSE
-				OU ENVOYER A CONSTELLATION
-			*/
+			majTabEvent();
+			annalyseEvent();
 		},
 		error: function() {
 			setResponse("Internal Server Error");
@@ -115,17 +106,17 @@ function AffichageAll(data)	{
 	if(data.result.parameters.date != null && data.result.parameters.date != "") {
 		setDate(JSON.stringify(data.result.parameters.date, undefined, 2));
 	}else{
-		setDate(JSON.stringify("aujourd'hui", undefined, 2));
+		setDate(JSON.stringify(DEFAULT_DATE, undefined, 2));
 	}
 	if(data.result.parameters.time != null && data.result.parameters.time != "") {
 		setHeure(JSON.stringify(data.result.parameters.time, undefined, 2));
 	}else{
-		setHeure(JSON.stringify("maintenant", undefined, 2));
+		setHeure(JSON.stringify(DEFAULT_HEURE, undefined, 2));
 	}
-	if(data.result.parameters.type != null) {
+	if(data.result.parameters.type != null && data.result.parameters.type != "") {
 		setType(JSON.stringify(data.result.parameters.type, undefined, 2));
 	}else{
-		setType(JSON.stringify("undefined", undefined, 2));
+		setType(JSON.stringify(DEFAULT_VALUE, undefined, 2));
 	}
 	afficherRetour();
 }
@@ -162,25 +153,32 @@ function afficherRetour(){
 	$("#retourne").text(textRetour);
 }
 
-function modifierleJSON(){
-	/* ALED */
-	alert("lol");
-	$.ajax({
-		url: "updateJson.php",
-		type: "POST",
-		data: {
-			action: tabEvent['action'],
-			date: tabEvent['date'],
-			heure: tabEvent['heure'],
-			type: tabEvent['type'],
-		}
-	}).done(function(ui) {
-		console.log(ui);
-	});
+function annalyseEvent(){
+	if( tabEvent['action'] == "input.unknown"){//pas d'analyse puisqu'on comprend pas l'action
+		return;
+	}
+	if( tabEvent['date'] == DEFAULT_DATE && tabEvent['heure'] == DEFAULT_HEURE){
+		// c'est partie on va dans constellation
+		console.log("annalyse : ACTION IMMEDIATE");
+		valid(tabEvent);
+	}else{
+		$.ajax({
+			// on attend avant d'aller dans constellation :'(
+			url: "updateJson.php",
+			type: "POST",
+			data: {
+				action: tabEvent['action'],
+				date: tabEvent['date'],
+				heure: tabEvent['heure'],
+				type: tabEvent['type'],
+			}
+		}).done(function(arg) {
+			console.log(arg);
+		});
+	}
 }
 
-function lancerEvent(){
-	tabEvent = [];
+function majTabEvent(){
 	temp = document.getElementById("action").value;
 	temp = temp.substring(1, temp.length-1);
 	tabEvent['action'] = temp;
