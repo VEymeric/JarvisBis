@@ -3,15 +3,8 @@
   // si non -> ba les couilles
 var now;
 
-window.onload = check;
-
-
-$.getJSON(URL,function(données){
-
-
-}
-
-
+window.onload = getJSON;
+/*
 function check(){
     var now = new Date();
     for(var i=0 ; i<events.length ; i++ ){
@@ -23,13 +16,17 @@ function check(){
         if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
             valid(events[i]);
         }
-      }/*else if( cut[0]<now.getFullYear() || cut[1]<now.getMonth()){
+      }else if( cut[0]<now.getFullYear() || cut[1]<now.getMonth()){
         console.log(" delete ");
         var eventsDelete = events.splice(i,1);
-      }*/
+      }
     }
     setTimeout("check()", 60000);
-}
+}*/
+$.getJSON("tableOfValue.json",function(json){
+  console.log(json);
+});
+
 
 function valid(event) {
     console.log("action : "+ event.action);
