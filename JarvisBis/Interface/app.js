@@ -1,5 +1,13 @@
 $(document).ready(function() {
 
+  var events_array;
+
+  $.ajax({
+    url:"getEvent.php",
+  }).done(function(eventsFromJson) {
+    events_array = JSON.parse(eventsFromJson);
+  });
+
   $('#calendar').fullCalendar({
     header: {
       left: 'prev,next today',
@@ -11,14 +19,15 @@ $(document).ready(function() {
     editable: true,
     eventLimit: true, // allow "more" link when too many events
 
-
     dayClick: function() {
       console.log($(this));
+      alert("ui");
     },
 
+    events: events_array,
+    events: [
+      title:
+    ]
 
-    // Exemples
-    // A remplacer par un tableau d'une bdd ou d'un compte google
   });
-
 });

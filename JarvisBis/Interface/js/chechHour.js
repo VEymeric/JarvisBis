@@ -1,41 +1,73 @@
 // vérifier si il n'y a pas d'évenement à cette heure la et cette date la
   // -> si oui evenement constellation
   // si non -> ba les couilles
-var now = new Date();
-var trueYears = now.getFullYear();
-var trueMonth = now.getMonth() + 1;
-var trueDays  = now.getDate();
-var trueHour  = now.getHours();
-var trueMinute  = now.getMinutes();
-var trueSeconde = now.getSeconds();
-var years,month,days,hour,minute,seconde;
+var now;
+
 window.onload = check;
 
+
+$.getJSON(URL,function(données){
+
+
+}
+
+
 function check(){
-  console.log(" done ");
-  for(var i=0;i<events.length;i++ ){
+    var now = new Date();
+    for(var i=0 ; i<events.length ; i++ ){
+      console.log(events.length);
       var cut = events[i].date.split("-");
-      if(cut[0] == trueYears && cut[1] == trueMonth && cut[0] == trueDays){
-        var hour = events.Heure.split(":");
-        console.log(" ok ok");
-        if(hour[0] == trueHour && hour[1] == trueMinute){
-          valid(events[i]);
+      if (cut[0] == now.getFullYear() && cut[1] == now.getMonth() + 1 && cut[2] == now.getDate()) {
+        var hour = events[i].Heure.split(":");
+
+        if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
+            valid(events[i]);
         }
-      }
+      }/*else if( cut[0]<now.getFullYear() || cut[1]<now.getMonth()){
+        console.log(" delete ");
+        var eventsDelete = events.splice(i,1);
+      }*/
     }
     setTimeout("check()", 60000);
 }
 
+function valid(event) {
+    console.log("action : "+ event.action);
+    switch (event.action) {
+        case "Allumer_télévision":
+            break;
+        case "Eteindre_télévision":
+            break;
+        case "Faire_café":
+            break;
+        case "Démarrer_cafetière":
+            break;
+        case "Allumer_lumière":
+            break;
+        case "Eteindre_lumière":
+            break;
+        case "Mettre_réveil":
+            break;
+        case "Monter_vollet":
+            break;
+        case "Baisser_vollet":
+            break;
+        case "Augmenter_chauffage":
 
-function valid(action){
+            break;
+        case "Diminuer_chauffage":
+            break;
 
-}/*
+        case "Monter_volume":
+            constellation.server.sendMessage({ Scope: 'Package', Args: ['WindowsControl'] }, 'VolumeUp', {});
+            break;
 
-function delete(){
-  for(var i=0;i<events.length;i++){
-    var cut = events[i].date.split("-");
-    if(cut[0] < trueYears && cut[1] < trueMonth && cut[2] < trueDays ){
+        case "Baisser_volume":
+            constellation.server.sendMessage({ Scope: 'Package', Args: ['WindowsControl'] }, 'VolumeDown', {});
+            break;
 
+        default:
+            console.log("Action inexistante. Rééssayez.");
+            break;
     }
-  }
-}*/
+}
