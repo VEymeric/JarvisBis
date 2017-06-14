@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var accessToken = "c5a8a16acf314ec9be96a2da6d4b8f4d";
 var baseUrl = "https://api.api.ai/v1/";
 /* TEST MICRO DON'T WORK*/
@@ -81,7 +80,7 @@ function send() {
 			lancerEvent();
 				alert("lol++");
 
-			modifierleJSON();
+			verifierDate();
 			/*
 				ECRIRE L'APPEL AUX FONCTIONS EXTERNE ICI
 				PAR EXEMPLE POUR LIRE LA REPONSE
@@ -164,23 +163,21 @@ function afficherRetour(){
 }
 
 function verifierDate(){
-  switch (document.getElementById("date").value) {
-    case "aujourd'hui":
+  if(document.getElementById("date").value == "aujourd'hui") {
       jourAujourdhui();
       if(document.getElementById("heure").value == "maintenant"){
         lancerEvent();
       }else {
         modifierleJSON();
       }
-      break;
-    default:
-      modifierleJSON();
+    }
+  else{
+    modifierleJSON()
   }
 }
 
 function modifierleJSON(){
 	/* ALED */
-  verifierDate();
 	alert("lol");
 	$.ajax({
 		url: "updateJson.php",
@@ -214,7 +211,7 @@ function lancerEvent(){
 	temp = temp.substring(1, temp.length-1);
 	tabEvent['type'] = temp;
 
-	valid(tabEvent);
+	//valid(tabEvent);
 }
 
 function jourAujourdhui(){
