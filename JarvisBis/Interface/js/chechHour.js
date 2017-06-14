@@ -5,9 +5,17 @@ var now;
 
 window.onload = check;
 
+
+$.getJSON(URL,function(données){
+
+
+}
+
+
 function check(){
     var now = new Date();
     for(var i=0 ; i<events.length ; i++ ){
+      console.log(events.length);
       var cut = events[i].date.split("-");
       if (cut[0] == now.getFullYear() && cut[1] == now.getMonth() + 1 && cut[2] == now.getDate()) {
         var hour = events[i].Heure.split(":");
@@ -15,10 +23,10 @@ function check(){
         if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
             valid(events[i]);
         }
-      }else if( cut[0]<now.getFullYear() || cut[1]<now.getMonth()){
+      }/*else if( cut[0]<now.getFullYear() || cut[1]<now.getMonth()){
         console.log(" delete ");
         var eventsDelete = events.splice(i,1);
-      }
+      }*/
     }
     setTimeout("check()", 60000);
 }

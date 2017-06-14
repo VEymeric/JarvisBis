@@ -24,7 +24,10 @@ $(document).ready(function() {
       alert("ui");
     },
 
-    events: events_array
+    events: events_array,
+    events: [
+      title:
+    ]
 
   });
 });
