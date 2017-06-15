@@ -3,7 +3,7 @@
   // si non -> ba les couilles
 
 function check() {
-  $.getJSON("tableOfValue.json",function(json){
+  $.getJSON("js/events.json",function(json){
       console.log(" allller !");
       var now = new Date();
       console.log(json.length);

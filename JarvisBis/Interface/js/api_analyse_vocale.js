@@ -2,7 +2,7 @@ var accessToken = "c5a8a16acf314ec9be96a2da6d4b8f4d";
 var baseUrl = "https://api.api.ai/v1/";
 /* TEST MICRO DON'T WORK*/
 var tabEvent = [];
-var DEFAULT_DATE = "aujourd'hui";
+var DEFAULT_DATE = Date.now();
 var DEFAULT_HEURE = "maintenant";
 var DEFAULT_VALUE = "undefined";
 var DEFAULT_ACTION = "input.unknown"
@@ -38,7 +38,7 @@ function startRecognition() {
 	recognition.lang = "fr-FR";
 	recognition.start();
 }
-
+	
 function stopRecognition() {
 	if (recognition) {
 		recognition.stop();
@@ -75,15 +75,8 @@ function send() {
 		data: JSON.stringify({ query: text, lang: "fr-FR", sessionId: "somerandomthing" }),
 		success: function(data) {
 			AffichageAll(data);
-			/*
-				ECRIRE L'APPEL AUX FONCTIONS EXTERNE ICI
-				PAR EXEMPLE POUR LIRE LA REPONSE
-				OU ENVOYER A CONSTELLATION
-			*/
 			majTabEvent();
-      verifierDate();
-
-			//annalyseEvent();
+			annalyseEvent();
 		},
 		error: function() {
 			setResponse("Internal Server Error");
@@ -108,7 +101,7 @@ function AffichageAll(data)	{
 	setDebug(JSON.stringify(data, undefined, 2));
 	setAction(JSON.stringify(data.result.action, undefined, 2));
 	setReponse(JSON.stringify(data.result.fulfillment.speech, undefined, 2));
-
+		
 	/*affiche les arguments*/
 	if(data.result.parameters.date != null && data.result.parameters.date != "") {
 		setDate(JSON.stringify(data.result.parameters.date, undefined, 2));
@@ -160,37 +153,6 @@ function afficherRetour(){
 	$("#retourne").text(textRetour);
 }
 
-function verifierDate(){
-  if(	tabEvent['date'] == DEFAULT_DATE) {
-      jourAujourdhui();
-      if(tabEvent['heure'] == DEFAULT_HEURE){
-        majTabEvent();
-        console.log(" maintenant ");
-      }else {
-        modifierleJSON();
-      }
-    }
-  else{
-    console.log(" pas aujourdhui ");
-    modifierleJSON()
-  }
-}
-
-function modifierleJSON(){
-	$.ajax({
-		url: "updateJson.php",
-		type: "POST",
-		data: {
-			action: tabEvent['action'],
-			date: tabEvent['date'],
-			heure: tabEvent['heure'],
-			type: tabEvent['type'],
-		}
-	}).done(function(ui) {
-		console.log(ui);
-	});
-}
-/*
 function annalyseEvent(){
 	if( tabEvent['action'] == "input.unknown"){//pas d'analyse puisqu'on comprend pas l'action
 		return;
@@ -215,7 +177,7 @@ function annalyseEvent(){
 		});
 	}
 }
-*/
+
 function majTabEvent(){
 	temp = document.getElementById("action").value;
 	temp = temp.substring(1, temp.length-1);
@@ -232,17 +194,5 @@ function majTabEvent(){
 	temp = document.getElementById("type").value;
 	temp = temp.substring(1, temp.length-1);
 	tabEvent['type'] = temp;
-<<<<<<< HEAD
-
 	//valid(tabEvent);
-}
-
-function jourAujourdhui(){
-  console.log("jourAujourdhui");
-  var aujourdhui = new Date();
-  var mois = aujourdhui.getMonth()+1;
-  document.getElementById("date").value = aujourdhui.getFullYear()+"-"+0+mois+"-"+aujourdhui.getDate();
-=======
-	//valid(tabEvent);
->>>>>>> 69147d43014b0294c1832c56dd39d45337d9d709
 }

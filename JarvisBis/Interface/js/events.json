@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Allumer_lumière",
+    "start": "2017-06-15 11:27:00",
+    "type" : ""
+  },
+  {
+    "title": "Augmenter_volume",
+    "start": "2017-06-15 11:19:00",
+    "type" : ""
+  },
+  {
+    "title": "Diminuer_chauffage",
+    "start": "2017-06-15 11:30:00",
+    "type" : ""
+  },
+  {
+    "title": "Faire_café",
+    "start": "2017-06-15 11:30:00",
+    "type" : ""
+  }
+]
