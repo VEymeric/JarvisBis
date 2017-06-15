@@ -6,21 +6,16 @@ header
       margin : auto;
       #max-width: 200px;
       #background-color:#8FB8D6;
-     
-      
-     
 }
 
-.titre
+h1
 {
 	font-family: Century Gothic, sans-serif;
 	font-size: 4ex;
 	font-weight: normal;
-	
 	#text-align: center;
 	margin:auto;
 }
-
 
 .retour
 {
@@ -29,31 +24,24 @@ header
 	width:25%;
 	#background-color:#89B8D6;
 }
+
 .bouton
 {
-	
 	background-repeat: no-repeat;
 	background-position: center;
 	background-color: rgba(255, 255, 255, 0);
-	
 	border:none;
-	
 	#max-height: 80px;
 	max-width:80px;
-	
 }
 .agenda
 {
-      
 	flex-shrink: 40;
 	text-align: center;
 	margin : auto;
-	
 	font-family:  Verdana,Impact, serif;
 	font-size: 2ex;
-	
 	max-width: 400px;
-	
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -86,7 +74,7 @@ body
 	#height:50%;
 }
 
-#mic 
+#mic
 {
 	background: url("images/micro.png");
 	display: flex;
@@ -95,9 +83,8 @@ body
 	width:50%;
 	#height:50%;
 	justify-content: center;
-     
-     
 }
+
 .miccap
 {
 	font-family: Century Gothic, sans-serif;
@@ -105,6 +92,7 @@ body
 	font-weight: normal;
 	text-align: center;
 }
+
 .agenda
 {
 	width:50%;
@@ -117,19 +105,7 @@ body
 	max-width:200px;
 }
 
-
 footer
 {
 	font-family:  Georgia;
 }
-
-
-
-
-
-
-
-
-
-
-

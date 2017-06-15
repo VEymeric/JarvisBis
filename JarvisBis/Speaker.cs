@@ -2,9 +2,13 @@
 using System.Windows.Forms;
 using System.Speech.Recognition;
 using System.Speech.Synthesis;
+using ApiAiSDK;
+using System.Threading;
+using System.Text;
+using System.Threading.Tasks;
 
-
-namespace JarvisBis { 
+namespace JarvisBis
+{
     public partial class Speaker : Form
     {
         // Variables 
@@ -14,6 +18,7 @@ namespace JarvisBis {
         GrammarBuilder grammarBuilder = new GrammarBuilder();
         SpeechSynthesizer synth = new SpeechSynthesizer();
         Grammar grammar;
+        string varAutreFichier = "Allumer_télévision";
 
         public Speaker()
         {
@@ -39,7 +44,7 @@ namespace JarvisBis {
 
         private void Speaker_Load(object sender, EventArgs e)
         {
-            actions.Add(new string[] { "allumer", "eteindre", "rappel", "faire", "ouvrir", "fermer","augmenter","diminuer" });
+            actions.Add(new string[] { "allumer", "eteindre", "rappel", "faire", "ouvrir", "fermer", "augmenter", "diminuer" });
             elements.Add(new string[] { "cafe", "vollet", "météo", "lumiere", "température", "télévision", "porte", "réveil", "alarme" });
             grammarBuilder.Append(actions);
             grammarBuilder.Append(elements);
@@ -71,21 +76,22 @@ namespace JarvisBis {
             Console.WriteLine(" words 1 :" + words[0] + "words 2:" + words[1]);
 
             switch (words[1])
-                {
+            {
                 case "cafe":
                     synth.Speak(" Je vais vous préparer un café. ");
                     break;
                 case "vollet":
-                    if(words[0] == "ouvrir")
+                    if (words[0] == "ouvrir")
                     {
                         synth.Speak(" Je vous ouvre vos vollets. ");
-                    } else if(words[1] == "fermer")
+                    }
+                    else if (words[1] == "fermer")
                     {
                         synth.Speak(" Je vous ferme vos vollets. ");
                     }
                     else
                     {
-                        synth.Speak(" Je n'ai pas compris ce que vous voulez faire.");                       
+                        synth.Speak(" Je n'ai pas compris ce que vous voulez faire.");
                     }
                     break;
                 case "lumiere":
@@ -106,7 +112,7 @@ namespace JarvisBis {
                     if (words[1] == "allumer")
                     {
                         synth.Speak(" Je vous allume la télévision. ");
-                    }
+                    }   
                     else if (words[0] == "eteindre")
                     {
                         synth.Speak(" Je vous éteindre la télévision. ");
@@ -117,7 +123,7 @@ namespace JarvisBis {
                     }
                     break;
                 default:
-                    synth.Speak(" je n'ai strictement rien compris laisser moi tranquille !! bande de nullos !");
+                    synth.Speak(" je n'ai strictement rien compris laisser moi tranquille ");
                     break;
             }
         }
