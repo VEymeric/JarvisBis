@@ -1,0 +1,38 @@
+page-task {
+
+	.ion-title {
+		text-align: center;
+		width:100%;
+	}
+	.card-background-page {
+		position: relative;
+	}
+	.card-title {
+		position: absolute;
+		top:25%;
+		font-size: 1.25em;
+		width: 100%;
+		color: #000;
+	}
+	
+	.button {
+		position: absolute;
+		top:55%;
+		font-size: 1.45em;
+		width: 100%;
+		
+		
+	}
+	
+	.label-textarea {
+		font-size: 1.25em;
+	
+	
+	}
+	
+	.textarea {
+		font-size: 1em;
+	}
+
+
+}
