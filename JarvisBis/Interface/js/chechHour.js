@@ -6,31 +6,44 @@ function check() {
   $.getJSON("js/events.json",function(json){
       console.log(" allller !");
       var now = new Date();
-      console.log(json.length);
       for(var i=0 ; i<json.length ; i++ ){
-        console.log("ok");
         var separated = json[i].start.split(" ");
         var cut = separated[0].split("-");
-        console.log("date : "+cut[0]+" "+cut[1]+" "+cut[2]);
         if (cut[0] == now.getFullYear() && cut[1] == now.getMonth() + 1 && cut[2] == now.getDate()) {
-          console.log(" now");
           var hour = separated[1].split(":");
           if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
-              console.log("super now");
               valid(json[i]);
           }
-        }else if( cut[0]<now.getFullYear() || cut[1]<now.getMonth()){
-          console.log(" delete ");
-          delete json[i];
         }
       }
     });
     console.log(" repeat");
   }
+function deleted(){
+  var paste  = new Date();
+  $.getJSON("js/events.json",function(json){
+    for(var j=0 ; j<json.length ; j++ ){
+      var separated = json[j].start.split(" ");
+      var cut = separated[0].split("-");
+      console.log(cut[0]+"-"+cut[1]+"-"+cut[2]);
+      if(cut[0] < paste.getFullYear() || cut[1] < paste.getMonth()+1){
+        console.log(" delete ");
+        delete json[j];
+        $.ajax({
+          url: ""
+        })
+        console.log(json);
+      }
+    }
+  });
+}
 
 var now;
 $(document).ready(check);
-setInterval(check,60000);
+$(document).ready(deleted);
+setInterval(check,60000000);
+setInterval(check,60000000);
+
 
 
 function valid(event) {
