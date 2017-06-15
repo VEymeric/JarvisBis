@@ -232,6 +232,7 @@ function majTabEvent(){
 	temp = document.getElementById("type").value;
 	temp = temp.substring(1, temp.length-1);
 	tabEvent['type'] = temp;
+<<<<<<< HEAD
 
 	//valid(tabEvent);
 }
@@ -241,4 +242,7 @@ function jourAujourdhui(){
   var aujourdhui = new Date();
   var mois = aujourdhui.getMonth()+1;
   document.getElementById("date").value = aujourdhui.getFullYear()+"-"+0+mois+"-"+aujourdhui.getDate();
+=======
+	//valid(tabEvent);
+>>>>>>> 69147d43014b0294c1832c56dd39d45337d9d709
 }

@@ -1,31 +1,36 @@
-// vérifier si il n'y a pas d'évenement à cette heure la et cette date la
+// vérifier si il n'y a pas d'évenement à cette heure la et cette start la
   // -> si oui evenement constellation
   // si non -> ba les couilles
-var now;
 
-window.onload = getJSON;
-/*
-function check(){
-    var now = new Date();
-    for(var i=0 ; i<events.length ; i++ ){
-      console.log(events.length);
-      var cut = events[i].date.split("-");
-      if (cut[0] == now.getFullYear() && cut[1] == now.getMonth() + 1 && cut[2] == now.getDate()) {
-        var hour = events[i].Heure.split(":");
-
-        if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
-            valid(events[i]);
+function check() {
+  $.getJSON("tableOfValue.json",function(json){
+      console.log(" allller !");
+      var now = new Date();
+      console.log(json.length);
+      for(var i=0 ; i<json.length ; i++ ){
+        console.log("ok");
+        var separated = json[i].start.split(" ");
+        var cut = separated[0].split("-");
+        console.log("date : "+cut[0]+" "+cut[1]+" "+cut[2]);
+        if (cut[0] == now.getFullYear() && cut[1] == now.getMonth() + 1 && cut[2] == now.getDate()) {
+          console.log(" now");
+          var hour = separated[1].split(":");
+          if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
+              console.log("super now");
+              valid(json[i]);
+          }
+        }else if( cut[0]<now.getFullYear() || cut[1]<now.getMonth()){
+          console.log(" delete ");
+          delete json[i];
         }
-      }else if( cut[0]<now.getFullYear() || cut[1]<now.getMonth()){
-        console.log(" delete ");
-        var eventsDelete = events.splice(i,1);
       }
-    }
-    setTimeout("check()", 60000);
-}*/
-$.getJSON("tableOfValue.json",function(json){
-  console.log(json);
-});
+    });
+    console.log(" repeat");
+  }
+
+var now;
+$(document).ready(check);
+setInterval(check,60000);
 
 
 function valid(event) {
@@ -40,6 +45,7 @@ function valid(event) {
         case "Démarrer_cafetière":
             break;
         case "Allumer_lumière":
+            console.log("lumiere allumée");
             break;
         case "Eteindre_lumière":
             break;

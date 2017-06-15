@@ -1,10 +1,9 @@
 <?php
 
 $data = [
-	"action" => $_POST['action'],
-	"date" 	 => $_POST['date'],
-	"heure"  => $_POST['heure'],
-	"type"   => $_POST['type'],
+	"title" => $_POST['action'],
+	"start" => $_POST['date']." ".$_POST['heure'],
+	"type"  => $_POST['type'],
 ];
 
 $data = json_encode($data);
