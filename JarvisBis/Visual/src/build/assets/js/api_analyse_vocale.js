@@ -1,30 +1,11 @@
-var accessToken = "e552149f515940da96f8d0858f28c806";
+var accessToken = "c5a8a16acf314ec9be96a2da6d4b8f4d";
 var baseUrl = "https://api.api.ai/v1/";
-
-$(document).ready(function() {
-	console.log("ok 2");
-})
-
-function Press() {
-	console.log("ok  4");
-	event.preventDefault();
-	console.log("ok  5");
-	send();
-	console.log("ok  6");
-}
-
-function repJours(){
-	var jour= $('#listeJours').text();
-	console.log(jour);
-}
-
-
 /* TEST MICRO DON'T WORK*/
 var tabEvent = [];
 var DEFAULT_DATE = Date.now();
 var DEFAULT_HEURE = "maintenant";
 var DEFAULT_VALUE = "undefined";
-var DEFAULT_ACTION = "input.unknown";
+var DEFAULT_ACTION = "input.unknown"
 $(document).ready(function() {
 	$("#input").keypress(function(event) {
 		if (event.which == 13) {
@@ -39,21 +20,12 @@ $(document).ready(function() {
 
 
 function Press() {
-
+	console.log("ok  4");
+	event.preventDefault();
+	console.log("ok  5");
 	send();
-	console.log("ok  6");
+	console.log("ok  6"); 
 }
-
-
-function repJours() {
-	var jour = $( "#listeJours" ).text();
-
-	console.log( jour );
-
-}
-
-
-
 
 
 /*
@@ -77,7 +49,7 @@ function startRecognition() {
 	recognition.lang = "fr-FR";
 	recognition.start();
 }
-
+	
 function stopRecognition() {
 	if (recognition) {
 		recognition.stop();
@@ -102,7 +74,8 @@ function setInput(text) {
 }
 
 function send() {
-	var text = $("#input").val();	$.ajax({
+	var text = $("#input").val();
+	$.ajax({
 		type: "POST",
 		url: baseUrl + "query?v=20150910",
 		contentType: "application/json; charset=utf-8",
@@ -110,14 +83,14 @@ function send() {
 		headers: {
 			"Authorization": "Bearer " + accessToken
 		},
-		data: JSON.stringify({ query: text, lang: "fr", sessionId: "somerandomthing" }),
+		data: JSON.stringify({ query: text, lang: "fr-FR", sessionId: "somerandomthing" }),
 		success: function(data) {
 			AffichageAll(data);
 			majTabEvent();
 			annalyseEvent();
 		},
 		error: function() {
-			setReponse("Internal Server Error");
+			setResponse("Internal Server Error");
 			setDebug("");
 			setAction("");
 			setReponse("");
@@ -139,7 +112,7 @@ function AffichageAll(data)	{
 	setDebug(JSON.stringify(data, undefined, 2));
 	setAction(JSON.stringify(data.result.action, undefined, 2));
 	setReponse(JSON.stringify(data.result.fulfillment.speech, undefined, 2));
-
+		
 	/*affiche les arguments*/
 	if(data.result.parameters.date != null && data.result.parameters.date != "") {
 		setDate(JSON.stringify(data.result.parameters.date, undefined, 2));
@@ -157,7 +130,6 @@ function AffichageAll(data)	{
 		setType(JSON.stringify(DEFAULT_VALUE, undefined, 2));
 	}
 	afficherRetour();
-
 }
 function setDebug(val) {
 	$("#debug").text(val);

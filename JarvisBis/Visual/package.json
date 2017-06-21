@@ -27,6 +27,10 @@
         "@types/jquery": "^2.0.46",
         "cordova-android": "^6.2.3",
         "cordova-browser": "^4.1.0",
+<<<<<<< HEAD
+=======
+        "cordova-plugin-actionsheet": "^2.3.3",
+>>>>>>> cf43ae81adc650bc2dae8661e801d12889008f18
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.1.4",
         "cordova-plugin-splashscreen": "^4.0.3",
@@ -55,7 +59,12 @@
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
+<<<<<<< HEAD
             "ionic-plugin-keyboard": {}
+=======
+            "ionic-plugin-keyboard": {},
+            "cordova-plugin-actionsheet": {}
+>>>>>>> cf43ae81adc650bc2dae8661e801d12889008f18
         },
         "platforms": [
             "android",

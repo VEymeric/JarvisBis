@@ -4,77 +4,53 @@
 
 function check() {
   $.getJSON("js/events.json",function(json){
-      console.log("1");
-      var now  = new Date();
+      console.log(" allller !");
+      var now = new Date();
       for(var i=0 ; i<json.length ; i++ ){
-        console.log("2");
-        if(json[i].start != undefined){
-          var separated = json[i].start.split(" ");
-          var cut = separated[0].split("-");
-          if (cut[0] == now.getFullYear() && cut[1] == now.getMonth() + 1 && cut[2] == now.getDate()) {
-            var hour = separated[1].split(":");
-            if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
-              console.log(" let's go");
+        var separated = json[i].start.split(" ");
+        var cut = separated[0].split("-");
+        if (cut[0] == now.getFullYear() && cut[1] == now.getMonth() + 1 && cut[2] == now.getDate()) {
+          var hour = separated[1].split(":");
+          if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
               valid(json[i]);
-            }
           }
         }
       }
     });
+    console.log(" repeat");
   }
-
-function meetingRecall(){
-  $.getJSON("js/meetings.json",function(json){
-      var now = new Date();
-      for(var i=0 ; i <json.length ; i++){
-        var separated = json[i].start.split(" ");
-        var cut = separated[0].split("-");
-        if( now.getFullYear()==cut[0] && cut[1] == now.getMonth()+1 && cut[2] == now.getDate()){
-          var hour = separated[1].split(":");
-          if( hour[0] == now.getHours() && hour[1]== now.getMinutes()+30){
-            recall(json[i]);
-          }
-        }
-      }
-  });
-}
-
 function deleted(){
   var paste  = new Date();
   $.getJSON("js/events.json",function(json){
     for(var j=0 ; j<json.length ; j++ ){
-      if( json[j].start != undefined){
-        var separated = json[j].start.split(" ");
-        var cut = separated[0].split("-");
-      //  console.log(cut[0]+"-"+cut[1]+"-"+cut[2]);
-        if(cut[0] < paste.getFullYear() || cut[1] < paste.getMonth()+1 ){
-          var change = json[j];
-          json[j]=json[json.length-1];
-      //    console.log("json[j] : "+json[j]);
-          json[json.length-1] = change;
-          json.pop();
-          console.log(" end of delete : ")
-          console.log(json);
-          $.ajax({
-            url: "js/delete.php",
-            type: "POST",
-            data: {json: json}
-          }).done(function(arg) {
-            //console.log(arg);
-          });
-        }
+      var separated = json[j].start.split(" ");
+      var cut = separated[0].split("-");
+      console.log(cut[0]+"-"+cut[1]+"-"+cut[2]);
+      if(cut[0] < paste.getFullYear() || cut[1] < paste.getMonth()+1){
+        console.log(" delete ");
+        delete json[j];
+        $.ajax({
+          url: ""
+        })
+        console.log(json);
+      }
     }
-  }
   });
 }
 
 var now;
 $(document).ready(check);
+<<<<<<< HEAD
 $(document).ready(meetingRecall);
 $(document).ready(deleted);
 setInterval(check,60000);
 setInterval(meetingRecall,60000);
 setInterval(deleted,150000);
+=======
+$(document).ready(deleted);
+setInterval(check,60000000);
+setInterval(check,60000000);
+>>>>>>> cf43ae81adc650bc2dae8661e801d12889008f18
 
 
 
