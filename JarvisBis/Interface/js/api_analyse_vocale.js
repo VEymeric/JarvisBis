@@ -1,69 +1,32 @@
-var accessToken = "c5a8a16acf314ec9be96a2da6d4b8f4d";
+var accessToken = "e552149f515940da96f8d0858f28c806";
 var baseUrl = "https://api.api.ai/v1/";
-/* TEST MICRO DON'T WORK*/
 var tabEvent = [];
-var DEFAULT_DATE = Date.now();
+var DEFAULT_DATE = "aujourd'hui";
 var DEFAULT_HEURE = "maintenant";
 var DEFAULT_VALUE = "undefined";
-var DEFAULT_ACTION = "input.unknown"
+var DEFAULT_ACTION = "input.unknown";
+
 $(document).ready(function() {
-	$("#input").keypress(function(event) {
-		if (event.which == 13) {
+	$("#input").keypress(function(event){
+		if(event.which==13){
 			event.preventDefault();
 			send();
 		}
-	});/*
-	$("#rec").click(function(event) {
-		switchRecognition();
-	});*/
+	});
 });
-/*
-var recognition;
-function startRecognition() {
-	recognition = new webkitSpeechRecognition();
-	recognition.onstart = function(event) {
-		updateRec();
-	};
-	recognition.onresult = function(event) {
-		var text = "";
-	    for (var i = event.resultIndex; i < event.results.length; ++i) {
-	    	text += event.results[i][0].transcript;
-	    }
-	    setInput(text);
-		stopRecognition();
-	};
-	recognition.onend = function() {
-		stopRecognition();
-	};
-	recognition.lang = "fr-FR";
-	recognition.start();
+  
+function Press() {
+	event.preventDefault();
+	send();
 }
 
-function stopRecognition() {
-	if (recognition) {
-		recognition.stop();
-		recognition = null;
-	}
-	updateRec();
-}
-
-function switchRecognition() {
-	if (recognition) {
-		stopRecognition();
-	} else {
-		startRecognition();
-	}
-}
-function updateRec() {
-	$("#rec").text(recognition ? "Stop" : "Speak");
-}*/
 function setInput(text) {
-	$("#input").val(text);
 	send();
 }
 
 function send() {
 	var text = $("#input").val();
+	
 	$.ajax({
 		type: "POST",
 		url: baseUrl + "query?v=20150910",
@@ -72,76 +35,52 @@ function send() {
 		headers: {
 			"Authorization": "Bearer " + accessToken
 		},
-		data: JSON.stringify({ query: text, lang: "fr-FR", sessionId: "somerandomthing" }),
+		data: JSON.stringify({ query: text, lang: "fr", sessionId: "somerandomthing" }),
 		success: function(data) {
+			majTabEvent(data);
 			AffichageAll(data);
-			majTabEvent();
 			annalyseEvent();
 		},
 		error: function() {
-			setResponse("Internal Server Error");
-			setDebug("");
-			setAction("");
-			setReponse("");
-			setHeure("");
-			setDate("");
-			setType("");
+			AffichageError();
 		}
 	});
-	setDebug("Loading...");
-	setAction("Loading...");
-	setReponse("Loading...");
-	setHeure("");
-	setDate("");
-	setType("");
-
+	AffichageLoading();
+	};
+	
+function AffichageError(){
+	setIdOnValue("#reponse", "Internal Server Error");
+	setIdOnValue("#debug","Internal Server Error");
+	setIdOnValue("#action","Internal Server Error");
+	setIdOnValue("#heure","");
+	setIdOnValue("#date","");
+	setIdOnValue("#type","");	
 }
 
+function AffichageLoading(){
+	setIdOnValue("#debug","Loading...");
+	setIdOnValue("#action","Loading...");
+	setIdOnValue("#reponse","Loading...");
+	setIdOnValue("#heure","");
+	setIdOnValue("#date","");
+	setIdOnValue("#type","");
+}
 function AffichageAll(data)	{
-	setDebug(JSON.stringify(data, undefined, 2));
-	setAction(JSON.stringify(data.result.action, undefined, 2));
-	setReponse(JSON.stringify(data.result.fulfillment.speech, undefined, 2));
-
+	console.log("affichage all");
+	setIdOnValue("#debug",JSON.stringify(data, undefined, 2));
+	setIdOnValue("#reponse",JSON.stringify(data.result.fulfillment.speech, undefined, 2));
+		
+	setIdOnValue("#action",tabEvent['action']);
 	/*affiche les arguments*/
-	if(data.result.parameters.date != null && data.result.parameters.date != "") {
-		setDate(JSON.stringify(data.result.parameters.date, undefined, 2));
-	}else{
-		setDate(JSON.stringify(DEFAULT_DATE, undefined, 2));
-	}
-	if(data.result.parameters.time != null && data.result.parameters.time != "") {
-		setHeure(JSON.stringify(data.result.parameters.time, undefined, 2));
-	}else{
-		setHeure(JSON.stringify(DEFAULT_HEURE, undefined, 2));
-	}
-	if(data.result.parameters.type != null && data.result.parameters.type != "") {
-		setType(JSON.stringify(data.result.parameters.type, undefined, 2));
-	}else{
-		setType(JSON.stringify(DEFAULT_VALUE, undefined, 2));
-	}
+	setIdOnValue("#date", tabEvent['date']);
+	setIdOnValue("#heure",tabEvent['heure']);
+	setIdOnValue("#type", tabEvent['type']);
+	
 	afficherRetour();
 }
-function setDebug(val) {
-	$("#debug").text(val);
+function setIdOnValue(id, value){
+	$(id).text(value);
 }
-
-function setAction(val) {
-	$("#action").text(val);
-}
-
-function setReponse(val) {
-	$("#reponse").text(val);
-}
-
-function setHeure(val) {
-	$("#heure").text(val);
-}
-function setDate(val) {
-	$("#date").text(val);
-}
-function setType(val) {
-	$("#type").text(val);
-}
-
 function afficherRetour(){
 	var textRetour = "";
 	textRetour += document.getElementById("action").value;
@@ -154,7 +93,7 @@ function afficherRetour(){
 }
 
 function annalyseEvent(){
-	if( tabEvent['action'] == "input.unknown"){//pas d'analyse puisqu'on comprend pas l'action
+	if( tabEvent['action'] == DEFAULT_ACTION){//pas d'analyse puisqu'on comprend pas l'action
 		return;
 	}
 	if( tabEvent['date'] == DEFAULT_DATE && tabEvent['heure'] == DEFAULT_HEURE){
@@ -178,21 +117,33 @@ function annalyseEvent(){
 	}
 }
 
-function majTabEvent(){
-	temp = document.getElementById("action").value;
+function majTabEvent(data){
+	temp = JSON.stringify(data.result.action, undefined, 2);
 	temp = temp.substring(1, temp.length-1);
 	tabEvent['action'] = temp;
 
-	temp = document.getElementById("date").value;
-	temp = temp.substring(1, temp.length-1);
+	if(data.result.parameters.date != null && data.result.parameters.date != "") {
+		temp = JSON.stringify(DEFAULT_DATE, undefined, 2);
+		temp = temp.substring(1, temp.length-1);
+	}else{
+		temp = DEFAULT_DATE;	
+	}
 	tabEvent['date'] = temp;
 
-	temp = document.getElementById("heure").value;
-	temp = temp.substring(1, temp.length-1);
+	if(data.result.parameters.time != null && data.result.parameters.time != "") {
+		temp = JSON.stringify(data.result.parameters.time, undefined, 2);
+		temp = temp.substring(1, temp.length-1);
+	}else{
+		temp = DEFAULT_HEURE;
+	}
 	tabEvent['heure'] = temp;
 
-	temp = document.getElementById("type").value;
-	temp = temp.substring(1, temp.length-1);
+
+	if(data.result.parameters.type != null) {
+		temp = JSON.stringify(data.result.parameters.type, undefined, 2);
+		temp = temp.substring(1, temp.length-1);
+	}else{
+		temp = DEFAULT_VALUE;
+	}
 	tabEvent['type'] = temp;
-	//valid(tabEvent);
 }
