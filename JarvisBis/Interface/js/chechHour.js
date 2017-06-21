@@ -4,14 +4,17 @@
 
 function check() {
   $.getJSON("js/events.json",function(json){
+      console.log("1");
       var now  = new Date();
       for(var i=0 ; i<json.length ; i++ ){
+        console.log("2");
         if(json[i].start != undefined){
           var separated = json[i].start.split(" ");
           var cut = separated[0].split("-");
           if (cut[0] == now.getFullYear() && cut[1] == now.getMonth() + 1 && cut[2] == now.getDate()) {
             var hour = separated[1].split(":");
             if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
+              console.log(" let's go");
               valid(json[i]);
             }
           }
@@ -19,6 +22,23 @@ function check() {
       }
     });
   }
+
+function meetingRecall(){
+  $.getJSON("js/meetings.json",function(json){
+      var now = new Date();
+      for(var i=0 ; i <json.length ; i++){
+        var separated = json[i].start.split(" ");
+        var cut = separated[0].split("-");
+        if( now.getFullYear()==cut[0] && cut[1] == now.getMonth()+1 && cut[2] == now.getDate()){
+          var hour = separated[1].split(":");
+          if( hour[0] == now.getHours() && hour[1]== now.getMinutes()+30){
+            recall(json[i]);
+          }
+        }
+      }
+  });
+}
+
 function deleted(){
   var paste  = new Date();
   $.getJSON("js/events.json",function(json){
@@ -50,8 +70,10 @@ function deleted(){
 
 var now;
 $(document).ready(check);
+$(document).ready(meetingRecall);
 $(document).ready(deleted);
 setInterval(check,60000);
+setInterval(meetingRecall,60000);
 setInterval(deleted,150000);
 
 
@@ -64,6 +86,7 @@ function valid(event) {
         case "Eteindre_télévision":
             break;
         case "Faire_café":
+            console.log("Faire café");
             break;
         case "Démarrer_cafetière":
             break;
@@ -91,9 +114,12 @@ function valid(event) {
         case "Baisser_volume":
             constellation.server.sendMessage({ Scope: 'Package', Args: ['WindowsControl'] }, 'VolumeDown', {});
             break;
-
         default:
             console.log("Action inexistante. Rééssayez.");
             break;
     }
+}
+
+function recall(meeting){
+  // pour Simon faire renvoyer par constellation le type du rendez vous sur le telephone
 }
