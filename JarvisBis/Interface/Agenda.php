@@ -16,10 +16,18 @@
 	#calendar {
 		max-width: 900px;
 		margin: 0 auto;
+    color: white;
 	}
 </style>
-
-
+<script>
+/*  var constellation = $.signalR.createConstellationConsumer("http://localhost:8088", "connect", "JarvisBis");
+  constellation.connection.stateChanged(function (change) {
+    if (change.newState === $.signalR.connectionState.connected) {
+      console.log("Je suis connecté");
+    }
+  });
+  constellation.connection.start();*/
+</script>
     </head>
 
 
@@ -31,40 +39,16 @@
 
 
       <div id='calendar'></div>
-
-		<!-- <figure id = icon>
-			<button id = agenda src="images/calendrier.png" ng-click = "calendar()"> </button>
-		</figure> -->
-
-      <!-- <div class="container">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Lundi</th>
-              <th>Mardi</th>
-              <th>Mercredi</th>
-              <th>Jeudi</th>
-              <th>Vendredi</th>
-              <th>Samedi</th>
-              <th>Dimanche</th>
-            </tr>
-          </thead>
-          <tbody>
-
-          </tbody>
-        </table>
-      </div> -->
-
-
-
+      <!--<script type="text/javascript" src="http://cdn.myconstellation.io/js/Constellation-1.8.1.min.js"></script>-->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <script src='moment-with-locales.min.js'></script>
       <script src='fullcalendar-3.4.0/fullcalendar.min.js'></script>
       <script src='fullcalendar-3.4.0/locale/fr.js'></script>
+      <script src="js/chechHour.js"></script>
       <script src='app.js'></script>
 
     </body>
+
 
  </html>

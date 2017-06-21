@@ -1,35 +1,60 @@
-// vérifier si il n'y a pas d'évenement à cette heure la et cette date la
+// vérifier si il n'y a pas d'évenement à cette heure la et cette start la
   // -> si oui evenement constellation
   // si non -> ba les couilles
-var now;
 
-window.onload = check;
-
-
-$.getJSON(URL,function(données){
-
-
-}
-
-
-function check(){
-    var now = new Date();
-    for(var i=0 ; i<events.length ; i++ ){
-      console.log(events.length);
-      var cut = events[i].date.split("-");
-      if (cut[0] == now.getFullYear() && cut[1] == now.getMonth() + 1 && cut[2] == now.getDate()) {
-        var hour = events[i].Heure.split(":");
-
-        if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
-            valid(events[i]);
+function check() {
+  $.getJSON("js/events.json",function(json){
+      var now  = new Date();
+      for(var i=0 ; i<json.length ; i++ ){
+        if(json[i].start != undefined){
+          var separated = json[i].start.split(" ");
+          var cut = separated[0].split("-");
+          if (cut[0] == now.getFullYear() && cut[1] == now.getMonth() + 1 && cut[2] == now.getDate()) {
+            var hour = separated[1].split(":");
+            if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
+              valid(json[i]);
+            }
+          }
         }
-      }/*else if( cut[0]<now.getFullYear() || cut[1]<now.getMonth()){
-        console.log(" delete ");
-        var eventsDelete = events.splice(i,1);
-      }*/
+      }
+    });
+  }
+function deleted(){
+  var paste  = new Date();
+  $.getJSON("js/events.json",function(json){
+    for(var j=0 ; j<json.length ; j++ ){
+      if( json[j].start != undefined){
+        var separated = json[j].start.split(" ");
+        var cut = separated[0].split("-");
+      //  console.log(cut[0]+"-"+cut[1]+"-"+cut[2]);
+        if(cut[0] < paste.getFullYear() || cut[1] < paste.getMonth()+1 ){
+          var change = json[j];
+          json[j]=json[json.length-1];
+      //    console.log("json[j] : "+json[j]);
+          json[json.length-1] = change;
+          json.pop();
+          console.log(" end of delete : ")
+          console.log(json);
+          $.ajax({
+            url: "js/delete.php",
+            type: "POST",
+            data: {json: json}
+          }).done(function(arg) {
+            //console.log(arg);
+          });
+        }
     }
-    setTimeout("check()", 60000);
+  }
+  });
 }
+
+var now;
+$(document).ready(check);
+$(document).ready(deleted);
+setInterval(check,60000);
+setInterval(deleted,150000);
+
+
 
 function valid(event) {
     console.log("action : "+ event.action);
@@ -43,6 +68,7 @@ function valid(event) {
         case "Démarrer_cafetière":
             break;
         case "Allumer_lumière":
+            console.log("lumiere allumée");
             break;
         case "Eteindre_lumière":
             break;
