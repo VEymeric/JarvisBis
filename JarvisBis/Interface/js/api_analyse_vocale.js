@@ -1,8 +1,8 @@
-var accessToken = "c5a8a16acf314ec9be96a2da6d4b8f4d";
+var accessToken = "e552149f515940da96f8d0858f28c806";
 var baseUrl = "https://api.api.ai/v1/";
 /* TEST MICRO DON'T WORK*/
 var tabEvent = [];
-var DEFAULT_DATE = Date.now();
+var DEFAULT_DATE = "aujourd'hui";
 var DEFAULT_HEURE = "maintenant";
 var DEFAULT_VALUE = "undefined";
 var DEFAULT_ACTION = "input.unknown"
@@ -38,7 +38,7 @@ function startRecognition() {
 	recognition.lang = "fr-FR";
 	recognition.start();
 }
-	
+
 function stopRecognition() {
 	if (recognition) {
 		recognition.stop();
@@ -101,7 +101,7 @@ function AffichageAll(data)	{
 	setDebug(JSON.stringify(data, undefined, 2));
 	setAction(JSON.stringify(data.result.action, undefined, 2));
 	setReponse(JSON.stringify(data.result.fulfillment.speech, undefined, 2));
-		
+
 	/*affiche les arguments*/
 	if(data.result.parameters.date != null && data.result.parameters.date != "") {
 		setDate(JSON.stringify(data.result.parameters.date, undefined, 2));
@@ -164,9 +164,10 @@ function annalyseEvent(){
 	}else{
 		$.ajax({
 			// on attend avant d'aller dans constellation :'(
-			url: "updateJson.php",
+			url: "js/updateJson.php",
 			type: "POST",
 			data: {
+				file: "events.json",
 				action: tabEvent['action'],
 				date: tabEvent['date'],
 				heure: tabEvent['heure'],
@@ -185,11 +186,11 @@ function majTabEvent(){
 
 	temp = document.getElementById("date").value;
 	temp = temp.substring(1, temp.length-1);
-	tabEvent['date'] = temp;
+	tabEvent['date'] = "2017-06-22";
 
 	temp = document.getElementById("heure").value;
 	temp = temp.substring(1, temp.length-1);
-	tabEvent['heure'] = temp;
+	tabEvent['heure'] = "02:00:00";
 
 	temp = document.getElementById("type").value;
 	temp = temp.substring(1, temp.length-1);
