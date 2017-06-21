@@ -38,7 +38,7 @@ function startRecognition() {
 	recognition.lang = "fr-FR";
 	recognition.start();
 }
-	
+
 function stopRecognition() {
 	if (recognition) {
 		recognition.stop();
@@ -101,7 +101,7 @@ function AffichageAll(data)	{
 	setDebug(JSON.stringify(data, undefined, 2));
 	setAction(JSON.stringify(data.result.action, undefined, 2));
 	setReponse(JSON.stringify(data.result.fulfillment.speech, undefined, 2));
-		
+
 	/*affiche les arguments*/
 	if(data.result.parameters.date != null && data.result.parameters.date != "") {
 		setDate(JSON.stringify(data.result.parameters.date, undefined, 2));
@@ -164,7 +164,7 @@ function annalyseEvent(){
 	}else{
 		$.ajax({
 			// on attend avant d'aller dans constellation :'(
-			url: "updateJson.php",
+			url: "js/updateJson.php",
 			type: "POST",
 			data: {
 				action: tabEvent['action'],
