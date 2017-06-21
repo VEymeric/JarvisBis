@@ -1,0 +1,53 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+		Task
+		</ion-title>
+	</ion-navbar>
+	
+</ion-header>
+
+<ion-content class=card-background-page no-scroll>
+
+	<img src="assets/img/fond3_r.jpg"/>
+	
+	<ion-item class="card-title">
+		<ion-label color="primary" floating class= "label-textarea">Entrez l'action.</ion-label>
+		<ion-textarea rows="2" clearInput="true" class= "textarea" ></ion-textarea>
+	</ion-item>
+	
+	
+	<button ion-button color="light">Envoyer</button>
+	
+	<button id="rec" >BUTTON</button>
+	
+	
+	<form  onsubmit="Press()">
+		<input type="text" name="fname">
+		<input type="submit" value="Submit">
+	</form>
+
+	
+	<br>Action<br> 
+	
+		<textarea id="action" cols="20" rows="1"></textarea>
+		
+	<br>Arguments<br>
+	
+		<textarea id="date" cols="10" rows="1"></textarea>
+		<textarea id="heure" cols="10" rows="1"></textarea>
+		<textarea id="type" cols="10" rows="1"></textarea>
+		
+	<br>Réponse<br> 
+	
+		<textarea id="reponse" name="reponse" cols="30" rows="2"></textarea>
+		
+	<br>Debug<br> 
+	
+		<textarea id="debug" cols="30" rows="10"></textarea>
+		
+	<br>Retourne : <br> 
+	
+		<textarea id="retourne" cols="60" rows="1"></textarea>
+
+</ion-content>

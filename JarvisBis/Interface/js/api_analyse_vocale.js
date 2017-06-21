@@ -132,6 +132,11 @@ function setReponse(val) {
 	$("#reponse").text(val);
 }
 
+function repJours(){
+	var jour= $('#listeJours').text();
+	console.log(jour);
+}
+
 function setHeure(val) {
 	$("#heure").text(val);
 }
