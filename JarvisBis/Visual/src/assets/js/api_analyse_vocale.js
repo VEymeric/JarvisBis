@@ -49,24 +49,20 @@ function repJours() {
 	var jour = $( "#listeJours" ).text();
 }
 
-function repeatDay(days){ // faire tout les jours préciser pendant un mois 
+function repeatDay(days){ // faire tout les jours préciser pendant un mois
 	var now = new Date();
 	var jours = new Array("dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
 	Calendar maDate = new java.util.GregorianCalendar();
 	maDate.setTime(date);
 	// On se positionne sur le Lundi de la semaine courante :
-	maDate.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+	maDate.set(Calendar.DAY_OF_WEEK, Calendar.days[0]);
 	// Puis on ajoute 7 jours :
 	maDate.add(Calendar.DATE, 7);
 
-
-
-
 	for(int i= 0; i < days.length; i++){
-		for( int j=1 ; j<31 ; j++){
 			if(days[i] ==  jours[date.getDay()])
 
-		}
+
 	}
 }
 

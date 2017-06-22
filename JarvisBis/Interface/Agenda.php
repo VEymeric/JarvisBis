@@ -6,9 +6,9 @@
   		<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
+
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <link rel='stylesheet' href='fullcalendar-3.4.0/fullcalendar.min.css' />
-
   		<link rel="stylesheet" href="AgendaStyle.css" />
 
 
@@ -30,7 +30,6 @@
 </script>
     </head>
 
-
     <body>
       <header>
         <a href="MainPage.html" ><img class = retour src="icons/retour_1.png" alt="Icon Retour" /></a>
@@ -46,7 +45,7 @@
       <script src='fullcalendar-3.4.0/fullcalendar.min.js'></script>
       <script src='fullcalendar-3.4.0/locale/fr.js'></script>
       <script src="js/chechHour.js"></script>
-      <script src='app.js'></script>
+      <script src='js/app.js'></script>
 
     </body>
 

@@ -53,7 +53,7 @@ function Press() {
 function setInput(text) {
 	send();
 }
-
+*/
 function send() {
 	var text = $("#input").val();
 
@@ -72,7 +72,6 @@ function send() {
 			annalyseEvent();
 		},
 		error: function() {
-<<<<<<< HEAD
 			setReponse("Internal Server Error");
 			setDebug("");
 			setAction("");
@@ -80,14 +79,12 @@ function send() {
 			setHeure("");
 			setDate("");
 			setType("");
-=======
 			AffichageError();
->>>>>>> cf43ae81adc650bc2dae8661e801d12889008f18
 		}
 	});
 	AffichageLoading();
 	};
-
+	
 function AffichageError(){
 	setIdOnValue("#reponse", "Internal Server Error");
 	setIdOnValue("#debug","Internal Server Error");
@@ -104,7 +101,7 @@ function AffichageLoading(){
 	setIdOnValue("#heure","");
 	setIdOnValue("#date","");
 	setIdOnValue("#type","");
-}
+}*/
 function AffichageAll(data)	{
 	setDebug(JSON.stringify(data, undefined, 2));
 	setAction(JSON.stringify(data.result.action, undefined, 2));
@@ -169,6 +166,7 @@ function annalyseEvent(){
 			url: "js/updateJson.php",
 			type: "POST",
 			data: {
+				file: "events.json",
 				action: tabEvent['action'],
 				date: tabEvent['date'],
 				heure: tabEvent['heure'],
@@ -185,6 +183,13 @@ function majTabEvent(data){
 	temp = temp.substring(1, temp.length-1);
 	tabEvent['action'] = temp;
 
+	temp = document.getElementById("date").value;
+	temp = temp.substring(1, temp.length-1);
+	tabEvent['date'] = "2017-06-22";
+
+	temp = document.getElementById("heure").value;
+	temp = temp.substring(1, temp.length-1);
+	tabEvent['heure'] = "02:00:00";
 	if(data.result.parameters.date != null && data.result.parameters.date != "") {
 		temp = JSON.stringify(DEFAULT_DATE, undefined, 2);
 		temp = temp.substring(1, temp.length-1);
