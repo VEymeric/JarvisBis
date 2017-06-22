@@ -14,7 +14,6 @@ $(document).ready(function() {
 		}
 	});
 });
-<<<<<<< HEAD
 /*
 var recognition;
 function startRecognition() {
