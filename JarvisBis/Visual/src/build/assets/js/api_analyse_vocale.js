@@ -1,11 +1,11 @@
-var accessToken = "e552149f515940da96f8d0858f28c806";
+var accessToken = "c5a8a16acf314ec9be96a2da6d4b8f4d";
 var baseUrl = "https://api.api.ai/v1/";
 /* TEST MICRO DON'T WORK*/
 var tabEvent = [];
 var DEFAULT_DATE = Date.now();
 var DEFAULT_HEURE = "maintenant";
 var DEFAULT_VALUE = "undefined";
-var DEFAULT_ACTION = "input.unknown";
+var DEFAULT_ACTION = "input.unknown"
 $(document).ready(function() {
 	$("#input").keypress(function(event) {
 		if (event.which == 13) {
@@ -18,23 +18,14 @@ $(document).ready(function() {
 	});*/
 });
 
-  
+
 function Press() {
-	
+	console.log("ok  4");
+	event.preventDefault();
+	console.log("ok  5");
 	send();
 	console.log("ok  6"); 
 }
-
-
-function repJours() {
-	var jour = $( "#listeJours" ).text();
-	
-	console.log( jour ); 
-
-}
-
-
-
 
 
 /*
@@ -92,16 +83,17 @@ function send() {
 		headers: {
 			"Authorization": "Bearer " + accessToken
 		},
-		data: JSON.stringify({ query: text, lang: "fr", sessionId: "somerandomthing" }),
+		data: JSON.stringify({ query: text, lang: "fr-FR", sessionId: "somerandomthing" }),
 		success: function(data) {
 			AffichageAll(data);
 			majTabEvent();
 			annalyseEvent();
 		},
 		error: function() {
-			setReponse("Internal Server Error");
+			setResponse("Internal Server Error");
 			setDebug("");
 			setAction("");
+			setReponse("");
 			setHeure("");
 			setDate("");
 			setType("");
@@ -138,7 +130,6 @@ function AffichageAll(data)	{
 		setType(JSON.stringify(DEFAULT_VALUE, undefined, 2));
 	}
 	afficherRetour();
-	
 }
 function setDebug(val) {
 	$("#debug").text(val);
@@ -172,7 +163,6 @@ function afficherRetour(){
 
 	$("#retourne").text(textRetour);
 }
-
 
 function annalyseEvent(){
 	if( tabEvent['action'] == "input.unknown"){//pas d'analyse puisqu'on comprend pas l'action

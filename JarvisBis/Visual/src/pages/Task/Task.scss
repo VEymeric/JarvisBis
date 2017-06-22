@@ -1,38 +1,54 @@
 page-task {
 
-	.ion-title {
-		text-align: center;
-		width:100%;
-	}
 	.card-background-page {
 		position: relative;
 	}
-	.card-title {
+	
+	#label {
+		position: absolute;
+		top:15%;
+		margin: auto;
+		
+		font-size: 1.5em;
+		width: 100%;
+		text-align: center;
+		
+	}
+	
+	#input{
 		position: absolute;
 		top:25%;
-		font-size: 1.25em;
-		width: 100%;
+		margin: auto;
+		font-size: 1.5em;
+		width: 90%;
 		color: #000;
+		
+		-webkit-transform: translateX(5%);
+		
+		
 	}
 	
 	.button {
 		position: absolute;
-		top:55%;
-		font-size: 1.45em;
-		width: 100%;
+		top:50%;
+		font-size: 1.5em;
+		width: 50%;
+		-webkit-transform: translateX(50%);
 		
+		margin: auto;
+		color: #000;
+		
+	}
+	#reponse{
+		position: absolute;
+		top:65%;
+		font-size: 1.5em;
+		width: 90%;
+		color: #000;
+		-webkit-transform: translateX(5%);
 		
 	}
 	
-	.label-textarea {
-		font-size: 1.25em;
 	
-	
-	}
-	
-	.textarea {
-		font-size: 1em;
-	}
-
 
 }
