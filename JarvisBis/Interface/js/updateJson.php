@@ -4,6 +4,7 @@ $dataToAdd = [
 	"title" => $_POST['action'],
 	"start" => $_POST['date']." ".$_POST['heure'],
 	"type"  => $_POST['type'],
+	"dow"		=> $_POST['dow'],
 ];
 
 $data = json_decode(file_get_contents($_POST['file'], true), true);

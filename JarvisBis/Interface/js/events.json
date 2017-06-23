@@ -1,13 +1,1 @@
-[{
-  "title": "Faire_cafe",
-  "start": "2017-06-21 05:00:00",
-  "type": "caf\u00e9"
-},{
-  "title": "Faire_cafe",
-  "start": "2017-06-21 14:00:00",
-  "type": "caf\u00e9"
-},{
-  "title": "Faire_cafe",
-  "start": "2017-06-21 14:36:00",
-  "type": "caf\u00e9"
-}]
+[{"title":"Faire_cafe","start":"2017-06-22 15:30:00","type":"caf\u00e9"},{"title":"Faire_cafe","start":"15:30:00","type":"caf\u00e9","dow":[1,3]}]

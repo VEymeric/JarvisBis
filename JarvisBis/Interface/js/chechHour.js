@@ -44,31 +44,32 @@ function meetingRecall(){
 
 function deleted(){
   var paste  = new Date();
-  $.getJSON("js/events.json",function(json){
-    for(var j=0 ; j<json.length ; j++ ){
-      if( json[j].start != undefined){
-        var separated = json[j].start.split(" ");
-        var cut = separated[0].split("-");
-      //  console.log(cut[0]+"-"+cut[1]+"-"+cut[2]);
-        if(cut[0] < paste.getFullYear() || cut[1] < paste.getMonth()+1 ){
-          var change = json[j];
-          json[j]=json[json.length-1];
-      //    console.log("json[j] : "+json[j]);
-          json[json.length-1] = change;
-          json.pop();
-          console.log(" end of delete : ")
-          console.log(json);
-          $.ajax({
-            url: "js/delete.php",
-            type: "POST",
-            data: {json: json}
-          }).done(function(arg) {
-            //console.log(arg);
-          });
-        }
-    }
+  $.getJSON("js/events.json",function(json){globalDelete(json)});
+  $.getJSON("js/meetings.json",function(json){globalDelete(json)});
+}
+
+function globalDelete(json){
+  for(var j=0 ; j<json.length ; j++ ){
+    if( json[j].start != undefined){
+      var separated = json[j].start.split(" ");
+      var cut = separated[0].split("-");
+      if(cut[0] < paste.getFullYear() || cut[1] < paste.getMonth()+1 || cut[2] < paste.getDate()){
+        var change = json[j];
+        json[j]=json[json.length-1];
+        json[json.length-1] = change;
+        json.pop();
+        console.log(" end of delete : ")
+        console.log(json);
+        $.ajax({
+          url: "js/delete.php",
+          type: "POST",
+          data: {json: json}
+        }).done(function(arg) {
+          //console.log(arg);
+        });
+      }
   }
-  });
+}
 }
 
 var now;
@@ -76,7 +77,7 @@ $(document).ready(check);
 $(document).ready(meetingRecall);
 $(document).ready(deleted);
 setInterval(check,60000);
-setInterval(deleted,150000);
+setInterval(deleted,60000);
 
 
 

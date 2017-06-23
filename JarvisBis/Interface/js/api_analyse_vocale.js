@@ -5,6 +5,7 @@ var DEFAULT_DATE = "aujourd'hui";
 var DEFAULT_HEURE = "maintenant";
 var DEFAULT_VALUE = "undefined";
 var DEFAULT_ACTION = "input.unknown";
+var DEFAULT_REPEAT = [];
 
 $(document).ready(function() {
 	$("#input").keypress(function(event){
@@ -14,49 +15,23 @@ $(document).ready(function() {
 		}
 	});
 });
-/*
-var recognition;
-function startRecognition() {
-	recognition = new webkitSpeechRecognition();
-	recognition.onstart = function(event) {
-		updateRec();
-	};
-	recognition.onresult = function(event) {
-		var text = "";
-	    for (var i = event.resultIndex; i < event.results.length; ++i) {
-	    	text += event.results[i][0].transcript;
-	    }
-	    setInput(text);
-		stopRecognition();
-	};
-	recognition.onend = function() {
-		stopRecognition();
-	};
-	recognition.lang = "fr-FR";
-	recognition.start();
-}
-
-function stopRecognition() {
-	if (recognition) {
-		recognition.stop();
-		recognition = null;
-	}
-	updateRec();
-=======
 
 function Press() {
 	event.preventDefault();
 	send();
->>>>>>> cf43ae81adc650bc2dae8661e801d12889008f18
+}
+
+function repJours(){
+	var jour= $('#listeJours').text();
+	console.log(jour);
 }
 
 function setInput(text) {
 	send();
 }
-*/
+
 function send() {
 	var text = $("#input").val();
-
 	$.ajax({
 		type: "POST",
 		url: baseUrl + "query?v=20150910",
@@ -67,24 +42,17 @@ function send() {
 		},
 		data: JSON.stringify({ query: text, lang: "fr", sessionId: "somerandomthing" }),
 		success: function(data) {
-			majTabEvent(data);
 			AffichageAll(data);
+			majTabEvent();
 			annalyseEvent();
 		},
 		error: function() {
-			setReponse("Internal Server Error");
-			setDebug("");
-			setAction("");
-			setReponse("");
-			setHeure("");
-			setDate("");
-			setType("");
 			AffichageError();
 		}
 	});
 	AffichageLoading();
-	};
-	
+}
+
 function AffichageError(){
 	setIdOnValue("#reponse", "Internal Server Error");
 	setIdOnValue("#debug","Internal Server Error");
@@ -92,6 +60,7 @@ function AffichageError(){
 	setIdOnValue("#heure","");
 	setIdOnValue("#date","");
 	setIdOnValue("#type","");
+	setIdOnValue("#dow","");
 }
 
 function AffichageLoading(){
@@ -101,81 +70,21 @@ function AffichageLoading(){
 	setIdOnValue("#heure","");
 	setIdOnValue("#date","");
 	setIdOnValue("#type","");
-}*/
-function AffichageAll(data)	{
-	setDebug(JSON.stringify(data, undefined, 2));
-	setAction(JSON.stringify(data.result.action, undefined, 2));
-	setReponse(JSON.stringify(data.result.fulfillment.speech, undefined, 2));
+	setIdOnValue("#dow","");
+}
 
+function AffichageAll(data)	{
+	setIdOnValue("#debug",JSON.stringify(data, undefined, 2));
+	setIdOnValue("#reponse",JSON.stringify(data.result.fulfillment.speech, undefined, 2));
+
+	setIdOnValue("#action",tabEvent['action']);
 	/*affiche les arguments*/
 	setIdOnValue("#date", tabEvent['date']);
 	setIdOnValue("#heure",tabEvent['heure']);
 	setIdOnValue("#type", tabEvent['type']);
+	setIdOnValue("#dow", tabEvent['dow']);
 
 	afficherRetour();
-}
-function setDebug(val) {
-	$("#debug").text(val);
-}
-
-function setAction(val) {
-	$("#action").text(val);
-}
-
-function setReponse(val) {
-	$("#reponse").text(val);
-}
-
-function repJours(){
-	var jour= $('#listeJours').text();
-	console.log(jour);
-}
-
-function setHeure(val) {
-	$("#heure").text(val);
-}
-function setDate(val) {
-	$("#date").text(val);
-
-}
-function afficherRetour(){
-	var textRetour = "";
-	textRetour += document.getElementById("action").value;
-	textRetour += ", " + document.getElementById("reponse").value;
-	textRetour += ", " + document.getElementById("date").value;
-	textRetour += ", " + document.getElementById("heure").value;
-	textRetour += ", " + document.getElementById("type").value;
-
-	$("#retourne").text(textRetour);
-}
-
-function annalyseEvent(){
-	if( tabEvent['action'] == DEFAULT_ACTION){//pas d'analyse puisqu'on comprend pas l'action
-		return;
-	}
-	if( tabEvent['date'] == DEFAULT_DATE && tabEvent['heure'] == DEFAULT_HEURE){
-		// c'est partie on va dans constellation
-		console.log("annalyse : ACTION IMMEDIATE");
-		valid(tabEvent);
-	}else{
-    if(tabEvent['date']== DEFAULT_DATE){
-      jourAujourdhui();
-    }
-		$.ajax({
-			// on attend avant d'aller dans constellation :'(
-			url: "js/updateJson.php",
-			type: "POST",
-			data: {
-				file: "events.json",
-				action: tabEvent['action'],
-				date: tabEvent['date'],
-				heure: tabEvent['heure'],
-				type: tabEvent['type'],
-			}
-		}).done(function(arg) {
-			console.log(arg);
-		});
-	}
 }
 
 function majTabEvent(data){
@@ -205,8 +114,6 @@ function majTabEvent(data){
 		temp = DEFAULT_HEURE;
 	}
 	tabEvent['heure'] = temp;
-
-
 	if(data.result.parameters.type != null) {
 		temp = JSON.stringify(data.result.parameters.type, undefined, 2);
 		temp = temp.substring(1, temp.length-1);
@@ -214,9 +121,83 @@ function majTabEvent(data){
 		temp = DEFAULT_VALUE;
 	}
 	tabEvent['type'] = temp;
+	if(data.result.parameters.type != null) {
+		temp = JSON.stringify(data.result.parameters.dow, undefined, 2);
+		temp = temp.substring(1, temp.length-1);
+	}else{
+		temp = DEFAULT_VALUE;
+	}
+	tabEvent['dow'] = temp;
+}
+
+function setDebug(val) {
+	$("#debug").text(val);
+}
+function setAction(val) {
+	$("#action").text(val);
+}
+function setReponse(val) {
+	$("#reponse").text(val);
+}
+function setHeure(val) {
+	$("#heure").text(val);
+}
+function setDate(val) {
+	$("#date").text(val);
+}
+function setType(val) {
+	$("#type").text(val);
+}
+function setDow(val){
+	$("#dow").text(val);
+}
+function setIdOnValue(id, value){
+	$(id).text(value);
+}
+
+function afficherRetour(){
+	var textRetour = "";
+	textRetour += document.getElementById("action").value;
+	textRetour += ", " + document.getElementById("reponse").value;
+	textRetour += ", " + document.getElementById("date").value;
+	textRetour += ", " + document.getElementById("heure").value;
+	textRetour += ", " + document.getElementById("type").value;
+	textRetour += ", " + document.getElementById("dow").value;
+
+	$("#retourne").text(textRetour);
+}
+
+function annalyseEvent(){
+	if( tabEvent['action'] == DEFAULT_ACTION){//pas d'analyse puisqu'on comprend pas l'action
+		return;
+	}
+	if( tabEvent['date'] == DEFAULT_DATE && tabEvent['heure'] == DEFAULT_HEURE){
+		// c'est partie on va dans constellation
+		console.log("annalyse : ACTION IMMEDIATE");
+		valid(tabEvent);
+	}else{
+    if(tabEvent['date']== DEFAULT_DATE){
+      jourAujourdhui();
+    }
+		$.ajax({
+			// on attend avant d'aller dans constellation :'(
+			url: "js/updateJson.php",
+			type: "POST",
+			data: {
+				file: "events.json",
+				action: tabEvent['action'],
+				date: tabEvent['date'],
+				heure: tabEvent['heure'],
+				type: tabEvent['type'],
+				dow: tabEvent['dow'],
+			}
+		}).done(function(arg) {
+			console.log(arg);
+		});
+	}
 }
 
 function jourAujourdhui(){
 	var aujourdhui = new Date();
-	document.getElementById("date").value = aujourdhui.getFullYear()+"/"+aujourdhui.getMonth()+"/"+aujourdhui.getDate();
+	document.getElementById("date").value = aujourdhui.getFullYear()+"-"+aujourdhui.getMonth()+"-"+aujourdhui.getDate();
  }
