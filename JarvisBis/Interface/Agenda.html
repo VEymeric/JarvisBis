@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="Agenda">
+
+    <head>
+			<title>Agenda</title>
+			<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+			<!--link rel="stylesheet" href="css/AgendaStyle.css" /-->
+
+    </head>
+    <header>
+			<button class = "bouton"  onclick="Javascript:window.document.location.href='MainPage.html'">
+				<img class = "retour" src="icons/retour_1.png" alt="Icon Retour" />
+			</button>
+				<h1>Agenda</h1>
+    </header>
+    <body>
+			<figure id = icon>
+				<!-- <button class = "bouton"> <img src="images/calendrier.png"/> </button> -->
+			</figure>
+
+      <script src="js/chechHour.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+	  <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.min.js"></script>
+	  <script type="text/javascript" src="http://cdn.myconstellation.io/js/Constellation-1.8.1.min.js"></script>
+
+	  <script>
+	  var constellation = $.signalR.createConstellationConsumer("http://localhost:8088", "connect", "JarvisBis");
+
+	  constellation.connection.stateChanged(function (change) {
+    	if (change.newState === $.signalR.connectionState.connected) {
+        console.log("Je suis connecté");
+    	}
+	  });
+
+	  constellation.connection.start();
+
+	  </script>
+    </body>
+ </html>

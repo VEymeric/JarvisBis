@@ -33,10 +33,10 @@ $(document).ready(function() {
     eventRender: function(event, element) {
      element.attr('title', event.tip);
     },
-        
+
     select: function(start, end, jsEvent, view) {
          // start contains the date you have selected
-         // end contains the end date. 
+         // end contains the end date.
          // Caution: the end date is exclusive (new since v2).
     var allDay = !start.hasTime && !end.hasTime;
     alert(["Event Start date: " + moment(start).format(),
@@ -50,7 +50,7 @@ $(document).ready(function() {
     editable: true,
   });
 
-  /*$.getJSON("tableOfValue.json", function(json) {
+  /*$.getJSON("js/events.json", function(json) {
     console.log(json);
   });*/
 

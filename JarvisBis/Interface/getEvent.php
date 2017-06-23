@@ -1,6 +1,6 @@
 <?php
 
-$file = "tableOfValue.json";
+$file = "js/events.json";
 
 echo file_get_contents($file);
 
