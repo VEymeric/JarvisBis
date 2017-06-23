@@ -1,17 +1,17 @@
 [{
-	"title":"cafe",
-	"start":"2017-06-22 06:30:00",
-	"type":""
+	"title":"Faire_cafe",
+	"start":"2017-06-22 10:00:00",
+	"type":"caf\u00e9"
 },{
-	"title":"Allumer_t\u00e9l\u00e9vision",
-	"start":"2017-06-22 12:00:00",
-	"type":"undefined"
+	"title":"Faire_cafe",
+	"start":"2017-06-22 13:00:00",
+	"type":"caf\u00e9"
 },{
-	"title":"Allumer_t\u00e9l\u00e9vision",
-	"start":"2017-06-22 19:00:00",
-	"type":"undefined"
-},{
-	"title":"Allumer_t\u00e9l\u00e9vision",
+	"title":"Faire_cafe",
 	"start":"2017-06-22 15:00:00",
-	"type":"undefined"
+	"type":"caf\u00e9"
+},{
+	"title":"Faire_cafe",
+	"start":"2017-06-22 18:00:00",
+	"type":"caf\u00e9"
 }]
