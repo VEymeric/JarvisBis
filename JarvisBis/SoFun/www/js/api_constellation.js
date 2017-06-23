@@ -1,10 +1,6 @@
 var accessToken = "e552149f515940da96f8d0858f28c806";
 var baseUrl = "https://api.api.ai/v1/";
 var tabEvent = [];
-var DEFAULT_DATE = "aujourd'hui";
-var DEFAULT_HEURE = "maintenant";
-var DEFAULT_VALUE = "undefined";
-var DEFAULT_ACTION = "input.unknown";
 
 $(document).ready(function() {
 	$("#input").keypress(function(event){
@@ -21,6 +17,9 @@ function Press() {
 }
 
 function repJours(){
+	if (document.formulaire.Classification[2].checked==1){
+		document.formulaire.Sganet_textbox.disabled=false;
+	}
 	var jour = $( "#listeJours" ).text();
 	console.log(jour);
 }
@@ -32,35 +31,23 @@ function setInput(text) {
 function send() {
 	var text = $("#input").val();
 	
-	$.ajax({
-		type: "POST",
-		url: baseUrl + "query?v=20150910",
-		contentType: "application/json; charset=utf-8",
-		dataType: "json",
-		headers: {
-			"Authorization": "Bearer " + accessToken
-		},
-		data: JSON.stringify({ query: text, lang: "fr", sessionId: "somerandomthing" }),
-		success: function(data) {
-			majTabEvent(data);
-			AffichageAll(data);
-			annalyseEvent();
-		},
-		error: function() {
-			AffichageError();
-		}
-	});
+	// constelation ici message call back
+	app.constellation.server.sendMessageWithSaga({ 
+		Scope: 'Package', 
+		Args: ['ConstellationPackageConsole6'] }, 
+		'ReturnResponse', 
+		text, 
+		function(response) { 
+		console.log (response);
+			setIdOnValue("#reponse",JSON.stringify(response.Data.result.fulfillment.speech, undefined, 2));
+			//majTabEvent(response);
+			//AffichageAll(response);
+			//annalyseEvent(); 
+		});
+	
 	AffichageLoading();
 	};
-	
-function AffichageError(){
-	setIdOnValue("#reponse", "Internal Server Error");
-	setIdOnValue("#debug","Internal Server Error");
-	setIdOnValue("#action","Internal Server Error");
-	setIdOnValue("#heure","");
-	setIdOnValue("#date","");
-	setIdOnValue("#type","");	
-}
+
 
 function AffichageLoading(){
 	setIdOnValue("#debug","Loading...");
@@ -81,7 +68,7 @@ function AffichageAll(data)	{
 	setIdOnValue("#heure",tabEvent['heure']);
 	setIdOnValue("#type", tabEvent['type']);
 	
-	//afficherRetour();
+	afficherRetour();
 }
 function setIdOnValue(id, value){
 	$(id).text(value);

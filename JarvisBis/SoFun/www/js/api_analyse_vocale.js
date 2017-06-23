@@ -21,8 +21,11 @@ function Press() {
 }
 
 function repJours(){
+	if (document.formulaire.Classification[2].checked==1){
+		document.formulaire.Sganet_textbox.disabled=false;
+	}
 	var jour = $( "#listeJours" ).text();
-	console.log( jour ); 
+	console.log(jour);
 }
 
 function setInput(text) {
@@ -71,7 +74,7 @@ function AffichageLoading(){
 	setIdOnValue("#type","");
 }
 function AffichageAll(data)	{
-	console.log("affichage all");
+	
 	setIdOnValue("#debug",JSON.stringify(data, undefined, 2));
 	setIdOnValue("#reponse",JSON.stringify(data.result.fulfillment.speech, undefined, 2));
 		
@@ -152,3 +155,4 @@ function majTabEvent(data){
 	}
 	tabEvent['type'] = temp;
 }
+

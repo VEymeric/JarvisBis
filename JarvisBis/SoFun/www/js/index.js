@@ -4,13 +4,17 @@ var app = {
 	initialize: function() {
 		app.constellation.connection.stateChanged(function (change) {
 			if (change.newState === $.signalR.connectionState.connected) {
-				$('.received').text('connected to constellation');
+				$('.received').text('Connected to constellation');
 			}
+			 else{
+				$('.received').text('Disconnected to constellation');
+					console.log( $.signalR);
+
+			 }
 		});
 		document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 	},
-	constellation: $.signalR.createConstellationConsumer("http://localhost:8088", "connect", "JarvisBis"),
-   
+	constellation: $.signalR.createConstellationConsumer("http://192.168.137.1:8088", "0123", "jarvis"),
    
 	onDeviceReady: function() {	
 		app.constellation.connection.start();
