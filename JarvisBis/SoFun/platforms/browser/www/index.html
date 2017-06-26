@@ -36,9 +36,10 @@
 			<button class="tablinks" onclick="openCity(event, 'Agenda')">Agenda</button>
 			<button class="tablinks" onclick="openCity(event, 'Home')" id="defaultOpen">Home</button>
 			<button class="tablinks" onclick="openCity(event, 'Task')">Task</button>
+			<button class="tablinks" onclick="openCity(event, 'Option')"><img class="option" src="img/option_4r.png"></img></button>
 		</div>
 		<div id="Agenda" class="tabcontent">
-			<h3>Agenda</h3>
+			<h1>Agenda</h1>
 		
 		</div>
 
@@ -56,14 +57,15 @@
 		</div>
 
 		<div id="Task" class="tabcontent">
+		
 			<form  onsubmit="Press()">
-				<label id="label">Entrez l'action :</label> <br>
+				<label class="label">Entrez l'action :</label> <br> 
 				<textarea id="input" type="texte" name="fname"rows="3" clearInput ="true" ></textarea> <br>
-				<button ion-button outline color="dark" type="submit">Envoyer</button><br>
+				<button  type="submit">Envoyer</button><br><br>
 			</form>
+			
 				<textarea disabled id="reponse" name="reponse" cols="30" rows="2" ></textarea><br>
 		
-			
 				<input id="checkbox" type="checkbox" onclick="repJours()"></input>
 				<label>Répéter tout les</label>
 				
@@ -76,11 +78,36 @@
 					<option value="Sam" >Samedi</option>
 					<option value="Dim" >Dimanche</option>
 				</select>
+		</div>
+		
+		<div id="Option" class="tabcontent">
+			
+		
+			<form id ="ConnectionConstellation"  >
+				<h1>Connection à Constellation</h1> <br>
+				
+				<label class="label">Entrez l'adresse IP de votre constellation:</label> <br>
+				<input id="IPConstellation" type="texte"  ></input> <br>
+				
+				<label class="label">Entrez votre mot de passe pour constellation</label> <br>
+				<input id="pwConstellation" type="texte"  ></input> <br>
+				
+				<label class="label">Le nom que vous souhaitez donné à cette application dans votre console constellation</label> <br>
+				<input id="nameConstellation" type="texte"  ></input> <br>
+	
+				<button  type="submit">Envoyer</button><br>
+			</form><p id="txt_id_constellation"></p>		
 				
 		</div>
+		
+		
+
+      
+		
 		<script>
 			document.getElementById("defaultOpen").click();
-		</script>
+		</script>	
 
 	</body>
+	
 </html>

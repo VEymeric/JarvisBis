@@ -14,7 +14,7 @@ var app = {
 		});
 		document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 	},
-	constellation: $.signalR.createConstellationConsumer("http://192.168.137.1:8088", "0123", "jarvis"),
+	constellation: $.signalR.createConstellationConsumer(address, password, name),
    
 	onDeviceReady: function() {	
 		app.constellation.connection.start();

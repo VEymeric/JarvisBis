@@ -13,3 +13,20 @@ function openCity(evt, cityName) {
 	evt.currentTarget.className += " active";
 }
   
+function connectionConstellation() {
+       var txt;
+	var address = $("#IPConstellation").val();
+	var password =$("#pwConstellation").val();
+	var name = $("#nameConstellation").val();
+	console.log(address);
+	console.log(password);
+	console.log(name);
+	
+	
+	
+}
+    
+ 
+
+
+	

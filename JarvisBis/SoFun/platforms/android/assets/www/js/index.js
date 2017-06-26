@@ -6,14 +6,15 @@ var app = {
 			if (change.newState === $.signalR.connectionState.connected) {
 				$('.received').text('Connected to constellation');
 			}
-			else{
+			 else{
 				$('.received').text('Disconnected to constellation');
-			}
+					console.log( $.signalR);
+
+			 }
 		});
 		document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 	},
-	constellation: $.signalR.createConstellationConsumer("169.254.32.25:8088/", "nob", "web"),
-   
+	constellation: $.signalR.createConstellationConsumer("http://192.168.137.1:8088", "0123", "jarvis"),
    
 	onDeviceReady: function() {	
 		app.constellation.connection.start();

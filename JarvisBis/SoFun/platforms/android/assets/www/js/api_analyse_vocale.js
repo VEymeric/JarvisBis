@@ -21,6 +21,9 @@ function Press() {
 }
 
 function repJours(){
+	if (document.formulaire.Classification[2].checked==1){
+		document.formulaire.Sganet_textbox.disabled=false;
+	}
 	var jour = $( "#listeJours" ).text();
 	console.log(jour);
 }

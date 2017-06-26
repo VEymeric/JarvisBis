@@ -1,6 +1,3 @@
-var accessToken = "e552149f515940da96f8d0858f28c806";
-var baseUrl = "https://api.api.ai/v1/";
-var tabEvent = [];
 
 $(document).ready(function() {
 	$("#input").keypress(function(event){
@@ -40,14 +37,11 @@ function send() {
 		function(response) { 
 		console.log (response);
 			setIdOnValue("#reponse",JSON.stringify(response.Data.result.fulfillment.speech, undefined, 2));
-			//majTabEvent(response);
-			//AffichageAll(response);
-			//annalyseEvent(); 
+			
 		});
 	
 	AffichageLoading();
 	};
-
 
 function AffichageLoading(){
 	setIdOnValue("#debug","Loading...");
@@ -57,86 +51,9 @@ function AffichageLoading(){
 	setIdOnValue("#date","");
 	setIdOnValue("#type","");
 }
-function AffichageAll(data)	{
-	
-	setIdOnValue("#debug",JSON.stringify(data, undefined, 2));
-	setIdOnValue("#reponse",JSON.stringify(data.result.fulfillment.speech, undefined, 2));
-		
-	setIdOnValue("#action",tabEvent['action']);
-	/*affiche les arguments*/
-	setIdOnValue("#date", tabEvent['date']);
-	setIdOnValue("#heure",tabEvent['heure']);
-	setIdOnValue("#type", tabEvent['type']);
-	
-	afficherRetour();
-}
+
 function setIdOnValue(id, value){
 	$(id).text(value);
 }
-function afficherRetour(){
-	var textRetour = "";
-	textRetour += document.getElementById("action").value;
-	textRetour += ", " + document.getElementById("reponse").value;
-	textRetour += ", " + document.getElementById("date").value;
-	textRetour += ", " + document.getElementById("heure").value;
-	textRetour += ", " + document.getElementById("type").value;
 
-	$("#retourne").text(textRetour);
-}
-
-function annalyseEvent(){
-	if( tabEvent['action'] == DEFAULT_ACTION){//pas d'analyse puisqu'on comprend pas l'action
-		return;
-	}
-	if( tabEvent['date'] == DEFAULT_DATE && tabEvent['heure'] == DEFAULT_HEURE){
-		// c'est partie on va dans constellation
-		console.log("annalyse : ACTION IMMEDIATE");
-		valid(tabEvent);
-	}else{
-		$.ajax({
-			// on attend avant d'aller dans constellation :'(
-			url: "js/updateJson.php",
-			type: "POST",
-			data: {
-				action: tabEvent['action'],
-				date: tabEvent['date'],
-				heure: tabEvent['heure'],
-				type: tabEvent['type'],
-			}
-		}).done(function(arg) {
-			console.log(arg);
-		});
-	}
-}
-
-function majTabEvent(data){
-	temp = JSON.stringify(data.result.action, undefined, 2);
-	temp = temp.substring(1, temp.length-1);
-	tabEvent['action'] = temp;
-
-	if(data.result.parameters.date != null && data.result.parameters.date != "") {
-		temp = JSON.stringify(DEFAULT_DATE, undefined, 2);
-		temp = temp.substring(1, temp.length-1);
-	}else{
-		temp = DEFAULT_DATE;	
-	}
-	tabEvent['date'] = temp;
-
-	if(data.result.parameters.time != null && data.result.parameters.time != "") {
-		temp = JSON.stringify(data.result.parameters.time, undefined, 2);
-		temp = temp.substring(1, temp.length-1);
-	}else{
-		temp = DEFAULT_HEURE;
-	}
-	tabEvent['heure'] = temp;
-
-
-	if(data.result.parameters.type != null) {
-		temp = JSON.stringify(data.result.parameters.type, undefined, 2);
-		temp = temp.substring(1, temp.length-1);
-	}else{
-		temp = DEFAULT_VALUE;
-	}
-	tabEvent['type'] = temp;
-}
 

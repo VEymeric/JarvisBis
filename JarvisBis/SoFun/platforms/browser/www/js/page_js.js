@@ -13,3 +13,24 @@ function openCity(evt, cityName) {
 	evt.currentTarget.className += " active";
 }
   
+function connectionConstellation() {
+       var txt;
+	var address = $("#IPConstellation").val();
+	var password =$("#pwConstellation").val();
+	var name = $("#nameConstellation").val();
+	
+	// if (address == null || address == ""||password == null || password == ""||name == null || name == "") {
+		// txt = "Vous n'avez pas fini de vous identifier!";
+	// } else {
+		txt = "Vous vous êtes identifier sur  " + address + ". <br> Votre mot de passe:" + password +"<br>Sur constellation cette application s'appelle" + name +".";
+	// }
+	
+}
+    
+  
+function hideFormConstellation() {
+	$("#ConnectionConstellation").toggle();
+}
+
+
+	
