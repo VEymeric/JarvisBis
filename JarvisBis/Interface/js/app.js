@@ -77,16 +77,25 @@ $(document).ready(function() {
     },
     defaultView : "agendaWeek",
     forceEventDuration: true,
-    defaultTimedEventDuration: "01:00:00",
+    defaultTimedEventDuration: "00:30:00",
     navLinks: true,
     eventLimit: true,
     selectable: true,
+    allDaySlot: false,
 
     // Modifier/Supprimer un event au click
     eventClick: function(event, element) {
       // Fenetre de confirmation
       $( "#dialog-confirm" ).dialog( "open" );
-      console.log(event);
+      // console.log(event);
+
+      if (event.start._i.substr(11,5) == event.end._i.substr(11,5)) {
+        $("#eventDate").html(event.start._i.substr(11,5));
+      } else {
+        $("#eventDate").html(event.start._i.substr(11,5) + " - " + event.end._i.substr(11,5));
+      }
+      $("#eventTitle").html(event.title);
+
       // Action des boutons
       $( "#dialog-confirm" ).dialog({
         buttons: {
@@ -97,14 +106,13 @@ $(document).ready(function() {
                 "start" : event.start._i,
                 "type" : event.type,
                 "end" : event.end._i
-                // add end if defined
               };
               deleteInJson("meetings.json", eventToDelete); 
             } else {
               eventToDelete = {
                 "title" : event.title,
                 "start" : event.start._i,
-                "type" : event.type
+                "type" : event.type,
               };
               deleteInJson("events.json", eventToDelete);
             }

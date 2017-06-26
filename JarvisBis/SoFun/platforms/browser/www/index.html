@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval';">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.min.js"></script>
+		<script type="text/javascript" src="https://cdn.myconstellation.io/js/Constellation-1.8.1.min.js"></script>
+		
+	
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/page_js.js"></script>
+		<script src="js/api_analyse_vocale.js"> </script>
+	 
+		<title>Hello World</title>
+	</head>
+	
+	<body>
+	
+		<div class="app">
+			<h1>Apache Cordova</h1>
+			<div id="deviceready" class="blink">
+				<p class="event listening">Connecting to Device</p>
+				<p class="event received">Device is Ready</p>
+			</div>
+		</div>
+		
+		<div class="tab">
+			<button class="tablinks" onclick="openCity(event, 'Agenda')">Agenda</button>
+			<button class="tablinks" onclick="openCity(event, 'Home')" id="defaultOpen">Home</button>
+			<button class="tablinks" onclick="openCity(event, 'Task')">Task</button>
+		</div>
+		<div id="Agenda" class="tabcontent">
+			<h3>Agenda</h3>
+		
+		</div>
+
+		<div id="Home" class="tabcontent">
+			<div class="card-title">
+				<p>Bienvenue sur Vania.</p>
+				<p >Que pouvons-nous faire pour vous aujourd'hui?</p> 
+			</div>
+				
+			<button ion-fab color = "light" >
+				<i class="material-icons">mic</i>
+			</button>
+				
+			<p class ="card-subtitle">Appuyer pour  commencer.</p>
+		</div>
+
+		<div id="Task" class="tabcontent">
+			<form  onsubmit="Press()">
+				<label id="label">Entrez l'action :</label> <br>
+				<textarea id="input" type="texte" name="fname"rows="3" clearInput ="true" ></textarea> <br>
+				<button ion-button outline color="dark" type="submit">Envoyer</button>
+			</form>
+			<textarea disabled id="reponse" name="reponse" cols="30" rows="2" ></textarea><br>
+		
+			<input type="checkbox" onclick="repJours()"></input>
+			<label>Répéter tout les ...</label>
+			
+			
+			<select multiple id= "listeJours">
+				<option  value="Lun" label="Lun">Lundi</option>
+				<option value="Mar" label="Mar">Mardi</option>
+				<option value="Mer" label="Mer">Mercredi</option>
+				<option value="Jeu" label="Jeu">Jeudi</option>
+				<option value="Ven" label="Ven">Vendredi</option>
+				<option value="Sam"  label="Sam">Samedi</option>
+				<option value="Dim" label="Dim">Dimanche</option>
+			</select>
+		</div>
+		<script>
+			document.getElementById("defaultOpen").click();
+		</script>
+
+	</body>
+</html>

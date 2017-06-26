@@ -4,10 +4,51 @@
 		Task
 		</ion-title>
 	</ion-navbar>
-	
+
 </ion-header>
 
+<ion-content class=card-background-page no-scroll>
 
+	<img src="assets/img/fond3_r.jpg"/>
+
+	<ion-item class="card-title">
+		<ion-label color="primary" floating class= "label-textarea">Entrez l'action.</ion-label>
+		<ion-textarea rows="2" clearInput="true" class= "textarea" ></ion-textarea>
+	</ion-item>
+
+
+	<button ion-button color="light">Envoyer</button>
+
+	<button id="rec" >BUTTON</button>
+
+
+	<form  onsubmit="Press()">
+		<input type="text" name="fname">
+		<input type="submit" value="Submit">
+	</form>
+
+
+	<br>Action<br>
+
+		<textarea id="action" cols="20" rows="1"></textarea>
+
+	<br>Arguments<br>
+
+		<textarea id="date" cols="10" rows="1"></textarea>
+		<textarea id="heure" cols="10" rows="1"></textarea>
+		<textarea id="type" cols="10" rows="1"></textarea>
+
+	<br>Réponse<br>
+
+		<textarea id="reponse" name="reponse" cols="30" rows="2"></textarea>
+
+	<br>Debug<br>
+
+		<textarea id="debug" cols="30" rows="10"></textarea>
+
+	<br>Retourne : <br>
+
+		<textarea id="retourne" cols="60" rows="1"></textarea>
 
 	<script>
 		var constellation = $.signalR.createConstellationConsumer("http://localhost:8088", "connect", "JarvisBis");
@@ -20,21 +61,21 @@
 
 		constellation.connection.start();
 	</script>
-	
+
 <ion-content class=card-background-page>
-	
+
 	<img src="assets/img/fond3_r.jpg"/>
-	 
-	
-	
+
+
+
 	<form  onsubmit="Press()">
-		<label id="label">Entrez l'action :</label> 
+		<label id="label">Entrez l'action :</label>
 		<textarea id="input" type="texte" name="fname"rows="3" clearInput ="true" ></textarea>
 		<button ion-button outline color="dark" type="submit">Envoyer</button>
 	</form>
-	
+
        <textarea disabled id="reponse" name="reponse" cols="30" rows="2" ></textarea>
-	
+
 	<ion-item>
 		<ion-label>Répéter tout les ...</ion-label>
 		<ion-checkbox onclick="repJours()"></ion-checkbox>
@@ -50,16 +91,16 @@
 	</ion-item>
 
 	<br>
-	
+
 		<textarea id="date" cols="1" rows="1"></textarea>
-		
+
 		<textarea id="heure" cols="1" rows="1"></textarea>
-		
+
 		<textarea id="action" cols="1" rows="1"></textarea>
-		
+
 		<textarea id="retourne" cols="1" rows="1"></textarea>
-		
+
 		<textarea id="type" cols="1" rows="1"></textarea>
-		
+
 		<textarea id="debug" cols="1" rows="1"></textarea>
 </ion-content>
