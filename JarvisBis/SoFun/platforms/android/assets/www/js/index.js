@@ -4,12 +4,15 @@ var app = {
 	initialize: function() {
 		app.constellation.connection.stateChanged(function (change) {
 			if (change.newState === $.signalR.connectionState.connected) {
-				$('.received').text('connected to constellation');
+				$('.received').text('Connected to constellation');
+			}
+			else{
+				$('.received').text('Disconnected to constellation');
 			}
 		});
 		document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 	},
-	constellation: $.signalR.createConstellationConsumer("http://localhost:8088", "connect", "JarvisBis"),
+	constellation: $.signalR.createConstellationConsumer("169.254.32.25:8088/", "nob", "web"),
    
    
 	onDeviceReady: function() {	

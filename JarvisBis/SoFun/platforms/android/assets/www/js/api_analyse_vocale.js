@@ -22,7 +22,7 @@ function Press() {
 
 function repJours(){
 	var jour = $( "#listeJours" ).text();
-	console.log( jour ); 
+	console.log(jour);
 }
 
 function setInput(text) {
@@ -71,7 +71,7 @@ function AffichageLoading(){
 	setIdOnValue("#type","");
 }
 function AffichageAll(data)	{
-	console.log("affichage all");
+	
 	setIdOnValue("#debug",JSON.stringify(data, undefined, 2));
 	setIdOnValue("#reponse",JSON.stringify(data.result.fulfillment.speech, undefined, 2));
 		
@@ -152,3 +152,4 @@ function majTabEvent(data){
 	}
 	tabEvent['type'] = temp;
 }
+
