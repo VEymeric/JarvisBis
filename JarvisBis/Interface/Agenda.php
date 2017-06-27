@@ -10,6 +10,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <link rel='stylesheet' href='fullcalendar-3.4.0/fullcalendar.min.css' />
       <link rel='stylesheet' href='jquery-ui-1.12.1.custom/jquery-ui.min.css' />
+      <link rel='stylesheet' href='spectrum/spectrum.css' />
   		<link rel="stylesheet" href="AgendaStyle.css" />
 
 
@@ -51,7 +52,11 @@
           </div>
           <div class="form-group">
             <label for="end">Heure de fin :</label>
-            <input type="time" name="end" id="end" value="00:00" class="form form-control text ui-widget-content ui-corner-all">
+            <input type="time" name="end" id="end" class="form form-control text ui-widget-content ui-corner-all">
+          </div>
+          <div class="form-group">
+            <label for="colorPalette">Code couleur :</label>
+            <input type='text' id="colorPalette"/>
           </div>
 
           <!-- Allow form submission with keyboard without duplicating the dialog button -->
@@ -66,6 +71,7 @@
       <script src='moment-with-locales.min.js'></script>
       <script src='fullcalendar-3.4.0/fullcalendar.min.js'></script>
       <script src='fullcalendar-3.4.0/locale/fr.js'></script>
+      <script src="spectrum/spectrum.js"></script>
       <script src="js/chechHour.js"></script>
       <script src='js/app.js'></script>
 
