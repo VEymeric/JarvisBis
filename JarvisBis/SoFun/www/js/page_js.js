@@ -1,3 +1,7 @@
+var address;
+var password;
+var name;
+
 function openCity(evt, cityName) {
 	
 	var i, tabcontent, tablinks;
@@ -15,9 +19,9 @@ function openCity(evt, cityName) {
   
 function connectionConstellation() {
        var txt;
-	var address = $("#IPConstellation").val();
-	var password =$("#pwConstellation").val();
-	var name = $("#nameConstellation").val();
+	address = $("#IPConstellation").val();
+	password =$("#pwConstellation").val();
+	name = $("#nameConstellation").val();
 	console.log(address);
 	console.log(password);
 	console.log(name);

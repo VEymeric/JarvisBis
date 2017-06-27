@@ -1,3 +1,7 @@
+var address;
+var password;
+var name;
+
 function openCity(evt, cityName) {
 	
 	var i, tabcontent, tablinks;
@@ -15,22 +19,18 @@ function openCity(evt, cityName) {
   
 function connectionConstellation() {
        var txt;
-	var address = $("#IPConstellation").val();
-	var password =$("#pwConstellation").val();
-	var name = $("#nameConstellation").val();
+	address = $("#IPConstellation").val();
+	password =$("#pwConstellation").val();
+	name = $("#nameConstellation").val();
+	console.log(address);
+	console.log(password);
+	console.log(name);
 	
-	// if (address == null || address == ""||password == null || password == ""||name == null || name == "") {
-		// txt = "Vous n'avez pas fini de vous identifier!";
-	// } else {
-		txt = "Vous vous êtes identifier sur  " + address + ". <br> Votre mot de passe:" + password +"<br>Sur constellation cette application s'appelle" + name +".";
-	// }
+	
 	
 }
     
-  
-function hideFormConstellation() {
-	$("#ConnectionConstellation").toggle();
-}
+ 
 
 
 	

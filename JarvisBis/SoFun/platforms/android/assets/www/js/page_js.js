@@ -1,3 +1,7 @@
+var address;
+var password;
+var name;
+
 function openCity(evt, cityName) {
 	
 	var i, tabcontent, tablinks;
@@ -13,31 +17,20 @@ function openCity(evt, cityName) {
 	evt.currentTarget.className += " active";
 }
   
-function ConnectionConstellation() {
+function connectionConstellation() {
        var txt;
-	var address = prompt("Entrez l'adresse IP de votre constellation:", "http://193.192.191.19:8088");
-	var password = prompt("Entrez votre mot de passe pour constellation", "123abc");
-	var name = prompt("Le nom que vous souhaitez donné à cette application dans votre console constellation", "Vania");
+	address = $("#IPConstellation").val();
+	password =$("#pwConstellation").val();
+	name = $("#nameConstellation").val();
+	console.log(address);
+	console.log(password);
+	console.log(name);
 	
-	if (address == null || address == ""||password == null || password == ""||name == null || name == "") {
-		txt = "Vous n'avez pas fini de vous identifier!";
-	} else {
-		txt = "Vous vous êtes identifier sur  " + address + ". <br> Votre mot de passe:" + password +"<br>Sur constellation cette application s'appelle" + name +".";
-	}
-	document.getElementById("txt_id_constellation").innerHTML = txt;
+	
+	
 }
     
- function ConnectionAPI() {
-       var txt;
-	var language = prompt("Choisisez votre langue", "Français");
-	var adress = prompt("Entrez l'adresse IP de votre API.AI", "http://193.192.191.19:8088");
-	var accesToken = prompt("Entrez la clé d'acces", "Vania");
+ 
+
+
 	
-	if (address == null || address == ""||password == null || password == ""||name == null || name == "") {
-		txt = "Vous n'avez pas fini de vous identifier!";
-	} else {
-		txt = "Vous vous êtes identifier sur  " + address + ". <br> Votre mot de passe:" + password +"<br>Sur constellation cette application s'appelle" + name +".";
-	}
-	document.getElementById("txt_id_api").innerHTML = txt;
-}
-       

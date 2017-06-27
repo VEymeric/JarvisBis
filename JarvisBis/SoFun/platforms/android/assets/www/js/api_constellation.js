@@ -1,8 +1,5 @@
-var accessToken = "e552149f515940da96f8d0858f28c806";
-var baseUrl = "https://api.api.ai/v1/";
-var tabEvent = [];
-
 $(document).ready(function() {
+	app.initialize();
 	$("#input").keypress(function(event){
 		if(event.which==13){
 			event.preventDefault();
@@ -30,7 +27,8 @@ function setInput(text) {
 
 function send() {
 	var text = $("#input").val();
-	
+
+
 	// constelation ici message call back
 	app.constellation.server.sendMessageWithSaga({ 
 		Scope: 'Package', 
@@ -46,17 +44,15 @@ function send() {
 	AffichageLoading();
 	};
 
-function AffichageLoading(){
-	setIdOnValue("#debug","Loading...");
-	setIdOnValue("#action","Loading...");
-	setIdOnValue("#reponse","Loading...");
-	setIdOnValue("#heure","");
-	setIdOnValue("#date","");
-	setIdOnValue("#type","");
-}
-
 function setIdOnValue(id, value){
 	$(id).text(value);
 }
 
-
+function AffichageLoading(){
+ 	setIdOnValue("#debug","Loading...");
+ 	setIdOnValue("#action","Loading...");
+ 	setIdOnValue("#reponse","Loading...");
+ 	setIdOnValue("#heure","");
+ 	setIdOnValue("#date","");
+ 	setIdOnValue("#type","");
+ }

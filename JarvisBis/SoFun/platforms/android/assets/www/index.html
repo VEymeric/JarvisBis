@@ -13,12 +13,12 @@
 		<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.min.js"></script>
 		<script type="text/javascript" src="https://cdn.myconstellation.io/js/Constellation-1.8.1.min.js"></script>
 		
-	
 		<script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="js/index.js"></script>
+
+		<script type="text/javascript" src="js/index.js"></script>		
 		<script type="text/javascript" src="js/page_js.js"></script>
 		<script src="js/api_constellation.js"> </script>
-	 
+			 
 		<title>Vania</title>
 	</head>
 	
@@ -47,6 +47,7 @@
 			<div class="card-title">
 				<p>Bienvenue sur Vania.</p>
 				<p >Que pouvons-nous faire pour vous aujourd'hui?</p> 
+				<div id="test">caca</div>
 			</div>
 				
 			<button >
@@ -57,14 +58,15 @@
 		</div>
 
 		<div id="Task" class="tabcontent">
+		
 			<form  onsubmit="Press()">
-				<label id="label">Entrez l'action :</label> <br> 
+				<label class="label">Entrez l'action :</label> <br> 
 				<textarea id="input" type="texte" name="fname"rows="3" clearInput ="true" ></textarea> <br>
 				<button  type="submit">Envoyer</button><br><br>
 			</form>
+			
 				<textarea disabled id="reponse" name="reponse" cols="30" rows="2" ></textarea><br>
 		
-			
 				<input id="checkbox" type="checkbox" onclick="repJours()"></input>
 				<label>Répéter tout les</label>
 				
@@ -80,48 +82,30 @@
 		</div>
 		
 		<div id="Option" class="tabcontent">
-		
-			<form id ="ConnectionConstellation"  onsubmit="ConnectionConstellation()">
-				<h1>Connection à Constellation</h1> <br>
-				
-				<label id="label">Entrez l'adresse IP de votre constellation:</label> <br>
-				<input id="input" type="texte" name="cc" clearInput ="true" ></input> <br>
-				
-				<label id="label">Entrez votre mot de passe pour constellation</label> <br>
-				<input id="input" type="texte" name="cc" clearInput ="true" ></input> <br>
-				
-				<label id="label">Le nom que vous souhaitez donné à cette application dans votre console constellation</label> <br>
-				<input id="input" type="texte" name="cc" clearInput ="true" ></input> <br>
-	
-				<button  type="submit">Envoyer</button><br>
-			</form><p id="txt_id_constellation"></p>
 			
-			<form id ="ConnectionAPI"  onsubmit="ConnectionAPI()">
-				<h1>Connection à API.AI</h1> <br>
-				
-				<label id="label">Choisisez votre langue</label> <br>
-				<input id="input" type="texte" name="cc" clearInput ="true" ></input> <br>
-				
-				<label id="label">Entrez l'adresse IP de votre API.AI</label> <br>
-				<input id="input" type="texte" name="cc" clearInput ="true" ></input> <br>
-				
-				<label id="label">Entrez la clé d'acces</label> <br>
-				<input id="input" type="texte" name="cc" clearInput ="true" ></input> <br>
-				
-				<button  type="submit">Envoyer</button><br>
-			</form><p id="txt_id_api"></p>
+			<h1>Connection à Constellation</h1> <br>
 			
-				
+			<label class="label">Entrez l'adresse IP de votre constellation:</label> <br>
+			<input id="IPConstellation" type="texte" value="http://localhost:8088" ></input> <br>
+			
+			<label class="label">Entrez votre mot de passe pour constellation</label> <br>
+			<input id="pwConstellation" type="text" value="connect" ></input> <br>
+			
+			<label class="label">Le nom que vous souhaitez donné à cette application dans votre console constellation</label> <br>
+			<input id="nameConstellation" type="texte" value="jarvis" ></input> <br>
+
+			<button  onclick="connectionConstellation()">Envoyer</button><br>
 		</div>
 		
 		
 
       
 		
-		<script>
-			document.getElementById("defaultOpen").click();
-		</script>	
-
+		<script>document.getElementById("defaultOpen").click();</script>	
+		
+		
+		
 	</body>
-	
+			<script src="js/speech.js"> </script>
+
 </html>

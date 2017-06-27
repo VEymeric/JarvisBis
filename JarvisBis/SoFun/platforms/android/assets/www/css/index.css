@@ -30,7 +30,7 @@ body {
 /* Style the tab */
 div.tab {
 	
-	overflow: hidden; 
+	/* overflow: hidden;  */
 	/* border: 1px solid #ccc; */
 	background-color: #f1f1f1;
 	width:100%;
@@ -50,14 +50,6 @@ div.tab button {
 	outline: none;
 	cursor: pointer;
 	
-}
-
-.alert{
-	
-	
-	border-style: solid;
-	border-color:black;
-	border-width: 1px;
 }
 
 /* Create an active/current tablink class */
@@ -84,13 +76,15 @@ div.tab button.active {
 #Option form{
 	padding: 15px 19px;
 	font-size:20px;
-	
 	border-style: outset;
 	border-color: grey;
 	
 	
 }
 
+.label {
+	font-size:15px;
+}
 
 #Home button{
 	border-radius:400px;
@@ -101,6 +95,14 @@ div.tab button.active {
 	cursor: pointer;
 	padding: 15px 19px;
 	background-color: rgba(255, 255, 255, 0);
+}
+
+#Option button{
+	
+
+	outline: none;
+	cursor: pointer;
+	padding: 15px 19px;
 }
 
 
