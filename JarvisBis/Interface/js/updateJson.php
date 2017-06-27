@@ -10,9 +10,7 @@ if ( isset($_POST["end"]) && isset($_POST["color"]) ) {
 		"color" => $_POST['color'],
 		"end"   => $_POST['date']." ".$_POST["end"]
 	];
-} elseif (condition) {
-	# code...
-} {
+} else {
 	$dataToAdd = [
 		"title" => $_POST['action'],
 		"start" => $_POST['date']." ".$_POST['heure'],
