@@ -8,13 +8,13 @@ var app = {
 			}
 			 else{
 				$('.received').text('Disconnected to constellation');
-				console.log($.signalR);
 			}
 		});
 		document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 	},
 	
-	constellation: $.signalR.createConstellationConsumer("http://localhost:8088", "connect" , "jarvis"),
+	// non dynamique donc fonctionnel
+	constellation: $.signalR.createConstellationConsumer("http://localhost:8088", "connect" , "jarvis"),   
    
 	onDeviceReady: function() {	
 		app.constellation.connection.start();

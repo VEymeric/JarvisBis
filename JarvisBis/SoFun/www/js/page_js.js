@@ -17,7 +17,7 @@ function openCity(evt, cityName) {
 	evt.currentTarget.className += " active";
 }
   
-function connectionConstellation() {
+function connectionConstellation() { //inutil si non  connection dynamique
        var txt;
 	address = $("#IPConstellation").val();
 	password =$("#pwConstellation").val();

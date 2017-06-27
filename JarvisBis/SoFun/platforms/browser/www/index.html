@@ -18,7 +18,8 @@
 		<script type="text/javascript" src="js/index.js"></script>		
 		<script type="text/javascript" src="js/page_js.js"></script>
 		<script src="js/api_constellation.js"> </script>
-			 
+		<script src="js/speech.js"> </script>
+
 		<title>Vania</title>
 	</head>
 	
@@ -47,11 +48,11 @@
 			<div class="card-title">
 				<p>Bienvenue sur Vania.</p>
 				<p >Que pouvons-nous faire pour vous aujourd'hui?</p> 
-				<div id="test">caca</div>
+				<div id="message">[REQUEST]</div>
 			</div>
 				
-			<button >
-				<img src="img/micro_1.png"></img>
+			<button onclick="startMicrophone(input)">
+				<img src="img/micro_1.png"/>
 			</button>
 				
 			<p class ="card-subtitle">Appuyer pour  commencer.</p>
@@ -106,6 +107,5 @@
 		
 		
 	</body>
-			<script src="js/speech.js"> </script>
 
 </html>

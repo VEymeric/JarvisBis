@@ -1,3 +1,18 @@
+// ON UTILISE PLUS CA VU QU'ON PASSE 
+
+//PAR CONSTELLATION MAINTENANT
+
+
+
+
+
+
+
+
+
+
+
+
 var accessToken = "e552149f515940da96f8d0858f28c806";
 var baseUrl = "https://api.api.ai/v1/";
 var tabEvent = [];

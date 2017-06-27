@@ -1,29 +1,42 @@
-console.log(window);
-console.log(window.plugins);
-$(test).text(Windows.plugins);
-window.plugins.speechRecognition.isRecognitionAvailable(
-	function(available){
-		if(available){
-			// You can use the speechRecognition
-			//$(test).text("value2");
-		}
+function startRecognition(id){
+    window.plugins.speechRecognition.startListening(function(result){
+	 // Show results in the console
+	 $(id).text(result[0]);
+	send();
+	alert("bite"); //c'est moche
+    }, function(err){
+	 alert(err);
+    }, {
+	 language: "fr-FR",
+	 showPopup: true
+    });
+}
+
+//Use the microphone and load the result into the $(id.)text();
+function startMicrophone(id){
+	window.plugins.speechRecognition.isRecognitionAvailable(function(available){
+	    if(!available){
+		 alert("Sorry, not available");
+	    }
+
+	    // Check if has permission to use the microphone
+	    window.plugins.speechRecognition.hasPermission(function (isGranted){
+		 if(isGranted){
+		     startRecognition(id);
+		 }else{
+		     // Request the permission
+		     window.plugins.speechRecognition.requestPermission(function (){
+			  // Request accepted, start recognition
+			  startRecognition(id);
+		     }, function (err){
+			  alert(err);
+		     });
+		 }
+	    }, function(err){
+		 alert(err);
+	    });
 	}, function(err){
-		console.error(err);
-	}
-);
+	    alert(err);
+	});		
+}
 
-window.plugins.speechRecognition.hasPermission(function (isGranted){
-    if(isGranted){
-        // Do other things as the initialization here
-	//$(test).text("value2");
-
-    }else{
-       window.plugins.speechRecognition.requestPermission(function (){
-	    // Requested
-	}, function (err){
-	    // Opps, nope
-});
-    }
-}, function(err){
-    console.log(err);
-});
