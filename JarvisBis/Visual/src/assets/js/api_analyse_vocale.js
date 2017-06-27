@@ -1,84 +1,32 @@
 var accessToken = "e552149f515940da96f8d0858f28c806";
 var baseUrl = "https://api.api.ai/v1/";
-/* TEST MICRO DON'T WORK*/
 var tabEvent = [];
-var DEFAULT_DATE = Date.now();
+var DEFAULT_DATE = "aujourd'hui";
 var DEFAULT_HEURE = "maintenant";
 var DEFAULT_VALUE = "undefined";
 var DEFAULT_ACTION = "input.unknown";
+var DEFAULT_REPEAT = [];
+
 $(document).ready(function() {
-	$("#input").keypress(function(event) {
-		if (event.which == 13) {
+	$("#input").keypress(function(event){
+		if(event.which==13){
 			event.preventDefault();
 			send();
 		}
-	});/*
-	$("#rec").click(function(event) {
-		switchRecognition();
-	});*/
+	});
 });
 
-  
 function Press() {
-	
+	event.preventDefault();
 	send();
-	console.log("ok  6"); 
 }
 
-
-function repJours() {
-	var jour = $( "#listeJours" ).text();
-	
-	console.log( jour ); 
-
+function repJours(){
+	var jour= $('#listeJours').text();
+	console.log(jour);
 }
 
-
-
-
-
-/*
-var recognition;
-function startRecognition() {
-	recognition = new webkitSpeechRecognition();
-	recognition.onstart = function(event) {
-		updateRec();
-	};
-	recognition.onresult = function(event) {
-		var text = "";
-	    for (var i = event.resultIndex; i < event.results.length; ++i) {
-	    	text += event.results[i][0].transcript;
-	    }
-	    setInput(text);
-		stopRecognition();
-	};
-	recognition.onend = function() {
-		stopRecognition();
-	};
-	recognition.lang = "fr-FR";
-	recognition.start();
-}
-	
-function stopRecognition() {
-	if (recognition) {
-		recognition.stop();
-		recognition = null;
-	}
-	updateRec();
-}
-
-function switchRecognition() {
-	if (recognition) {
-		stopRecognition();
-	} else {
-		startRecognition();
-	}
-}
-function updateRec() {
-	$("#rec").text(recognition ? "Stop" : "Speak");
-}*/
 function setInput(text) {
-	$("#input").val(text);
 	send();
 }
 
@@ -99,59 +47,98 @@ function send() {
 			annalyseEvent();
 		},
 		error: function() {
-			setReponse("Internal Server Error");
-			setDebug("");
-			setAction("");
-			setHeure("");
-			setDate("");
-			setType("");
+			AffichageError();
 		}
 	});
-	setDebug("Loading...");
-	setAction("Loading...");
-	setReponse("Loading...");
-	setHeure("");
-	setDate("");
-	setType("");
+	AffichageLoading();
+}
 
+function AffichageError(){
+	setIdOnValue("#reponse", "Internal Server Error");
+	setIdOnValue("#debug","Internal Server Error");
+	setIdOnValue("#action","Internal Server Error");
+	setIdOnValue("#heure","");
+	setIdOnValue("#date","");
+	setIdOnValue("#type","");
+	setIdOnValue("#dow","");
+}
+
+function AffichageLoading(){
+	setIdOnValue("#debug","Loading...");
+	setIdOnValue("#action","Loading...");
+	setIdOnValue("#reponse","Loading...");
+	setIdOnValue("#heure","");
+	setIdOnValue("#date","");
+	setIdOnValue("#type","");
+	setIdOnValue("#dow","");
 }
 
 function AffichageAll(data)	{
-	setDebug(JSON.stringify(data, undefined, 2));
-	setAction(JSON.stringify(data.result.action, undefined, 2));
-	setReponse(JSON.stringify(data.result.fulfillment.speech, undefined, 2));
-		
+	setIdOnValue("#debug",JSON.stringify(data, undefined, 2));
+	setIdOnValue("#reponse",JSON.stringify(data.result.fulfillment.speech, undefined, 2));
+
+	setIdOnValue("#action",tabEvent['action']);
 	/*affiche les arguments*/
-	if(data.result.parameters.date != null && data.result.parameters.date != "") {
-		setDate(JSON.stringify(data.result.parameters.date, undefined, 2));
-	}else{
-		setDate(JSON.stringify(DEFAULT_DATE, undefined, 2));
-	}
-	if(data.result.parameters.time != null && data.result.parameters.time != "") {
-		setHeure(JSON.stringify(data.result.parameters.time, undefined, 2));
-	}else{
-		setHeure(JSON.stringify(DEFAULT_HEURE, undefined, 2));
-	}
-	if(data.result.parameters.type != null && data.result.parameters.type != "") {
-		setType(JSON.stringify(data.result.parameters.type, undefined, 2));
-	}else{
-		setType(JSON.stringify(DEFAULT_VALUE, undefined, 2));
-	}
+	setIdOnValue("#date", tabEvent['date']);
+	setIdOnValue("#heure",tabEvent['heure']);
+	setIdOnValue("#type", tabEvent['type']);
+	setIdOnValue("#dow", tabEvent['dow']);
+
 	afficherRetour();
-	
 }
+
+function majTabEvent(data){
+	temp = JSON.stringify(data.result.action, undefined, 2);
+	temp = temp.substring(1, temp.length-1);
+	tabEvent['action'] = temp;
+
+	temp = document.getElementById("date").value;
+	temp = temp.substring(1, temp.length-1);
+	tabEvent['date'] = "2017-06-22";
+
+	temp = document.getElementById("heure").value;
+	temp = temp.substring(1, temp.length-1);
+	tabEvent['heure'] = "02:00:00";
+	if(data.result.parameters.date != null && data.result.parameters.date != "") {
+		temp = JSON.stringify(DEFAULT_DATE, undefined, 2);
+		temp = temp.substring(1, temp.length-1);
+	}else{
+		temp = DEFAULT_DATE;
+	}
+	tabEvent['date'] = temp;
+
+	if(data.result.parameters.time != null && data.result.parameters.time != "") {
+		temp = JSON.stringify(data.result.parameters.time, undefined, 2);
+		temp = temp.substring(1, temp.length-1);
+	}else{
+		temp = DEFAULT_HEURE;
+	}
+	tabEvent['heure'] = temp;
+	if(data.result.parameters.type != null) {
+		temp = JSON.stringify(data.result.parameters.type, undefined, 2);
+		temp = temp.substring(1, temp.length-1);
+	}else{
+		temp = DEFAULT_VALUE;
+	}
+	tabEvent['type'] = temp;
+	if(data.result.parameters.type != null) {
+		temp = JSON.stringify(data.result.parameters.dow, undefined, 2);
+		temp = temp.substring(1, temp.length-1);
+	}else{
+		temp = DEFAULT_VALUE;
+	}
+	tabEvent['dow'] = temp;
+}
+
 function setDebug(val) {
 	$("#debug").text(val);
 }
-
 function setAction(val) {
 	$("#action").text(val);
 }
-
 function setReponse(val) {
 	$("#reponse").text(val);
 }
-
 function setHeure(val) {
 	$("#heure").text(val);
 }
@@ -161,6 +148,12 @@ function setDate(val) {
 function setType(val) {
 	$("#type").text(val);
 }
+function setDow(val){
+	$("#dow").text(val);
+}
+function setIdOnValue(id, value){
+	$(id).text(value);
+}
 
 function afficherRetour(){
 	var textRetour = "";
@@ -169,13 +162,13 @@ function afficherRetour(){
 	textRetour += ", " + document.getElementById("date").value;
 	textRetour += ", " + document.getElementById("heure").value;
 	textRetour += ", " + document.getElementById("type").value;
+	textRetour += ", " + document.getElementById("dow").value;
 
 	$("#retourne").text(textRetour);
 }
 
-
 function annalyseEvent(){
-	if( tabEvent['action'] == "input.unknown"){//pas d'analyse puisqu'on comprend pas l'action
+	if( tabEvent['action'] == DEFAULT_ACTION){//pas d'analyse puisqu'on comprend pas l'action
 		return;
 	}
 	if( tabEvent['date'] == DEFAULT_DATE && tabEvent['heure'] == DEFAULT_HEURE){
@@ -183,15 +176,20 @@ function annalyseEvent(){
 		console.log("annalyse : ACTION IMMEDIATE");
 		valid(tabEvent);
 	}else{
+    if(tabEvent['date']== DEFAULT_DATE){
+      jourAujourdhui();
+    }
 		$.ajax({
 			// on attend avant d'aller dans constellation :'(
-			url: "updateJson.php",
+			url: "js/updateJson.php",
 			type: "POST",
 			data: {
+				file: "events.json",
 				action: tabEvent['action'],
 				date: tabEvent['date'],
 				heure: tabEvent['heure'],
 				type: tabEvent['type'],
+				dow: tabEvent['dow'],
 			}
 		}).done(function(arg) {
 			console.log(arg);
@@ -199,21 +197,7 @@ function annalyseEvent(){
 	}
 }
 
-function majTabEvent(){
-	temp = document.getElementById("action").value;
-	temp = temp.substring(1, temp.length-1);
-	tabEvent['action'] = temp;
-
-	temp = document.getElementById("date").value;
-	temp = temp.substring(1, temp.length-1);
-	tabEvent['date'] = temp;
-
-	temp = document.getElementById("heure").value;
-	temp = temp.substring(1, temp.length-1);
-	tabEvent['heure'] = temp;
-
-	temp = document.getElementById("type").value;
-	temp = temp.substring(1, temp.length-1);
-	tabEvent['type'] = temp;
-	//valid(tabEvent);
-}
+function jourAujourdhui(){
+	var aujourdhui = new Date();
+	document.getElementById("date").value = aujourdhui.getFullYear()+"-"+aujourdhui.getMonth()+"-"+aujourdhui.getDate();
+ }

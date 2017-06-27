@@ -12,13 +12,23 @@
       <link rel='stylesheet' href='jquery-ui-1.12.1.custom/jquery-ui.min.css' />
   		<link rel="stylesheet" href="AgendaStyle.css" />
 
-      <style>
-      	#calendar {
-      		max-width: 900px;
-      		margin: 0 auto;
-          color: white;
-      	}
-      </style>
+
+<style>
+	#calendar {
+		max-width: 900px;
+		margin: 0 auto;
+    color: white;
+	}
+</style>
+<script>
+/*  var constellation = $.signalR.createConstellationConsumer("http://localhost:8088", "connect", "JarvisBis");
+  constellation.connection.stateChanged(function (change) {
+    if (change.newState === $.signalR.connectionState.connected) {
+      console.log("Je suis connecté");
+    }
+  });
+  constellation.connection.start();*/
+</script>
     </head>
 
     <body>
@@ -28,8 +38,9 @@
       </header>
 
       <div id='calendar'></div>
-
       <div id="dialog-confirm" title="Voulez supprimer cet événement ?">
+        <p id="eventDate"></p>
+        <p id="eventTitle"></p>
       </div>
 
       <div id="dialog-form" title="Ajouter un rendez-vous">
@@ -40,14 +51,15 @@
           </div>
           <div class="form-group">
             <label for="end">Heure de fin :</label>
-            <input type="time" name="end" id="end" value="" class="form form-control text ui-widget-content ui-corner-all">
+            <input type="time" name="end" id="end" value="00:00" class="form form-control text ui-widget-content ui-corner-all">
           </div>
-     
+
           <!-- Allow form submission with keyboard without duplicating the dialog button -->
           <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
         </form>
       </div>
 
+      <!--<script type="text/javascript" src="http://cdn.myconstellation.io/js/Constellation-1.8.1.min.js"></script>-->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
@@ -58,4 +70,6 @@
       <script src='js/app.js'></script>
 
     </body>
+
+
  </html>

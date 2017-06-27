@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html" ; charset="utf-8" />
     <link rel="stylesheet" href="TaskStyle.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     <script src="js/api_analyse_vocale.js"> </script>
     <!--<script src="js/tableOfValue.js"></script>-->
     <script src="js/chechHour.js"></script>
@@ -21,18 +22,17 @@
         <div class="titre">Task</div>
     </header>
 
-    <script>
-      var constellation = $.signalR.createConstellationConsumer("http://localhost:8088", "connect", "JarvisBis");
+	<script>
+		var constellation = $.signalR.createConstellationConsumer("http://localhost:8088", "connect", "JarvisBis");
 
-      constellation.connection.stateChanged(function (change) {
-        if (change.newState === $.signalR.connectionState.connected) {
-        console.log("Je suis connecté");
-        }
-      });
+		constellation.connection.stateChanged(function (change) {
+		if (change.newState === $.signalR.connectionState.connected) {
+			console.log("Je suis connecté");
+		}
+		});
 
-      constellation.connection.start();
-
-      </script>
+		constellation.connection.start();
+	</script>
 
     <div>
         <input id="input" type="text"> <button id="rec">UNUSED BUTTON</button>
@@ -49,6 +49,16 @@
         <br>Retourne : <br>
         <textarea id="retourne" cols="60" rows="1"></textarea>
     </div>
+    
+	<input type="checkbox" id="cbox1" value="checkbox1">
+	Voici la première case.
+    
+    
+    
+    
 </body>
+  <script src="js/api_analyse_vocale.js"> </script>
+  <script src="js/chechHour.js"></script>
+
 
 </html>

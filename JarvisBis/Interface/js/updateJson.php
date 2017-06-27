@@ -2,7 +2,7 @@
 
 $data = json_decode(file_get_contents($_POST['file'], true), true);
 
-if (isset($_POST["end"])) {
+if ( isset($_POST["end"]) ) {
 	$dataToAdd = [
 		"title" => $_POST['action'],
 		"start" => $_POST['date']." ".$_POST['heure'],
@@ -23,7 +23,6 @@ foreach ($data as $value) {
 		exit;
 	}
 }
-
 
 $data [] = ($dataToAdd);
 

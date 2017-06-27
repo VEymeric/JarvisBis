@@ -43,7 +43,7 @@ $(document).ready(function() {
     width: 350,
     modal: true
   });
- 
+
   form = $( "#dialog-form" ).find( "form" ).on( "submit", function( event ) {
     event.preventDefault();
 
@@ -77,16 +77,23 @@ $(document).ready(function() {
     },
     defaultView : "agendaWeek",
     forceEventDuration: true,
-    defaultTimedEventDuration: "01:00:00",
+    defaultTimedEventDuration: "00:30:00",
     navLinks: true,
     eventLimit: true,
     selectable: true,
+    allDaySlot: false,
 
     // Modifier/Supprimer un event au click
     eventClick: function(event, element) {
       // Fenetre de confirmation
       $( "#dialog-confirm" ).dialog( "open" );
-      console.log(event);
+      if (event.start._i.substr(11,5) == event.end._i.substr(11,5)) {
+        $("#eventDate").html(event.start._i.substr(11,5));
+      } else {
+        $("#eventDate").html(event.start._i.substr(11,5) + " - " + event.end._i.substr(11,5));
+      }
+      $("#eventTitle").html(event.title);
+
       // Action des boutons
       $( "#dialog-confirm" ).dialog({
         buttons: {
@@ -97,14 +104,13 @@ $(document).ready(function() {
                 "start" : event.start._i,
                 "type" : event.type,
                 "end" : event.end._i
-                // add end if defined
               };
-              deleteInJson("meetings.json", eventToDelete); 
+              deleteInJson("meetings.json", eventToDelete);
             } else {
               eventToDelete = {
                 "title" : event.title,
                 "start" : event.start._i,
-                "type" : event.type
+                "type" : event.type,
               };
               deleteInJson("events.json", eventToDelete);
             }
@@ -124,18 +130,25 @@ $(document).ready(function() {
     // Ajout d'events
     eventRender: function(event, element) {
      element.attr('title', event.tip);
-    },   
+    },
     select: function(start, end, jsEvent, view) {
       // A remplacer par un popup
       // var action = prompt("Que voulez vous faire ?");
       $( "#dialog-form" ).dialog("open");
+
+      // Valeur par défaut de la popup
+      if ((moment(start).format()).substr(11,2) < 9) {
+        $('#end').val( "0" + (parseInt((moment(start).format()).substr(11,2)) + 1) +":00" );
+      } else {
+        $('#end').val( (parseInt((moment(start).format()).substr(11,2)) + 1) +":00" );
+      }
 
       $( "#dialog-form" ).dialog({
         buttons: {
           "Valider": function(){
             console.log($('#title').val());
             console.log($('#end').val());
-            
+
             title = $('#title').val();
             end   = $('#end').val();
             errors = "";
@@ -181,9 +194,6 @@ $(document).ready(function() {
           form[ 0 ].reset();
         }
       });
-
-    },
-  
+    }
   });
 });
-
