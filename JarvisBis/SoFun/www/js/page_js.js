@@ -1,3 +1,7 @@
+var address;
+var password;
+var name;
+
 function openCity(evt, cityName) {
 	
 	var i, tabcontent, tablinks;
@@ -13,3 +17,20 @@ function openCity(evt, cityName) {
 	evt.currentTarget.className += " active";
 }
   
+function connectionConstellation() {
+       var txt;
+	address = $("#IPConstellation").val();
+	password =$("#pwConstellation").val();
+	name = $("#nameConstellation").val();
+	console.log(address);
+	console.log(password);
+	console.log(name);
+	
+	
+	
+}
+    
+ 
+
+
+	

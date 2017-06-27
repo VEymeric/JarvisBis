@@ -1,0 +1,17 @@
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\obj\Debug\ConstellationPackageConsole6.csprojResolveAssemblyReference.cache
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\bin\Debug\PackageInfo.xml
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\bin\Debug\ConstellationPackageConsole6.exe.config
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\bin\Debug\ConstellationPackageConsole6.XML
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\bin\Debug\ConstellationPackageConsole6.exe
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\bin\Debug\ConstellationPackageConsole6.pdb
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\bin\Debug\ApiAiSDK.dll
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\bin\Debug\Constellation.Common.dll
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\bin\Debug\Newtonsoft.Json.dll
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\bin\Debug\nunit.framework.dll
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\bin\Debug\Constellation.Common.xml
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\bin\Debug\Newtonsoft.Json.xml
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\bin\Debug\nunit.framework.xml
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\obj\Debug\ConstellationPackageConsole6.exe
+c:\users\dylane\documents\visual studio 2017\Projects\ConstellationPackageConsole6\ConstellationPackageConsole6\obj\Debug\ConstellationPackageConsole6.pdb

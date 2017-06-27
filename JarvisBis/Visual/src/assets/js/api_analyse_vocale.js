@@ -114,6 +114,7 @@ function majTabEvent(data){
 		temp = DEFAULT_HEURE;
 	}
 	tabEvent['heure'] = temp;
+	
 	if(data.result.parameters.type != null) {
 		temp = JSON.stringify(data.result.parameters.type, undefined, 2);
 		temp = temp.substring(1, temp.length-1);
