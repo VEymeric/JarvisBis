@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	app.initialize();
+	app.initialize();     //conection a constellation
 	$("#input").keypress(function(event){
 		if(event.which==13){
 			event.preventDefault();
@@ -28,9 +28,7 @@ function setInput(text) {
 function send() {
 	var text = $("#input").val();
 
-
-	// constelation ici message call back
-	app.constellation.server.sendMessageWithSaga({ 
+	app.constellation.server.sendMessageWithSaga({    //appel du package api.ai
 		Scope: 'Package', 
 		Args: ['ConstellationPackageConsole6'] }, 
 		'ReturnResponse', 
