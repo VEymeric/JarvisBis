@@ -14,11 +14,12 @@
 		<script type="text/javascript" src="https://cdn.myconstellation.io/js/Constellation-1.8.1.min.js"></script>
 		
 		<script type="text/javascript" src="cordova.js"></script>
+		<script src="js/connect_constellation.js"> </script>
 
 		<script type="text/javascript" src="js/index.js"></script>		
 		<script type="text/javascript" src="js/page_js.js"></script>
 		<script src="js/api_constellation.js"> </script>
-		<script src="js/speech.js"> </script>  <!-- entraine des erreurs-->
+		<script src="js/speech.js"> </script> 
 
 		<title>Vania</title>
 	</head>
@@ -34,10 +35,10 @@
 		</div>
 		
 		<div class="tab">
-			<button class="tablinks" onclick="openCity(event, 'Agenda')">Agenda</button>
-			<button class="tablinks" onclick="openCity(event, 'Home')" id="defaultOpen">Home</button>
-			<button class="tablinks" onclick="openCity(event, 'Task')">Task</button>
-			<button class="tablinks" onclick="openCity(event, 'Option')"><img class="option" src="img/option_4r.png"></img></button>
+			<button class="tablinks" onclick="openTabs(event, 'Agenda')">Agenda</button>
+			<button class="tablinks" onclick="openTabs(event, 'Home')" id="defaultOpen">Home</button>
+			<button class="tablinks" onclick="openTabs(event, 'Task')">Task</button>
+			<button class="tablinks" onclick="openTabs(event, 'Option')"><img class="option" src="img/option_4r.png"></img></button>
 		</div>
 		<div id="Agenda" class="tabcontent">
 			<h1>Agenda</h1>
@@ -87,10 +88,10 @@
 			<h1>Connection à Constellation</h1> <br>
 			
 			<label class="label">Entrez l'adresse IP de votre constellation:</label> <br>
-			<input id="IPConstellation" type="texte" value="http://localhost:8088" ></input> <br>
+			<input id="IPConstellation" type="texte" value="http://192.168.137.1:8088" ></input> <br>
 			
 			<label class="label">Entrez votre mot de passe pour constellation</label> <br>
-			<input id="pwConstellation" type="text" value="connect" ></input> <br>
+			<input id="pwConstellation" type="text" value="0123" ></input> <br>
 			
 			<label class="label">Le nom que vous souhaitez donné à cette application dans votre console constellation</label> <br>
 			<input id="nameConstellation" type="texte" value="jarvis" ></input> <br>

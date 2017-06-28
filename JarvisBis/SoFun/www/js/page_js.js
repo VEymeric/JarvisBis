@@ -1,8 +1,6 @@
-var address;
-var password;
-var name;
 
-function openCity(evt, cityName) {
+
+function openTabs(evt, tabName) {
 	
 	var i, tabcontent, tablinks;
 	tabcontent = document.getElementsByClassName("tabcontent");
@@ -13,21 +11,28 @@ function openCity(evt, cityName) {
 	for (i = 0; i < tablinks.length; i++) {
 		tablinks[i].className = tablinks[i].className.replace(" active", "");
 	}
-	document.getElementById(cityName).style.display = "block";
+	document.getElementById(tabName).style.display = "block";
 	evt.currentTarget.className += " active";
 }
   
-function connectionConstellation() { //inutil si non  connection dynamique
+function connectionConstellation() { 
        var txt;
-	address = $("#IPConstellation").val();
-	password =$("#pwConstellation").val();
-	name = $("#nameConstellation").val();
-	console.log(address);
-	console.log(password);
-	console.log(name);
-	
-	
-	
+	cAddress = $("#IPConstellation").val();
+	cPassword =$("#pwConstellation").val();
+	cName = $("#nameConstellation").val();
+	console.log(cName);
+	constellation = $.signalR.createConstellationConsumer(cAddress, cPassword , cName);
+	constellation.connection.stateChanged(function (change) {
+	if (change.newState === $.signalR.connectionState.connected) {
+		alert("Connecté à constellation");
+		$('.received').text('Connected to constellation');
+	}
+	 else{
+		 alert("Déconnecté de constellation");
+		$('.received').text('Disconnected to constellation');
+	}
+});
+	constellation.connection.start(); 
 }
     
  

@@ -3,7 +3,6 @@ function startRecognition(id){
 	 // Show results in the console
 	 $(id).text(result[0]);
 	send();
-	alert("bite"); //c'est moche
     }, function(err){
 	 alert(err);
     }, {

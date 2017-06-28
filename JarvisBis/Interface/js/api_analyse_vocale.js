@@ -5,7 +5,6 @@ var DEFAULT_DATE = "aujourd'hui";
 var DEFAULT_HEURE = "maintenant";
 var DEFAULT_VALUE = "undefined";
 var DEFAULT_ACTION = "input.unknown";
-var DEFAULT_REPEAT = [];
 
 $(document).ready(function() {
 	$("#input").keypress(function(event){
@@ -39,7 +38,6 @@ function repeatDay(day){
 			}
 		}
 	}
-
 }
 
 function setInput(text) {
