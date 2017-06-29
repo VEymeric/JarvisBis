@@ -14,11 +14,15 @@
 		<script type="text/javascript" src="https://cdn.myconstellation.io/js/Constellation-1.8.1.min.js"></script>
 		
 		<script type="text/javascript" src="cordova.js"></script>
-		<script src="js/connect_constellation.js"> </script>
 
+		<script src="js/connect_constellation.js"> </script>
 		<script type="text/javascript" src="js/index.js"></script>		
 		<script type="text/javascript" src="js/page_js.js"></script>
+
 		<script src="js/api_constellation.js"> </script>
+		<script src="js/analyse_event.js"> </script>
+		<script src="js/constellation_object.js"> </script>
+
 		<script src="js/speech.js"> </script> 
 
 		<title>Vania</title>
@@ -103,7 +107,10 @@
 
       
 		
-		<script>document.getElementById("defaultOpen").click();</script>	
+		<script>
+			document.getElementById("defaultOpen").click();
+			connectionConstellation();
+		</script>	
 		
 		
 		
