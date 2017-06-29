@@ -7,6 +7,7 @@ var DEFAULT_ACTION = "input.unknown";
 $(document).ready(function() {
 	$("#input").keypress(function(event){
 		if(event.which==13){
+			event.preventDefault();
 			send();
 		}
 	});
@@ -25,20 +26,21 @@ function repJours(){
 }
 
 function setInput(text) {
+	event.preventDefault();
 	send();
 }
 
 function send() {
-	event.preventDefault();
 	var text = $("#input").val();
 	constellation.server.sendMessageWithSaga({    //appel du package api.ai
 		Scope: 'Package', 
-		Args: ['ConstellationPackageConsole6'] }, 
-		'ReturnResponse', 
+		Args: ['ApiAI'] }, 
+		'TextRequest', 
 		text, 
 		function(response) { 
 			setIdOnValue("#reponse",JSON.stringify(response.Data.result.fulfillment.speech, undefined, 2));
 			majTabEvent(response.Data);
+			console.log("bite");
 			annalyseEvent();
 		});
 	

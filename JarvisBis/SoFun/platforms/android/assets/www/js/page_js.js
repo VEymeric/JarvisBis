@@ -1,5 +1,3 @@
-
-
 function openTabs(evt, tabName) {
 	
 	var i, tabcontent, tablinks;
@@ -15,8 +13,8 @@ function openTabs(evt, tabName) {
 	evt.currentTarget.className += " active";
 }
   
-function connectionConstellation() { 
-       var txt;
+//function connectionConstellation() { 
+    /*   var txt;
 	cAddress = $("#IPConstellation").val();
 	cPassword =$("#pwConstellation").val();
 	cName = $("#nameConstellation").val();
@@ -31,9 +29,9 @@ function connectionConstellation() {
 		 alert("Déconnecté de constellation");
 		$('.received').text('Disconnected to constellation');
 	}
-});
-	constellation.connection.start(); 
-}
+});*/
+	//constellation.connection.start(); 
+//}
     
  
 

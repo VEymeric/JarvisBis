@@ -1,15 +1,26 @@
-var cAddress = "http://192.168.137.1:8088";
-var cPassword ="0123";
-var cName ="jarvis";
+var cAddress;
+var cPassword;
+var cName;
+var constellation;
 
-var  constellation = $.signalR.createConstellationConsumer(cAddress, cPassword , cName);
-constellation.connection.stateChanged(function (change) {
-	if (change.newState === $.signalR.connectionState.connected) {
-		alert("Connecté à constellation");
-		$('.received').text('Connected to constellation');
+//This function try to connect to Constellation with the settings of options's page
+function connectionConstellation() {
+	//we don't need to disconnect if we are already connected to this constellation
+	if (cAddress == $("#IPConstellation").val() && cPassword == $("#pwConstellation").val() && cName == $("#nameConstellation").val()){
+		return;
 	}
-	 else{
-		 alert("Déconnecté de constellation");
-		$('.received').text('Disconnected to constellation');
-	}
-});
+	cAddress = $("#IPConstellation").val();
+	cPassword =$("#pwConstellation").val();
+	cName = $("#nameConstellation").val();
+	constellation = $.signalR.createConstellationConsumer(cAddress, cPassword , cName);
+	constellation.connection.stateChanged(function (change) {
+		if (change.newState === $.signalR.connectionState.connected) {
+			alert("Connecté à constellation");
+		}
+		 else{
+			 alert("Déconnecté de constellation");
+		}
+	});
+
+	constellation.connection.start(); 
+}

@@ -10,9 +10,33 @@ function realiseActionWithConstellation(detected_event) {	// action constellatio
             break;
         case "Démarrer_cafetière":
             break;
-        case "Allumer_lumière":
-            console.log("lumiere allumée");
-            break;
+        case "Allumer_lumiere":
+            switch(event.type) {
+                case "rouge":
+                    constellation.server.sendMessage({ Scope: 'Package', Args: ['Hue'] }, 'SetColor', [ 2, 255, 0, 0 ]);
+                    break;
+                case "vert":
+                    constellation.server.sendMessage({ Scope: 'Package', Args: ['Hue'] }, 'SetColor', [ 1, 0, 255, 0 ]);
+                    break;
+                case "jaune":
+                    constellation.server.sendMessage({ Scope: 'Package', Args: ['Hue'] }, 'SetColor', [ 2, 200, 150, 0 ]);
+                    break;
+                case "bleu":
+                    constellation.server.sendMessage({ Scope: 'Package', Args: ['Hue'] }, 'SetColor', [ 2, 0, 0, 255 ]);
+                    break;
+                case "violet":
+                    constellation.server.sendMessage({ Scope: 'Package', Args: ['Hue'] }, 'SetColor', [ 2, 102, 0, 153 ]);
+                    break;
+                case "orange":
+                    constellation.server.sendMessage({ Scope: 'Package', Args: ['Hue'] }, 'SetColor', [ 2, 237, 127, 16 ]);
+                    break;
+                case "rose":
+                    constellation.server.sendMessage({ Scope: 'Package', Args: ['Hue'] }, 'SetColor', [ 2, 253, 108, 158 ]);
+                    break;
+                default:
+                    constellation.server.sendMessage({ Scope: 'Package', Args: ['Hue'] }, 'SetColor', [ 2, 255, 255, 255 ]);
+                    break;
+            }
         case "Eteindre_lumière":
             break;
         case "Mettre_réveil":
