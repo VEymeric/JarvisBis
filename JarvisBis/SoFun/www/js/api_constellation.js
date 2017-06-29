@@ -7,13 +7,14 @@ var DEFAULT_ACTION = "input.unknown";
 $(document).ready(function() {
 	$("#input").keypress(function(event){
 		if(event.which==13){
-			event.preventDefault();
 			send();
 		}
 	});
 });
   
 function Press() {
+				event.preventDefault();
+
 	send();
 }
 
@@ -26,7 +27,6 @@ function repJours(){
 }
 
 function setInput(text) {
-	event.preventDefault();
 	send();
 }
 
