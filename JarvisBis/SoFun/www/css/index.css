@@ -158,4 +158,8 @@ h1 {
 	to { opacity: 1.0; }
 }
  
-
+#calendar {
+	max-width: 900px;
+	margin: 0 auto;
+	color: white;
+}

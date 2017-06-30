@@ -1,71 +1,56 @@
-$(document).ready(check);
-$(document).ready(meetingRecall);
-$(document).ready(deleted);
-setInterval(check,60000);
-setInterval(deleted,60000);
-setInterval(meetingRecall,60000);
+$(document).ready(checkAll);
+setInterval(checkAll,59000);
+setInterval(globalDelete,60000);
 
-function check() {
-  $.getJSON("js/json/events.json",function(json){
-      var now  = new Date();
-      for(var i=0 ; i<json.length ; i++ ){
-        if(json[i].start != undefined){
-          var separated = json[i].start.split(" ");
-          var cut = separated[0].split("-");
-          console.log(cut[0]+" "+cut[1]+" "+cut[2]);
-          if (cut[0] == now.getFullYear() && cut[1] == now.getMonth() + 1 && cut[2] == now.getDate()) {
-            var hour = separated[1].split(":");
-            if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
-              valid(json[i]);
-            }
-          }
-        }
+function check(storageEvents, now) {
+  if(storageEvents[i].start != undefined){
+    var separated = storageEvents.start.split(" ");
+    var cut = separated.split("-");
+    console.log(cut[0]+" "+cut[1]+" "+cut[2]);
+    if (cut[0] == now.getFullYear() && cut[1] == now.getMonth() + 1 && cut[2] == now.getDate()) {
+      var hour = separated.split(":");
+      if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
+        valid(storageEvents);
       }
-    });
+    }
+  }
   }
 
-function meetingRecall(){
-  $.getJSON("js/json/meetings.json",function(json){
-      var now = new Date();
-      for(var i=0 ; i <json.length ; i++){
-        var separated = json[i].start.split(" ");
-        var cut = separated[0].split("-");
+function meetingRecall(storageMeetings, now){
+        var separated = storageMeetings.start.split(" ");
+        var cut = separated.split("-");
         if( now.getFullYear()==cut[0] && cut[1] == now.getMonth()+1 && cut[2] == now.getDate()){
-          var hour = separated[1].split(":");
+          var hour = separated.split(":");
           if( hour[0] == now.getHours() && hour[1]== now.getMinutes()+30){
-            recall(json[i]);
+            recall(storageMeetings);
           }
         }
-      }
-  });
 }
 
-function deleted(){
-  $.getJSON("js/json/events.json",function(json){globalDelete(json, "events.json")});
-  $.getJSON("js/json/meetings.json",function(json){globalDelete(json, "meetings.json")});
+function checkAll(storageAll){
+  var now = new Date();
+  for(var i=0;i<storageAll;i++){
+    if(storageAll[i].type == "rdv"){
+      meetingRecall();
+    }else{
+      eventsRecall();
+    }
+  }
 }
 
-function globalDelete(json, JSONFile){
+function globalDelete(storageAll,JSONFile){
   var paste  = new Date();
-  for(var j=0 ; j<json.length ; j++ ){
-    if( json[j].start != undefined){
-      var separated = json[j].start.split(" ");
+  for(var j=0 ; j<storageAll.length ; j++ ){
+    if( storageAll[j].start != undefined){
+      var separated = storageAll[j].start.split(" ");
       var cut = separated[0].split("-");
       if(cut[0] < paste.getFullYear() || cut[1] < paste.getMonth()+1){
-        var change = json[j];
-        json[j]=json[json.length-1];
-        json[json.length-1] = change;
-        json.pop();
-        $.ajax({
-          url: "js/php/delete.php",
-          type: "POST",
-          data: {
-            json: json,
-            file: JSONFile
-          }
-        }).done(function(arg) {
-          $('#calendar').fullCalendar('refetchEvents');
-        });
+        if(storageAll[j].title == "rdv"){
+          deleteEvent(storageAll,"meeting",storageAll[j]);
+        }else{
+          deleteEvent(storageAll,"events",storageAll[j]);
+        }
+        
       }
   }
 }

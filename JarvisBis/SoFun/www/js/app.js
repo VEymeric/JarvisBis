@@ -1,6 +1,17 @@
 $(document).ready(function() {
+  var storage = window.localStorage;
 
-  $.ajaxSetup({ cache: false });
+  var meetings = JSON.parse(storage.getItem("meetings")); 
+  var events = JSON.parse(storage.getItem("events"));
+  console.log(meetings);
+  console.log(events);
+
+  /*console.log(data);
+  console.log(storage.getItem("meetings"));
+  console.log("------------------")
+  console.log(JSON.parse(storage.getItem("meetings")));
+  console.log(JSON.parse(storage.getItem("events")));
+  console.log(storage);*/
 
   $("#colorPalette").spectrum({
     showPaletteOnly: true,
@@ -18,29 +29,44 @@ $(document).ready(function() {
     ]
   });
 
-  function deleteInJson (jsonFeed, eventToDelete) {
-    $.getJSON("js/" + jsonFeed, function(json) {
-      for (var i = 0; i <= json.length - 1; i++) {
-        if (JSON.stringify(json[i]) == JSON.stringify(eventToDelete)) {
-          var change = json[i];
-          json[i] = json[json.length -1];
-          json[json.length -1] = change;
-          json.pop();
-          $.ajax({
-            url: "php/delete.php",
-            type: "POST",
-            data: {
-              json: json,
-              file: jsonFeed
-            }
-          }).done(function(arg){
-            console.log(arg);
-            $('#calendar').fullCalendar('refetchEvents');
-          });
-          break;
-        }
+  function deleteEvent (array, arrayName, eventToDelete) {
+    for (var i = 0; i <= array.length - 1; i++) {
+      if (JSON.stringify(array[i]) == JSON.stringify(eventToDelete)) {
+        console.log("AH");
+        var change = array[i];
+        array[i] = array[array.length -1];
+        array[array.length -1] = change;
+        array.pop();
+        window.localStorage.setItem(arrayName, JSON.stringify(array));
+        $('#calendar').fullCalendar('refetchEvents');
+        break;
       }
-    });
+    }
+  }
+
+  function addEvent (array, arrayName, eventToAdd){
+    for (var i = 0; i <= array.length - 1; i++) {
+      if (JSON.stringify(array[i]) == JSON.stringify(eventToAdd)) {
+        console.log("Event exists");
+        return false;
+      }
+    }
+
+    array.push(eventToAdd);
+    window.localStorage.setItem(arrayName, JSON.stringify(array));
+    meetings = JSON.parse(storage.getItem("meetings")); 
+    events = JSON.parse(storage.getItem("events"));
+    $('#calendar').fullCalendar('refetchEvents');
+    $('#calendar').fullCalendar('rerenderEvents');
+    setTimeout(function(){
+      events = JSON.parse(storage.getItem("events"));
+      meetings = JSON.parse(storage.getItem("meetings")); 
+      $('#calendar').fullCalendar('refetchEvents');
+      $('#calendar').fullCalendar('rerenderEvents');
+      alert("Hello");
+    }, 3000);
+
+    return true;
   }
 
   // Delete event
@@ -66,20 +92,22 @@ $(document).ready(function() {
   });
 
 
+
   $('#calendar').fullCalendar({
     customButtons: {
       showHide: {
         text: 'Afficher/Masquer les events constellation',
         click: function() {
           if ($(this).hasClass("eventShown")) {
-            $('#calendar').fullCalendar('removeEventSource', "php/getEvent.php");
+              $('#calendar').fullCalendar('removeEvents', function(event) {
+                return "rdv" != event.type;
+              });
             $('#calendar').fullCalendar('refetchEvents');
             $(this).removeClass("eventShown");
           } else {
-            $('#calendar').fullCalendar('addEventSource', {
-              url: "php/getEvent.php",
-              color: "#378006"
-            });
+            for (var i = 0; i < events.length; i++) {
+              $('#calendar').fullCalendar('renderEvent', events[i], true);
+             }
             $('#calendar').fullCalendar('refetchEvents');
             $(this).addClass("eventShown");
           }
@@ -122,14 +150,14 @@ $(document).ready(function() {
                 "color" : event.color,
                 "end" : event.end._i
               };
-              deleteInJson("meetings.json", eventToDelete);
+              deleteEvent(meetings, "meetings", eventToDelete);
             } else {
               eventToDelete = {
                 "title" : event.title,
                 "start" : event.start._i,
                 "type" : event.type,
               };
-              deleteInJson("events.json", eventToDelete);
+              deleteEvent(events, "events", eventToDelete);
             }
             $( this ).dialog( "close" );
           },
@@ -142,7 +170,7 @@ $(document).ready(function() {
     },
 
     // Default event
-    events: "js/getMeetings.php",
+    events: meetings,
 
     // Add event
     eventRender: function(event, element) {
@@ -183,14 +211,23 @@ $(document).ready(function() {
             }
 
             console.log(errors);
-
+            console.log(moment(start).format());
             if (errors.length == 0) {
-              $.ajax({
+              eventToAdd = {
+                "title":title,
+                "start": moment(start).format(),
+                "type": "rdv",
+                "color": color,
+                "end": (moment(start).format()).substr(0,11) + end + ":00"
+              };
+              addEvent(meetings, "meetings", eventToAdd);
+
+              /*$.ajax({
                 // on attend avant d'aller dans constellation :'(
-                url: "php/updateJson.php",
+                url: "js/php/updateJson.php",
                 type: "POST",
                 data: {
-                  file: "json/meetings.json",
+                  file: "meetings.json",
                   action: title,
                   date: (moment(start).format()).substr(0,10),
                   heure: (moment(start).format()).substr(11,8),
@@ -201,7 +238,7 @@ $(document).ready(function() {
               }).done(function(arg) {
                 console.log(arg);
                 $('#calendar').fullCalendar('refetchEvents');
-              });
+              });*/
             }
             $( this ).dialog( "close" );
           },

@@ -7,9 +7,14 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="msapplication-tap-highlight" content="no">
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-		<link rel="stylesheet" type="text/css" href="css/index.css">
 		
-		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+		<link rel='stylesheet' href='fullcalendar-3.4.0/fullcalendar.min.css' />
+		<link rel='stylesheet' href='jquery-ui-1.12.1.custom/jquery-ui.min.css' />
+		<link rel='stylesheet' href='spectrum/spectrum.css' />
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.min.js"></script>
 		<script type="text/javascript" src="https://cdn.myconstellation.io/js/Constellation-1.8.1.min.js"></script>
 		
@@ -23,7 +28,7 @@
 		<script src="js/analyse_event.js"> </script>
 		<script src="js/constellation_object.js"> </script>
 
-		<script src="js/speech.js"> </script> 
+		<script src="js/speech.js"> </script>  -->
 
 		<title>Vania</title>
 	</head>
@@ -44,9 +49,40 @@
 			<button class="tablinks" onclick="openTabs(event, 'Task')">Task</button>
 			<button class="tablinks" onclick="openTabs(event, 'Option')"><img class="option" src="img/option_4r.png"></img></button>
 		</div>
+
 		<div id="Agenda" class="tabcontent">
 			<h1>Agenda</h1>
-		
+			<header>
+				<a href="MainPage.html" ><img class = retour src="icons/retour_1.png" alt="Icon Retour" /></a>
+				<div class = agenda>Agenda</div>
+			</header>
+
+  			<div id='calendar'></div>
+		 	
+		 	<div id="dialog-confirm" title="Voulez supprimer cet événement ?">
+				<p id="eventDate"></p>
+				<p id="eventTitle"></p>
+			</div>
+
+			<div id="dialog-form" title="Ajouter un rendez-vous">
+				<form>
+					<div class="form-group">
+						<label for="title">Titre :</label>
+						<input type="text" name="title" id="title" value="" class="form form-control text ui-widget-content ui-corner-all">
+					</div>
+						<div class="form-group">
+						<label for="end">Heure de fin :</label>
+						<input type="time" name="end" id="end" class="form form-control text ui-widget-content ui-corner-all">
+					</div>
+					<div class="form-group">
+						<label for="colorPalette">Code couleur :</label>
+						<input type='text' id="colorPalette"/>
+					</div>
+
+					<!-- Allow form submission with keyboard without duplicating the dialog button -->
+					<input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+				</form>
+			</div>
 		</div>
 
 		<div id="Home" class="tabcontent">
@@ -105,11 +141,31 @@
 		
 		
 
-      
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>-->
+		<script type="text/javascript" src="cordova.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
 		
+		<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.min.js"></script>
+		<script type="text/javascript" src="https://cdn.myconstellation.io/js/Constellation-1.8.1.min.js"></script>
+		
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src='js/moment-with-locales.min.js'></script>
+		<script src='fullcalendar-3.4.0/fullcalendar.min.js'></script>
+		<script src='fullcalendar-3.4.0/locale/fr.js'></script>
+		<script src="spectrum/spectrum.js"></script>
+		
+
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/page_js.js"></script>
+		<script src="js/api_constellation.js"> </script>
+		<script src="js/speech.js"> </script>  <!-- entraine des erreurs-->
+		<script src="js/chechHour.js"></script>
+		<script src='js/app.js'></script>
+
 		<script>
 			document.getElementById("defaultOpen").click();
-			connectionConstellation();
+			//connectionConstellation();
 		</script>	
 		
 		
