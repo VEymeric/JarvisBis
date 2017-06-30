@@ -9,23 +9,22 @@ function annalyseEvent(){
 		console.log("annalyse : ACTION IMMEDIATE");
 		realiseActionWithConstellation(tabEvent);
 	}else{
-    if(tabEvent['date']== DEFAULT_DATE){
-      jourAujourdhui();
-    }
-		$.ajax({
-			// on attend avant d'aller dans constellation :'(
-			url: "js/updateJson.php",
-			type: "POST",
-			data: {
-				file: "events.json",
-				action: tabEvent['action'],
-				date: tabEvent['date'],
-				heure: tabEvent['heure'],
-				type: tabEvent['type'],
-			}
-		}).done(function(arg) {
-			console.log(arg);
-		});
+    	if(tabEvent['date']== DEFAULT_DATE){
+     		jourAujourdhui();
+    	}
+		eventToAdd = {
+            "title": tabEvent['action'],
+            "start": tabEvent['date']+" "+tabEvent['heure'],
+            "type": tabEvent['type']
+        };
+		addEvent(events, "events", eventToAdd);
 	}
 }
 
+function jourAujourdhui(){
+	var today = new Date();
+	var month = today.getMonth()+1;
+	console.log(tabEvent['date']);
+	tabEvent['date'] = today.getFullYear()+"-"+"0"+month+"-"+today.getDate();
+	console.log(tabEvent['date']);
+}

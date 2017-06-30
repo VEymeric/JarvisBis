@@ -13,8 +13,7 @@ $(document).ready(function() {
 });
   
 function Press() {
-				event.preventDefault();
-
+	event.preventDefault();
 	send();
 }
 
@@ -60,7 +59,7 @@ function AffichageLoading(){
 	tabEvent['action'] = temp;
 
 	if(data.result.parameters.date != null && data.result.parameters.date != "") {
-		temp = JSON.stringify(DEFAULT_DATE, undefined, 2);
+		temp = JSON.stringify(data.result.parameters.date, undefined, 2);
 		temp = temp.substring(1, temp.length-1);
 	}else{
 		temp = DEFAULT_DATE;

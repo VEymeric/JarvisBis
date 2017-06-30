@@ -19,8 +19,9 @@ function check(storageEvents, now) {
 function meetingRecall(storageMeetings, now){
         var separated = storageMeetings.start.split(" ");
         var cut = separated.split("-");
-        if( now.getFullYear()==cut[0] && cut[1] == now.getMonth()+1 && cut[2] == now.getDate()){
-          var hour = separated.split(":");
+        var h2 = cut[2].split("T");
+        if( now.getFullYear()==cut[0] && cut[1] == now.getMonth()+1 && h2[0] == now.getDate()){
+          var hour = h2[1].split(":");
           if( hour[0] == now.getHours() && hour[1]== now.getMinutes()+30){
             recall(storageMeetings);
           }
@@ -38,11 +39,10 @@ function checkAll(storageAll){
   }
 }
 
-function globalDelete(storageAll,JSONFile){
+function globalDelete(storageAll){
   console.log(storageAll);
-  console.log(JSONFile);
   var paste  = new Date();
-  for(var j=0 ; j<storageAll.length ; j++ ){
+  for(var j=0 ; j<=storageAll.length -1; j++ ){
     if( storageAll[j].start != undefined){
       var separated = storageAll[j].start.split(" ");
       var cut = separated[0].split("-");
