@@ -7,18 +7,27 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="msapplication-tap-highlight" content="no">
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    	<link rel='stylesheet' href='fullcalendar-3.4.0/fullcalendar.min.css' />
+    	<link rel='stylesheet' href='jquery-ui-1.12.1.custom/jquery-ui.min.css' />
+	    <link rel='stylesheet' href='spectrum/spectrum.css' />
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 		
+
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.min.js"></script>
 		<script type="text/javascript" src="https://cdn.myconstellation.io/js/Constellation-1.8.1.min.js"></script>
 		
 		<script type="text/javascript" src="cordova.js"></script>
-		<script src="js/connect_constellation.js"> </script>
 
+		<script src="js/connect_constellation.js"> </script>
 		<script type="text/javascript" src="js/index.js"></script>		
 		<script type="text/javascript" src="js/page_js.js"></script>
+
 		<script src="js/api_constellation.js"> </script>
+		<script src="js/analyse_event.js"> </script>
+		<script src="js/constellation_object.js"> </script>
+
 		<script src="js/speech.js"> </script> 
 
 		<title>Vania</title>
@@ -103,7 +112,10 @@
 
       
 		
-		<script>document.getElementById("defaultOpen").click();</script>	
+		<script>
+			document.getElementById("defaultOpen").click();
+			connectionConstellation();
+		</script>	
 		
 		
 		

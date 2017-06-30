@@ -1,13 +1,15 @@
 function startRecognition(id){
     window.plugins.speechRecognition.startListening(function(result){
-	 // Show results in the console
-	 $(id).text(result[0]);
-	send();
-    }, function(err){
-	 alert(err);
-    }, {
-	 language: "fr-FR",
-	 showPopup: true
+		// Show results in the console
+		$(id).text(result[0]);
+		send();
+    }, 
+    function(err){
+		alert(err);
+    }, 
+    {
+		language: "fr-FR",
+		showPopup: true
     });
 }
 
@@ -15,27 +17,30 @@ function startRecognition(id){
 function startMicrophone(id){
 	window.plugins.speechRecognition.isRecognitionAvailable(function(available){
 	    if(!available){
-		 alert("Sorry, not available");
+			alert("Sorry, not available");
 	    }
 
 	    // Check if has permission to use the microphone
 	    window.plugins.speechRecognition.hasPermission(function (isGranted){
-		 if(isGranted){
-		     startRecognition(id);
-		 }else{
-		     // Request the permission
-		     window.plugins.speechRecognition.requestPermission(function (){
-			  // Request accepted, start recognition
-			  startRecognition(id);
-		     }, function (err){
-			  alert(err);
-		     });
-		 }
-	    }, function(err){
-		 alert(err);
+			if(isGranted){
+		    	startRecognition(id);
+			}else{
+		    	// Request the permission
+		    	window.plugins.speechRecognition.requestPermission(function (){
+					// Request accepted, start recognition
+					startRecognition(id);
+		     	}, 
+		     	function (err){
+			  		alert(err);
+		     	});
+		 	}
+	    }, 
+	    function(err){
+			alert(err);
 	    });
-	}, function(err){
+	}, 
+	function(err){
 	    alert(err);
-	});		
+	});
 }
 

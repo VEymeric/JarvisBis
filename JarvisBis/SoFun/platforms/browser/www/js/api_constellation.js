@@ -13,6 +13,8 @@ $(document).ready(function() {
 });
   
 function Press() {
+				event.preventDefault();
+
 	send();
 }
 
@@ -29,12 +31,11 @@ function setInput(text) {
 }
 
 function send() {
-	event.preventDefault();
 	var text = $("#input").val();
 	constellation.server.sendMessageWithSaga({    //appel du package api.ai
 		Scope: 'Package', 
-		Args: ['ConstellationPackageConsole6'] }, 
-		'ReturnResponse', 
+		Args: ['ApiAI'] }, 
+		'TextRequest', 
 		text, 
 		function(response) { 
 			setIdOnValue("#reponse",JSON.stringify(response.Data.result.fulfillment.speech, undefined, 2));
