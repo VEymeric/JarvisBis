@@ -38,7 +38,12 @@ $(document).ready(function() {
         array[array.length -1] = change;
         array.pop();
         window.localStorage.setItem(arrayName, JSON.stringify(array));
-        $('#calendar').fullCalendar('refetchEvents');
+        $('#calendar').fullCalendar('removeEvents', function(event) {
+          if ( (event.title == eventToDelete.title) && (event.start._i == eventToDelete.start) && (event.end._i == eventToDelete.end) ) {
+            return true;
+          }
+          return false;
+        });
         break;
       }
     }
@@ -51,20 +56,11 @@ $(document).ready(function() {
         return false;
       }
     }
-
+    $('#calendar').fullCalendar('renderEvent', eventToAdd, true);
     array.push(eventToAdd);
     window.localStorage.setItem(arrayName, JSON.stringify(array));
     meetings = JSON.parse(storage.getItem("meetings")); 
     events = JSON.parse(storage.getItem("events"));
-    $('#calendar').fullCalendar('refetchEvents');
-    $('#calendar').fullCalendar('rerenderEvents');
-    setTimeout(function(){
-      events = JSON.parse(storage.getItem("events"));
-      meetings = JSON.parse(storage.getItem("meetings")); 
-      $('#calendar').fullCalendar('refetchEvents');
-      $('#calendar').fullCalendar('rerenderEvents');
-      alert("Hello");
-    }, 3000);
 
     return true;
   }
@@ -99,15 +95,15 @@ $(document).ready(function() {
         text: 'Afficher/Masquer les events constellation',
         click: function() {
           if ($(this).hasClass("eventShown")) {
-              $('#calendar').fullCalendar('removeEvents', function(event) {
-                return "rdv" != event.type;
-              });
+            $('#calendar').fullCalendar('removeEvents', function(event) {
+              return "rdv" != event.type;
+            });
             $('#calendar').fullCalendar('refetchEvents');
             $(this).removeClass("eventShown");
           } else {
             for (var i = 0; i < events.length; i++) {
               $('#calendar').fullCalendar('renderEvent', events[i], true);
-             }
+            }
             $('#calendar').fullCalendar('refetchEvents');
             $(this).addClass("eventShown");
           }
@@ -177,6 +173,7 @@ $(document).ready(function() {
      element.attr('title', event.tip);
     },
     select: function(start, end, jsEvent, view) {
+      $("#errorMessage").html("");
       $( "#dialog-form" ).dialog("open");
 
       // Default end value for the new event
@@ -189,10 +186,6 @@ $(document).ready(function() {
       $( "#dialog-form" ).dialog({
         buttons: {
           "Valider": function(){
-            console.log($('#title').val());
-            console.log($('#end').val());
-            console.log($("#colorPalette").spectrum("get"));
-            console.log("rgb(" + Math.round($("#colorPalette").spectrum("get")._r) + "," + Math.round($("#colorPalette").spectrum("get")._g) + "," + Math.round($("#colorPalette").spectrum("get")._b) + ")");
 
             title  = $('#title').val();
             end    = $('#end').val();
@@ -210,8 +203,8 @@ $(document).ready(function() {
               errors = "Selectionnez une date ultérieur !";
             }
 
+            $("#errorMessage").html(errors);
             console.log(errors);
-            console.log(moment(start).format());
             if (errors.length == 0) {
               eventToAdd = {
                 "title":title,
@@ -221,26 +214,8 @@ $(document).ready(function() {
                 "end": (moment(start).format()).substr(0,11) + end + ":00"
               };
               addEvent(meetings, "meetings", eventToAdd);
-
-              /*$.ajax({
-                // on attend avant d'aller dans constellation :'(
-                url: "js/php/updateJson.php",
-                type: "POST",
-                data: {
-                  file: "meetings.json",
-                  action: title,
-                  date: (moment(start).format()).substr(0,10),
-                  heure: (moment(start).format()).substr(11,8),
-                  end: (end + ":00"),
-                  color: color,
-                  type: "rdv",
-                }
-              }).done(function(arg) {
-                console.log(arg);
-                $('#calendar').fullCalendar('refetchEvents');
-              });*/
+              $( this ).dialog( "close" );
             }
-            $( this ).dialog( "close" );
           },
           Annuler: function() {
             $( this ).dialog( "close" );

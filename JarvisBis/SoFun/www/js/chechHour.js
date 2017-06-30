@@ -14,7 +14,7 @@ function check(storageEvents, now) {
       }
     }
   }
-  }
+}
 
 function meetingRecall(storageMeetings, now){
         var separated = storageMeetings.start.split(" ");
@@ -39,6 +39,8 @@ function checkAll(storageAll){
 }
 
 function globalDelete(storageAll,JSONFile){
+  console.log(storageAll);
+  console.log(JSONFile);
   var paste  = new Date();
   for(var j=0 ; j<storageAll.length ; j++ ){
     if( storageAll[j].start != undefined){
