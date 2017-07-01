@@ -40,6 +40,7 @@ function checkAll(storageAll){
 }
 
 function globalDelete(storageAll){
+  return;
   console.log(storageAll);
   var paste  = new Date();
   for(var j=0 ; j<=storageAll.length -1; j++ ){

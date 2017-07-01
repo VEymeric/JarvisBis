@@ -7,29 +7,24 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
+        "cordova-plugin-calendar": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
-        "cordova-plugin-speechrecognition": {
+        "cordova-plugin-compat": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
-        "cordova-plugin-calendar": {
+        "cordova-plugin-speechrecognition": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },
     "dependent_plugins": {},
     "modules": [
-        {
-            "file": "plugins/cordova-plugin-speechrecognition/www/speechRecognition.js",
-            "id": "cordova-plugin-speechrecognition.SpeechRecognition",
-            "pluginId": "cordova-plugin-speechrecognition",
-            "merges": [
-                "window.plugins.speechRecognition"
-            ]
-        },
         {
             "file": "plugins/cordova-plugin-calendar/www/Calendar.js",
             "id": "cordova-plugin-calendar.Calendar",
@@ -37,12 +32,21 @@
             "clobbers": [
                 "Calendar"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-speechrecognition/www/speechRecognition.js",
+            "id": "cordova-plugin-speechrecognition.SpeechRecognition",
+            "pluginId": "cordova-plugin-speechrecognition",
+            "merges": [
+                "window.plugins.speechRecognition"
+            ]
         }
     ],
     "plugin_metadata": {
-        "cordova-plugin-whitelist": "1.3.2",
-        "cordova-plugin-speechrecognition": "1.1.2",
+        "cordova-plugin-calendar": "4.5.5",
+        "cordova-plugin-compat": "1.0.0",
         "cordova-plugin-console": "1.0.7",
-        "cordova-plugin-calendar": "4.5.5"
+        "cordova-plugin-speechrecognition": "1.1.2",
+        "cordova-plugin-whitelist": "1.3.2"
     }
 }
