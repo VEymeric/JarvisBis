@@ -35,9 +35,7 @@ function annalyseEvent(){
 		return;
 	}
 	if( tabEvent['date'] == DEFAULT_DATE && tabEvent['heure'] == DEFAULT_HEURE){
-		// c'est partie on va dans constellation
 		console.log("annalyse : ACTION IMMEDIATE");
-		realiseActionWithConstellation(tabEvent);
 	}else{
     if(tabEvent['date']== DEFAULT_DATE){
       jourAujourdhui();

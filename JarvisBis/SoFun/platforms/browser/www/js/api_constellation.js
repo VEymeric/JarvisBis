@@ -1,4 +1,5 @@
 var tabEvent = [];
+var request;
 var DEFAULT_DATE = "aujourd'hui";
 var DEFAULT_HEURE = "maintenant";
 var DEFAULT_VALUE = "undefined";
@@ -37,8 +38,7 @@ function send() {
 		'TextRequest', 
 		text, 
 		function(response) {
-			console.log(response);
-			alert('');
+			request = response;
 			setIdOnValue("#reponse",JSON.stringify(response.Data.Result.Fulfillment.Speech));
 			majTabEvent(response.Data);
 			annalyseEvent();
