@@ -1,7 +1,3 @@
-$(document).ready(checkAll);
-setInterval(checkAll,59000);
-setInterval(globalDelete,60000);
-
 function check(storageEvents, now) {
   if(storageEvents[i].start != undefined){
     var separated = storageEvents.start.split(" ");
@@ -28,78 +24,15 @@ function meetingRecall(storageMeetings, now){
         }
 }
 
-function checkAll(storageAll){
+function checkAll(storageMeetings,storageEvents){
   var now = new Date();
-  for(var i=0;i<storageAll;i++){
-    if(storageAll[i].type == "rdv"){
-      meetingRecall();
-    }else{
-      eventsRecall();
-    }
-  }
-}
-
-function globalDelete(storageAll){
-  console.log(storageAll);
-  var paste  = new Date();
-  for(var j=0 ; j<=storageAll.length -1; j++ ){
-    if( storageAll[j].start != undefined){
-      var separated = storageAll[j].start.split(" ");
-      var cut = separated[0].split("-");
-      if(cut[0] < paste.getFullYear() || cut[1] < paste.getMonth()+1){
-        if(storageAll[j].title == "rdv"){
-          deleteEvent(storageAll,"meeting",storageAll[j]);
-        }else{
-          deleteEvent(storageAll,"events",storageAll[j]);
-        }
-        
-      }
-  }
-}
-}
-
-function valid(event) {
-    console.log("action : "+ event.action);
-    switch (event.action) {
-        case "Allumer_télévision":
-            break;
-        case "Eteindre_télévision":
-            break;
-        case "Faire_café":
-            console.log("Faire café");
-            break;
-        case "Démarrer_cafetière":
-            break;
-        case "Allumer_lumière":
-            console.log("lumiere allumée");
-            break;
-        case "Eteindre_lumière":
-            break;
-        case "Mettre_réveil":
-            break;
-        case "Monter_vollet":
-            break;
-        case "Baisser_vollet":
-            break;
-        case "Augmenter_chauffage":
-
-            break;
-        case "Diminuer_chauffage":
-            break;
-
-        case "Monter_volume":
-            constellation.server.sendMessage({ Scope: 'Package', Args: ['WindowsControl'] }, 'VolumeUp', {});
-            break;
-
-        case "Baisser_volume":
-            constellation.server.sendMessage({ Scope: 'Package', Args: ['WindowsControl'] }, 'VolumeDown', {});
-            break;
-        default:
-            console.log("Action inexistante. Rééssayez.");
-            break;
-    }
+  console.log(" checkAll ");
+  console.log(storageMeetings + " MEETINGS ");
+  console.log(storageEvents + " EVENTS ");
+  for(var i=0;i<storageMeetings;i++){meetingRecall(storageAll[i],now);}
+  for(var j=0;j<storageEvents;j++){eventsRecall(storageAll[i],now);}
 }
 
 function recall(meeting){
-  // pour Simon faire renvoyer par constellation le type du rendez vous
+  console.log(" Evenements va se passer dans 30 minutes : " + meeting);
 }

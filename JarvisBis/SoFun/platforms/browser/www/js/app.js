@@ -2,8 +2,10 @@ var storage = window.localStorage;
 
 var meetings = JSON.parse(storage.getItem("meetings")); 
 var events = JSON.parse(storage.getItem("events"));
-console.log(meetings);
-console.log(events);
+
+console.log(constellation);
+checkAll(meetings,events);
+
 
 /*console.log(data);
 console.log(storage.getItem("meetings"));
@@ -30,18 +32,28 @@ $("#colorPalette").spectrum({
   ]
 });
 
+function repeat59000(){
+  checkAll(meetings,events);
+}
+  setInterval(repeat59000,59000);
+
 function deleteEvent (array, arrayName, eventToDelete) {
   for (var i = 0; i <= array.length - 1; i++) {
     if (JSON.stringify(array[i]) == JSON.stringify(eventToDelete)) {
-      console.log("AH");
       var change = array[i];
       array[i] = array[array.length -1];
       array[array.length -1] = change;
       array.pop();
       window.localStorage.setItem(arrayName, JSON.stringify(array));
       $('#calendar').fullCalendar('removeEvents', function(event) {
-        if ( (event.title == eventToDelete.title) && (event.start._i == eventToDelete.start) && (event.end._i == eventToDelete.end) ) {
-          return true;
+        if (eventToDelete.type == "rdv" ) {
+          if ( (event.title == eventToDelete.title) && (event.start._i == eventToDelete.start) && (event.end._i == eventToDelete.end) ) {
+            return true;
+          }
+        } else {
+          if ( (event.title == eventToDelete.title) && (event.start._i == eventToDelete.start) ) {
+            return true;
+          }
         }
         return false;
       });

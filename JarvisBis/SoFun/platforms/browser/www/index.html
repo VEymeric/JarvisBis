@@ -56,7 +56,6 @@
 		<div id="Agenda" class="tabcontent">
 			<h1>Agenda</h1>
 			<header>
-				<a href="MainPage.html" ><img class = retour src="icons/retour_1.png" alt="Icon Retour" /></a>
 				<div class = agenda>Agenda</div>
 			</header>
 
@@ -131,7 +130,7 @@
 			<h1>Connection à Constellation</h1> <br>
 			
 			<label class="label">Entrez l'adresse IP de votre constellation:</label> <br>
-			<input id="IPConstellation" type="texte" value="http://192.168.137.1:8088" ></input> <br>
+			<input id="IPConstellation" type="texte" value="http://localhost:8088" ></input> <br>
 			
 			<label class="label">Entrez votre mot de passe pour constellation</label> <br>
 			<input id="pwConstellation" type="text" value="0123" ></input> <br>
@@ -158,18 +157,17 @@
 		<script src='fullcalendar-3.4.0/locale/fr.js'></script>
 		<script src="spectrum/spectrum.js"></script>
 		
-
+		<script src="js/connect_constellation.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript" src="js/page_js.js"></script>
-	
 		<script src="js/speech.js"> </script>  <!-- entraine des erreurs-->
 		<!--<script src="js/api_analyse_vocale.js" </script>-->
 		<script src="js/constellation_object.js"> </script>
 		<script src="js/chechHour.js"></script>
+		<script src="js/GetGoogleEvents.js"></script>
 		<script src='js/app.js'></script>
 		<script src="js/analyse_event.js"> </script>
 		<script src="js/api_constellation.js"> </script>
-		<script src="js/connect_constellation.js"></script>
 
 		<script>
 			document.getElementById("defaultOpen").click();
