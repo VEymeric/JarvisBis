@@ -23,7 +23,7 @@ function GetGoogleCalendarEvents(){
       console.log("abracadabra");
       for(var i=0; i<sobj.Value.length; ++i){
         if(compareToMeetingg(sobj.Value[i])){
-          console.log(" google GoogleCalendar");
+          addEvent(meetings,"meetings",sobj.Value[i]);
         }
       }     
   });

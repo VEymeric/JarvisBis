@@ -39,6 +39,7 @@ $("#colorPalette").spectrum({
 });
 
 function repeat59000(){
+  console.log(" taille de events : "+ events.length);
   checkAll(meetings,events);
 }
   setInterval(repeat59000,59000);
