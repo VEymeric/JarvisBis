@@ -99,3 +99,9 @@ function textToSpeech(readtext){
             alert(reason);
         });
 }
+
+function jourAujourdhui(){
+	var today = new Date();
+ 	var month = today.getMonth()+1;
+	tabEvent['date'] = today.getFullYear()+"-"+"0"+month+"-"+today.getDate();
+}

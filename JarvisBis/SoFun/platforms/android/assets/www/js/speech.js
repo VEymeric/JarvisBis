@@ -3,6 +3,8 @@ function startRecognition(id){
 		// Show results in the console
 		$(id).text(result[0]);
 		send();
+		textToSpeech(data.result.fulfillment.speech);
+
     }, 
     function(err){
 		alert(err);
@@ -40,7 +42,7 @@ function startMicrophone(id){
 	    });
 	}, 
 	function(err){
-	    alert(err);
+	    alert(err + " : This application is for android. Sorry !");
 	});
 }
 

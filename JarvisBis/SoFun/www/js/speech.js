@@ -42,7 +42,7 @@ function startMicrophone(id){
 	    });
 	}, 
 	function(err){
-	    alert(err);
+	    alert(err + " : This application is for android. Sorry !");
 	});
 }
 
