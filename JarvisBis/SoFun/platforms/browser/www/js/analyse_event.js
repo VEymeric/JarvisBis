@@ -39,20 +39,12 @@ function annalyseEvent(){
     if(tabEvent['date']== DEFAULT_DATE){
       jourAujourdhui();
     }
-		$.ajax({
-			// on attend avant d'aller dans constellation :'(
-			url: "js/updateJson.php",
-			type: "POST",
-			data: {
-				file: "events.json",
-				action: tabEvent['action'],
-				date: tabEvent['date'],
-				heure: tabEvent['heure'],
-				type: tabEvent['type'],
-			}
-		}).done(function(arg) {
-			console.log(arg);
-		});
+	data= {
+		title: tabEvent['action'],
+		start: tabEvent['date']+" "+tabEvent['heure'],
+		type: tabEvent['type']
+		}
+		addEvent(events,"events",data);
 	}
 }
 
@@ -98,4 +90,10 @@ function textToSpeech(readtext){
         }, function (reason) {
             alert(reason);
         });
+}
+
+function jourAujourdhui(){
+	var today = new Date();
+ 	var month = today.getMonth()+1;
+	tabEvent['date'] = today.getFullYear()+"-"+"0"+month+"-"+today.getDate();
 }

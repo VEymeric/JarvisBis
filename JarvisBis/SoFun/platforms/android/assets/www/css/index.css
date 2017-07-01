@@ -224,7 +224,13 @@ h1 {
 }
  
 #calendar {
+<<<<<<< HEAD
 	width: 100%;
 	margin: auto;
 	color: black;
+=======
+	max-width: 900px;
+	margin: 0 auto;
+	color: white;
+>>>>>>> 04409c95a0fab20a0ca2b8302e1edbbbcb81536d
 }

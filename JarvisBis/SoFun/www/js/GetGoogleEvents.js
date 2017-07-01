@@ -17,15 +17,13 @@ function compareToMeetingg(sobj){
     return true ;
 }
 
-function GetGoogleCalendarEvents() 
-{
+function GetGoogleCalendarEvents(){
   console.log(constellation);
   constellation.client.registerStateObjectLink("LAPTOP-OB16JBC9_UI", "GoogleCalendar", "Events", "*", function (sobj) {
       console.log("abracadabra");
-      for(var i=0; i<sobj.Value.length; ++i)
-      {
+      for(var i=0; i<sobj.Value.length; ++i){
         if(compareToMeetingg(sobj.Value[i])){
-          console.log(" google GoogleCalendar");
+          addEvent(meetings,"meetings",sobj.Value[i]);
         }
       }     
   });

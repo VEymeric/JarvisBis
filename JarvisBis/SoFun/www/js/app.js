@@ -1,11 +1,18 @@
+setTimeout(function(){
+  GetGoogleCalendarEvents(); 
+}, 3000);
+
 var storage = window.localStorage;
+
+if (!storage.length) {
+  storage.setItem("meetings","[]");
+  storage.setItem("events","[]");
+}
 
 var meetings = JSON.parse(storage.getItem("meetings")); 
 var events = JSON.parse(storage.getItem("events"));
 
-console.log(constellation);
-checkAll(meetings,events);
-
+// Add google calendar meetings
 
 /*console.log(data);
 console.log(storage.getItem("meetings"));
@@ -13,7 +20,6 @@ console.log("------------------")
 console.log(JSON.parse(storage.getItem("meetings")));
 console.log(JSON.parse(storage.getItem("events")));
 console.log(storage);*/
-
 
 
 $("#colorPalette").spectrum({
@@ -33,6 +39,7 @@ $("#colorPalette").spectrum({
 });
 
 function repeat59000(){
+  console.log(" taille de events : "+ events.length);
   checkAll(meetings,events);
 }
   setInterval(repeat59000,59000);
@@ -63,7 +70,14 @@ function deleteEvent (array, arrayName, eventToDelete) {
 }
 
 function addEvent (array, arrayName, eventToAdd){
-  if( array.length != null){
+ /* if(array == null){
+    $('#calendar').fullCalendar('renderEvent', eventToAdd, true);
+  array.push(eventToAdd);
+  window.localStorage.setItem(arrayName, JSON.stringify(array));
+  meetings = JSON.parse(storage.getItem("meetings")); 
+  events = JSON.parse(storage.getItem("events"));
+  return true;
+  }*/
   for (var i = 0; i <= array.length - 1; i++) {
     if (JSON.stringify(array[i]) == JSON.stringify(eventToAdd)) {
       console.log("Event exists");
@@ -77,14 +91,6 @@ function addEvent (array, arrayName, eventToAdd){
   events = JSON.parse(storage.getItem("events"));
 
   return true;
-}else {
-    $('#calendar').fullCalendar('renderEvent', eventToAdd, true);
-  array.push(eventToAdd);
-  window.localStorage.setItem(arrayName, JSON.stringify(array));
-  meetings = JSON.parse(storage.getItem("meetings")); 
-  events = JSON.parse(storage.getItem("events"));
-
-}
 }
 
 // Delete event
@@ -139,7 +145,7 @@ $('#calendar').fullCalendar({
   },
   defaultView : "agendaWeek",
   forceEventDuration: true,
-  defaultTimedEventDuration: "00:30:00",
+  defaultTimedEventDuration: "00:45:00",
   navLinks: true,
   eventLimit: true,
   selectable: true,
@@ -235,6 +241,7 @@ $('#calendar').fullCalendar({
               "color": color,
               "end": (moment(start).format()).substr(0,11) + end + ":00"
             };
+            console.log(meetings);
             addEvent(meetings, "meetings", eventToAdd);
             $( this ).dialog( "close" );
           }

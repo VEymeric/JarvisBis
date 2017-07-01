@@ -2,10 +2,15 @@ var storage = window.localStorage;
 
 var meetings = JSON.parse(storage.getItem("meetings")); 
 var events = JSON.parse(storage.getItem("events"));
+<<<<<<< HEAD
 
 console.log(constellation);
 checkAll(meetings,events);
 
+=======
+console.log(meetings);
+console.log(events);
+>>>>>>> 04409c95a0fab20a0ca2b8302e1edbbbcb81536d
 
 /*console.log(data);
 console.log(storage.getItem("meetings"));
@@ -32,6 +37,7 @@ $("#colorPalette").spectrum({
   ]
 });
 
+<<<<<<< HEAD
 function repeat59000(){
   checkAll(meetings,events);
 }
@@ -40,12 +46,19 @@ function repeat59000(){
 function deleteEvent (array, arrayName, eventToDelete) {
   for (var i = 0; i <= array.length - 1; i++) {
     if (JSON.stringify(array[i]) == JSON.stringify(eventToDelete)) {
+=======
+function deleteEvent (array, arrayName, eventToDelete) {
+  for (var i = 0; i <= array.length - 1; i++) {
+    if (JSON.stringify(array[i]) == JSON.stringify(eventToDelete)) {
+      console.log("AH");
+>>>>>>> 04409c95a0fab20a0ca2b8302e1edbbbcb81536d
       var change = array[i];
       array[i] = array[array.length -1];
       array[array.length -1] = change;
       array.pop();
       window.localStorage.setItem(arrayName, JSON.stringify(array));
       $('#calendar').fullCalendar('removeEvents', function(event) {
+<<<<<<< HEAD
         if (eventToDelete.type == "rdv" ) {
           if ( (event.title == eventToDelete.title) && (event.start._i == eventToDelete.start) && (event.end._i == eventToDelete.end) ) {
             return true;
@@ -54,11 +67,16 @@ function deleteEvent (array, arrayName, eventToDelete) {
           if ( (event.title == eventToDelete.title) && (event.start._i == eventToDelete.start) ) {
             return true;
           }
+=======
+        if ( (event.title == eventToDelete.title) && (event.start._i == eventToDelete.start) && (event.end._i == eventToDelete.end) ) {
+          return true;
+>>>>>>> 04409c95a0fab20a0ca2b8302e1edbbbcb81536d
         }
         return false;
       });
       break;
     }
+<<<<<<< HEAD
   }
 }
 
@@ -104,6 +122,44 @@ $( "#dialog-form" ).dialog({
   modal: true
 });
 
+=======
+  }
+}
+
+function addEvent (array, arrayName, eventToAdd){
+  for (var i = 0; i <= array.length - 1; i++) {
+    if (JSON.stringify(array[i]) == JSON.stringify(eventToAdd)) {
+      console.log("Event exists");
+      return false;
+    }
+  }
+  $('#calendar').fullCalendar('renderEvent', eventToAdd, true);
+  array.push(eventToAdd);
+  window.localStorage.setItem(arrayName, JSON.stringify(array));
+  meetings = JSON.parse(storage.getItem("meetings")); 
+  events = JSON.parse(storage.getItem("events"));
+
+  return true;
+}
+
+// Delete event
+$( "#dialog-confirm" ).dialog({
+  resizable: false,
+  height: "auto",
+  width: 400,
+  modal: true,
+  autoOpen: false,
+});
+
+// Add event
+$( "#dialog-form" ).dialog({
+  autoOpen: false,
+  height: 400,
+  width: 350,
+  modal: true
+});
+
+>>>>>>> 04409c95a0fab20a0ca2b8302e1edbbbcb81536d
 form = $( "#dialog-form" ).find( "form" ).on( "submit", function( event ) {
   event.preventDefault();
 
@@ -248,4 +304,8 @@ $('#calendar').fullCalendar({
       }
     });
   }
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 04409c95a0fab20a0ca2b8302e1edbbbcb81536d
