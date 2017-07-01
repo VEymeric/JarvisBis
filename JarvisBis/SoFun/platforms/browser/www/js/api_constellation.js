@@ -42,7 +42,8 @@ function send() {
 			setIdOnValue("#reponse",JSON.stringify(response.Data.Result.Fulfillment.Speech));
 			majTabEvent(response.Data);
 			annalyseEvent();
-		});
+		}
+	);
 	
 	AffichageLoading();
 	};

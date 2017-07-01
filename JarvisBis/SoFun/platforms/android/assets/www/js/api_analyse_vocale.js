@@ -7,7 +7,7 @@
 
 
 
-
+/*
 
 var accessToken = "e552149f515940da96f8d0858f28c806";
 var baseUrl = "https://api.api.ai/v1/";
@@ -205,9 +205,5 @@ function annalyseEvent(){
 			console.log(arg);
 		});
 	}
-}
+}*/
 
-function jourAujourdhui(){
-	var aujourdhui = new Date();
-	document.getElementById("date").value = aujourdhui.getFullYear()+"-"+aujourdhui.getMonth()+"-"+aujourdhui.getDate();
- }
