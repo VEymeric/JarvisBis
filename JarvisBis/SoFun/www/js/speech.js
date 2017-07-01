@@ -3,6 +3,8 @@ function startRecognition(id){
 		// Show results in the console
 		$(id).text(result[0]);
 		send();
+		textToSpeech(data.result.fulfillment.speech);
+
     }, 
     function(err){
 		alert(err);

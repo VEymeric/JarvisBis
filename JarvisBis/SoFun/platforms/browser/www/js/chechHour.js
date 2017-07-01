@@ -6,7 +6,7 @@ function check(storageEvents, now) {
     if (cut[0] == now.getFullYear() && cut[1] == now.getMonth() + 1 && cut[2] == now.getDate()) {
       var hour = separated.split(":");
       if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
-        valid(storageEvents);
+        //valid(storageEvents);
       }
     }
   }
