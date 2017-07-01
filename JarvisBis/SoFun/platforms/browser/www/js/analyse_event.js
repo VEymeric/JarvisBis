@@ -39,20 +39,12 @@ function annalyseEvent(){
     if(tabEvent['date']== DEFAULT_DATE){
       jourAujourdhui();
     }
-		$.ajax({
-			// on attend avant d'aller dans constellation :'(
-			url: "js/updateJson.php",
-			type: "POST",
-			data: {
-				file: "events.json",
-				action: tabEvent['action'],
-				date: tabEvent['date'],
-				heure: tabEvent['heure'],
-				type: tabEvent['type'],
-			}
-		}).done(function(arg) {
-			console.log(arg);
-		});
+	data= {
+		title: tabEvent['action'],
+		start: tabEvent['date']+" "+tabEvent['heure'],
+		type: tabEvent['type']
+		}
+		addEvent(events,"events",data);
 	}
 }
 

@@ -1,11 +1,14 @@
 var storage = window.localStorage;
 
+if (!storage.length) {
+  storage.setItem("meetings","[]");
+  storage.setItem("events","[]");
+}
+
 var meetings = JSON.parse(storage.getItem("meetings")); 
 var events = JSON.parse(storage.getItem("events"));
 
-console.log(constellation);
-checkAll(meetings,events);
-
+// Add google calendar meetings
 
 /*console.log(data);
 console.log(storage.getItem("meetings"));
@@ -13,7 +16,6 @@ console.log("------------------")
 console.log(JSON.parse(storage.getItem("meetings")));
 console.log(JSON.parse(storage.getItem("events")));
 console.log(storage);*/
-
 
 
 $("#colorPalette").spectrum({
