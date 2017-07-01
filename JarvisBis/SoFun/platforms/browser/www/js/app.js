@@ -63,6 +63,7 @@ function deleteEvent (array, arrayName, eventToDelete) {
 }
 
 function addEvent (array, arrayName, eventToAdd){
+  if( array.length != null){
   for (var i = 0; i <= array.length - 1; i++) {
     if (JSON.stringify(array[i]) == JSON.stringify(eventToAdd)) {
       console.log("Event exists");
@@ -76,6 +77,14 @@ function addEvent (array, arrayName, eventToAdd){
   events = JSON.parse(storage.getItem("events"));
 
   return true;
+}else {
+    $('#calendar').fullCalendar('renderEvent', eventToAdd, true);
+  array.push(eventToAdd);
+  window.localStorage.setItem(arrayName, JSON.stringify(array));
+  meetings = JSON.parse(storage.getItem("meetings")); 
+  events = JSON.parse(storage.getItem("events"));
+
+}
 }
 
 // Delete event
