@@ -3,7 +3,7 @@
 <html>
 
 	<head>
-		<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval';">
+		<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval';img-src 'self' data:">
 		<meta name="format-detection" content="telephone=no">
 		<meta name="msapplication-tap-highlight" content="no">
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -15,9 +15,9 @@
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 
 		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    	<link rel='stylesheet' href='fullcalendar-3.4.0/fullcalendar.min.css' />
-    	<link rel='stylesheet' href='jquery-ui-1.12.1.custom/jquery-ui.min.css' />
-	    <link rel='stylesheet' href='spectrum/spectrum.css' />
+		<link rel='stylesheet' href='fullcalendar-3.4.0/fullcalendar.min.css' />
+		<link rel='stylesheet' href='jquery-ui-1.12.1.custom/jquery-ui.min.css' />
+		<link rel='stylesheet' href='spectrum/spectrum.css' />
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 		
 
@@ -31,7 +31,6 @@
 		<script type="text/javascript" src="js/index.js"></script>		
 		<script type="text/javascript" src="js/page_js.js"></script>
 -->
-		
 
 		<title>Vania</title>
 	</head>
@@ -45,7 +44,8 @@
 				
 			</div>
 		</div>
-		
+
+		<script type="text/javascript" src="js/index.js"></script>
 		<div class="tab">
 			<button class="tablinks" onclick="openTabs(event, 'Agenda')">Agenda</button>
 			<button class="tablinks" onclick="openTabs(event, 'Home')" id="defaultOpen">Home</button>
@@ -54,11 +54,7 @@
 		</div>
 
 		<div id="Agenda" class="tabcontent">
-			<h1>Agenda</h1>
-			<header>
-				<div class = agenda>Agenda</div>
-			</header>
-
+			
   			<div id='calendar'></div>
 		 	
 		 	<div id="dialog-confirm" title="Voulez supprimer cet événement ?">
@@ -91,7 +87,7 @@
 			<div class="card-title">
 				<p>Bienvenue sur Vania.</p>
 				<p >Que pouvons-nous faire pour vous aujourd'hui?</p> 
-				<div id="message">[REQUEST]</div>
+				<div id="message"></div>
 			</div>
 				
 			<button onclick="startMicrophone(input)">
@@ -104,40 +100,34 @@
 		<div id="Task" class="tabcontent">
 		
 			<form  onsubmit="Press()">
-				<label class="label">Entrez l'action :</label> <br> 
-				<textarea id="input" type="texte" name="fname"rows="3" clearInput ="true" ></textarea> <br>
+				<textarea id="input" type="texte" name="fname"rows="4" cols="24" placeholder="Entrez l'action :"></textarea> <br><br>
 				<button  type="submit">Envoyer</button><br><br>
 			</form>
 			
-				<textarea disabled id="reponse" name="reponse" cols="30" rows="2" ></textarea><br>
+				<textarea disabled id="reponse" name="reponse" cols="24" rows="3" ></textarea><br>
 		
-				<input id="checkbox" type="checkbox" onclick="repJours()"></input>
-				<label>Répéter tout les</label>
 				
-				<select id= "listeJours">
-					<option value="Lun">Lundi</option>
-					<option value="Mar">Mardi</option>
-					<option value="Mer" >Mercredi</option>
-					<option value="Jeu">Jeudi</option>
-					<option value="Ven" >Vendredi</option>
-					<option value="Sam" >Samedi</option>
-					<option value="Dim" >Dimanche</option>
-				</select>
 		</div>
 		
 		<div id="Option" class="tabcontent">
 			
 			<h1>Connection à Constellation</h1> <br>
 			
-			<label class="label">Entrez l'adresse IP de votre constellation:</label> <br>
-			<input id="IPConstellation" type="texte" value="http://localhost:8088" ></input> <br>
+			<div>
+			<label class="label">Adresse IP de votre constellation:</label> <br>
+			<input id="IPConstellation" type="texte" value="http://localhost:8088" ></input> <br><br>
+			</div>
 			
-			<label class="label">Entrez votre mot de passe pour constellation</label> <br>
-			<input id="pwConstellation" type="text" value="0123" ></input> <br>
+			<div>
+			<label class="label">Mot de passe pour constellation:</label> <br>
+			<input id="pwConstellation" type="text" value="0123" ></input> <br><br>
+			</div>
 			
-			<label class="label">Le nom que vous souhaitez donné à cette application dans votre console constellation</label> <br>
-			<input id="nameConstellation" type="texte" value="jarvis" ></input> <br>
-
+			<div>
+			<label class="label">Nom de cette application dans votre console constellation:</label> <br>
+			<input id="nameConstellation" type="texte" value="jarvis" ></input> <br><br>
+			</div>
+			
 			<button  onclick="connectionConstellation()">Envoyer</button><br>
 		</div>
 		
@@ -157,19 +147,20 @@
 		<script src='fullcalendar-3.4.0/locale/fr.js'></script>
 		<script src="spectrum/spectrum.js"></script>
 		
+		
+		<script src="js/index.js"></script>
 		<script src="js/connect_constellation.js"></script>
-		<script type="text/javascript" src="js/index.js"></script>
-		<script type="text/javascript" src="js/page_js.js"></script>
-		<script src="js/speech.js"> </script>  <!-- entraine des erreurs-->
-		<!--<script src="js/api_analyse_vocale.js" </script>-->
-		<script src="js/chechHour.js"></script>
+		<script src="js/page_js.js"></script>
+		<script src="js/speech.js"> </script> 
+		
 		<script src="js/GetGoogleEvents.js"></script>
+		<script src="js/chechHour.js"></script>
 		<script src='js/app.js'></script>
 		<script src="js/analyse_event.js"> </script>
-		<script src="js/chechHour.js"></script>
-
+		
+	
 		<script src="js/api_constellation.js"> </script>
-
+		
 		<script>
 			document.getElementById("defaultOpen").click();
 			connectionConstellation();

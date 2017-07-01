@@ -15,7 +15,6 @@ var app = {
 		document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);*/
 	},
 	
-	// non dynamique donc fonctionnel
 	//constellation: $.signalR.createConstellationConsumer("http://192.168.137.1:8088", "0123" ,  "jarvis"),   
    
 	onDeviceReady: function() {	

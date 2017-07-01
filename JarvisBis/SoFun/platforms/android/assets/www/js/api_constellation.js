@@ -1,4 +1,5 @@
 var tabEvent = [];
+var request;
 var DEFAULT_DATE = "aujourd'hui";
 var DEFAULT_HEURE = "maintenant";
 var DEFAULT_VALUE = "undefined";
@@ -13,8 +14,7 @@ $(document).ready(function() {
 });
   
 function Press() {
-				event.preventDefault();
-
+	event.preventDefault();
 	send();
 }
 
@@ -32,13 +32,14 @@ function setInput(text) {
 
 function send() {
 	var text = $("#input").val();
-	constellation.server.sendMessageWithSaga({    //appel du package api.ai
+	constellation.server.sendMessageWithSaga({    //appel du package TheBrain
 		Scope: 'Package', 
-		Args: ['ApiAI'] }, 
+		Args: ['TheBrain'] }, 
 		'TextRequest', 
 		text, 
-		function(response) { 
-			setIdOnValue("#reponse",JSON.stringify(response.Data.result.fulfillment.speech, undefined, 2));
+		function(response) {
+			request = response;
+			setIdOnValue("#reponse",JSON.stringify(response.Data.Result.Fulfillment.Speech));
 			majTabEvent(response.Data);
 			annalyseEvent();
 		});
@@ -52,33 +53,5 @@ function setIdOnValue(id, value){
 
 function AffichageLoading(){
  	setIdOnValue("#reponse","Loading...");
- }
- 
- function majTabEvent(data){
-	temp = JSON.stringify(data.result.action, undefined, 2);
-	temp = temp.substring(1, temp.length-1);
-	tabEvent['action'] = temp;
-
-	if(data.result.parameters.date != null && data.result.parameters.date != "") {
-		temp = JSON.stringify(DEFAULT_DATE, undefined, 2);
-		temp = temp.substring(1, temp.length-1);
-	}else{
-		temp = DEFAULT_DATE;
-	}
-	tabEvent['date'] = temp;
-
-	if(data.result.parameters.time != null && data.result.parameters.time != "") {
-		temp = JSON.stringify(data.result.parameters.time, undefined, 2);
-		temp = temp.substring(1, temp.length-1);
-	}else{
-		temp = DEFAULT_HEURE;
-	}
-	tabEvent['heure'] = temp;
-	if(data.result.parameters.type != null) {
-		temp = JSON.stringify(data.result.parameters.type, undefined, 2);
-		temp = temp.substring(1, temp.length-1);
-	}else{
-		temp = DEFAULT_VALUE;
-	}
-	tabEvent['type'] = temp;
 }
+ 
