@@ -1,3 +1,7 @@
+setTimeout(function(){
+  GetGoogleCalendarEvents(); 
+}, 3000);
+
 var storage = window.localStorage;
 
 if (!storage.length) {
@@ -141,7 +145,7 @@ $('#calendar').fullCalendar({
   },
   defaultView : "agendaWeek",
   forceEventDuration: true,
-  defaultTimedEventDuration: "00:30:00",
+  defaultTimedEventDuration: "00:45:00",
   navLinks: true,
   eventLimit: true,
   selectable: true,

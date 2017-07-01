@@ -7,6 +7,7 @@ function check(storageEvents, now) {
       var hour = separated.split(":");
       if(hour[0] == now.getHours() && hour[1] == now.getMinutes()){
         //valid(storageEvents);
+
       }
     }
   }
@@ -34,5 +35,7 @@ function checkAll(storageMeetings,storageEvents){
 }
 
 function recall(meeting){
-  console.log(" Evenements va se passer dans 30 minutes : " + meeting);
+  constellation.server.sendMessage({
+    Scope : 'Package', Args:['PushBullet']
+  }, 'PushNote',[meeting.title,meeing.start,'Device']);
 }
