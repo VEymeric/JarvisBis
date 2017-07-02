@@ -1,0 +1,17 @@
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\bin\Debug\PackageInfo.xml
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\bin\Debug\ApiAI.exe.config
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\bin\Debug\ApiAI.xml
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\bin\Debug\ApiAI.exe
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\bin\Debug\ApiAI.pdb
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\bin\Debug\ApiAiSDK.dll
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\bin\Debug\Constellation.Common.dll
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\bin\Debug\nunit.framework.dll
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\bin\Debug\Constellation.Common.xml
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\bin\Debug\nunit.framework.xml
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\obj\Debug\ApiAI.csprojResolveAssemblyReference.cache
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\obj\Debug\ApiAI.exe
+C:\Users\Dylane\Documents\Visual Studio 2017\Projects\Api.ai version 1.0.0\ApiAI\obj\Debug\ApiAI.pdb
