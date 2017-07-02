@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GoogleCalendar</name>
+    </assembly>
+    <members>
+        <member name="T:GoogleCalendar.CalendarProgram">
+            <summary>
+            Connect the Google Calendar to Constellation.
+            Push a StateObject with the list of events(with details).
+            Create or delete events.
+            </summary>
+            <seealso cref="T:Constellation.Package.PackageBase" />
+        </member>
+        <member name="M:GoogleCalendar.CalendarProgram.OnStart">
+            <summary>
+            Called when the package is started.
+            </summary>
+        </member>
+        <member name="M:GoogleCalendar.CalendarProgram.CreateEvent(System.String,System.String,GoogleCalendar.DateAndTime,GoogleCalendar.DateAndTime)">
+            <summary>
+            Creates the event.
+            </summary>
+            <param name="name">The name of the event.</param>
+            <param name="where">The location.</param>
+            <param name="startDate">The start date.</param>
+            <param name="endDate">The end date.</param>
+        </member>
+        <member name="M:GoogleCalendar.CalendarProgram.DeleteEvent(System.String)">
+            <summary>
+            Deletes the event.
+            </summary>
+            <param name="eventID">The event identifier that you can find in the package's SO.</param>
+        </member>
+        <member name="T:GoogleCalendar.DateAndTime">
+            <summary>
+            Create a class with date and time components.
+            </summary>
+        </member>
+        <member name="P:GoogleCalendar.DateAndTime.Year">
+            <summary>
+            Gets or sets the year component of the date represented by this instance.
+            </summary>
+            <value>
+            The month year of the date represented by this instance..
+            </value>
+        </member>
+        <member name="P:GoogleCalendar.DateAndTime.Month">
+            <summary>
+            Gets or sets the month component of the date represented by this instance.
+            </summary>
+            <value>
+            The month component of the date represented by this instance..
+            </value>
+        </member>
+        <member name="P:GoogleCalendar.DateAndTime.Day">
+            <summary>
+            Gets or sets the day of the month represented by this instance.
+            </summary>
+            <value>
+            The day of the month represented by this instance..
+            </value>
+        </member>
+        <member name="P:GoogleCalendar.DateAndTime.Hour">
+            <summary>
+            Gets or sets the hour of the time represented by this instance.
+            </summary>
+            <value>
+            The hour represented by this instance..
+            </value>
+        </member>
+        <member name="P:GoogleCalendar.DateAndTime.Minute">
+            <summary>
+            Gets or sets the minutes of the time represented by this instance.
+            </summary>
+            <value>
+            The minute represented by this instance..
+            </value>
+        </member>
+    </members>
+</doc>
