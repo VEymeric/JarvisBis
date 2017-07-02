@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApiAI</name>
+    </assembly>
+    <members>
+        <member name="T:ApiAI.Program">
+            <seealso cref="T:Constellation.Package.PackageBase" />
+        </member>
+        <!-- Commentaire XML incorrect pour le membre "M:ApiAI.Program.Main(System.String[])" -->
+        <member name="M:ApiAI.Program.TextRequest(System.String)">
+            <summary>
+            send your request.
+            </summary>
+            <param name="text">your request</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

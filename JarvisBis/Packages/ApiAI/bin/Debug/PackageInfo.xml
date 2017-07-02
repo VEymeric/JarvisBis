@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Package xmlns="http://schemas.myconstellation.io/Constellation/1.8/PackageManifest"
+         Name="ApiAI"
+         Version="1.0"
+         Author="Jarvis Team"
+         URL="http://www.mywebsite.com"
+         Description="speak with your program"
+         EnableControlHub="false">
+  <Compatibility constellationVersion="1.8" dotNetTargetPlatform="net45">
+    <Platforms>
+      <Platform id="Win32NT" isCompliant="true" />
+      <Platform id="Unix" isCompliant="true" />
+    </Platforms>
+  </Compatibility>
+  <Settings>
+    <Setting name="Client access token" type="String" isRequired="true" description="give an client access token from Api.ai" />
+    <Setting name= "language" type="String" isRequired="true" description="enter your language tag. you can use this language tag from this list [ pt-BR, zh-HK, zh-CN, zh-TW, en, nl, fr, de, it, ja, ko, pt, ru, es, uk] " />
+  </Settings>
+</Package>
