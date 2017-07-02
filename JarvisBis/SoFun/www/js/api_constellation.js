@@ -30,9 +30,10 @@ function setInput(text) {
 	send();
 }
 
+//this function send to the package TheBrain and get the informations on tabEvent[]
 function send() {
 	var text = $("#input").val();
-	constellation.server.sendMessageWithSaga({    //appel du package TheBrain
+	constellation.server.sendMessageWithSaga({    //Call the package TheBrain
 		Scope: 'Package', 
 		Args: ['TheBrain'] }, 
 		'TextRequest', 

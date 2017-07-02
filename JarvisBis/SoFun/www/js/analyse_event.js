@@ -28,6 +28,7 @@
 	tabEvent['type'] = temp;
 }
 
+//Stock informations for the agenda
 function annalyseEvent(){
 	console.log( tabEvent['date'] +" "+  tabEvent['heure']);
 	if( tabEvent['action'] == DEFAULT_ACTION){//pas d'analyse puisqu'on comprend pas l'action
@@ -48,38 +49,8 @@ function annalyseEvent(){
 	}
 }
 
-function textToSpeech(text){
-	// basic usage
-    TTS
-        .speak(text, function () {
-            alert('success');
-        }, function (reason) {
-            alert(reason);
-        });
-    
-    // or with more options
-    TTS
-        .speak({
-            text: tempext,
-            locale: 'fr-FR',
-            rate: 0.75
-        }, function () {
-            alert('success');
-        }, function (reason) {
-            alert(reason);
-        });
-}
-
+//function tts from the plugin cordova
 function textToSpeech(readtext){
-	// basic usage
-    TTS
-        .speak(readtext, function () {
-            alert('success');
-        }, function (reason) {
-            alert(reason);
-        });
-    
-    // or with more options
     TTS
         .speak({
             text: readtext,
@@ -92,6 +63,7 @@ function textToSpeech(readtext){
         });
 }
 
+// translate the date 
 function jourAujourdhui(){
 	var today = new Date();
  	var month = today.getMonth()+1;
