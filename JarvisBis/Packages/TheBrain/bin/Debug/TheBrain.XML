@@ -1,0 +1,370 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TheBrain</name>
+    </assembly>
+    <members>
+        <member name="T:TheBrain.MyConstellation">
+            <summary>
+            Represents your Constellation
+            </summary>
+        </member>
+        <member name="T:TheBrain.MyConstellation.Sentinels">
+            <summary>
+            Specifies the sentinels in your Constellation
+            </summary>
+        </member>
+        <member name="F:TheBrain.MyConstellation.Sentinels.LAPTOP_OB16JBC9">
+            <summary>
+            Sentinel 'LAPTOP-OB16JBC9'
+            </summary>
+        </member>
+        <member name="T:TheBrain.MyConstellation.PackageInstances">
+            <summary>
+            Specifies the package's instances in your Constellation
+            </summary>
+        </member>
+        <member name="F:TheBrain.MyConstellation.PackageInstances.LAPTOP_OB16JBC9_ApiAI">
+            <summary>
+            Package 'ApiAI' on 'LAPTOP-OB16JBC9'
+            </summary>
+        </member>
+        <member name="T:TheBrain.MyConstellation.Packages">
+            <summary>
+            Specifies the packages in your Constellation
+            </summary>
+        </member>
+        <member name="F:TheBrain.MyConstellation.Packages.ApiAI">
+            <summary>
+            Package 'ApiAI'
+            </summary>
+        </member>
+        <member name="M:TheBrain.MyConstellation.CreateScope(TheBrain.MyConstellation.Sentinels)">
+            <summary>
+            Creates the message scope to the specified sentinel.
+            </summary>
+            <param name="sentinel">The sentinel.</param>
+            <returns>MessageScope</returns>
+        </member>
+        <member name="M:TheBrain.MyConstellation.CreateScope(TheBrain.MyConstellation.PackageInstances)">
+            <summary>
+            Creates the message scope to the specified package's instance.
+            </summary>
+            <param name="package">The package's instance.</param>
+            <returns>MessageScope</returns>
+        </member>
+        <member name="M:TheBrain.MyConstellation.CreateScope(TheBrain.MyConstellation.Packages)">
+            <summary>
+            Creates the message scope to the specified package.
+            </summary>
+            <param name="package">The package.</param>
+            <returns>MessageScope</returns>
+        </member>
+        <member name="T:TheBrain.RealNameAttribute">
+            <summary>
+            Specifies the real name of an enum value.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="P:TheBrain.RealNameAttribute.RealName">
+            <summary>
+            Gets or sets the real name.
+            </summary>
+            <value>
+            The real name.
+            </value>
+        </member>
+        <member name="M:TheBrain.RealNameAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TheBrain.RealNameAttribute"/> class.
+            </summary>
+            <param name="realname">The real name.</param>
+        </member>
+        <member name="M:TheBrain.RealNameAttribute.GetRealName``1(``0)">
+            <summary>
+            Gets the real name of an enum value.
+            </summary>
+            <typeparam name="TEnum">The type of the enum.</typeparam>
+            <param name="value">The enum value.</param>
+            <returns>The real name.</returns>
+        </member>
+        <member name="T:TheBrain.RealNameExtension">
+            <summary>
+            Provides extension methods to get the real name of a Sentinel, Package or PackageInstance.
+            </summary>
+        </member>
+        <member name="M:TheBrain.RealNameExtension.GetRealName(TheBrain.MyConstellation.Sentinels)">
+            <summary>
+            Gets the real name of a Sentinel.
+            </summary>
+            <param name="sentinel">The Sentinel.</param>
+            <returns>The real name.</returns>
+        </member>
+        <member name="M:TheBrain.RealNameExtension.GetRealName(TheBrain.MyConstellation.Packages)">
+            <summary>
+            Gets the real name of a Package.
+            </summary>
+            <param name="package">The Package.</param>
+            <returns>The real name.</returns>
+        </member>
+        <member name="M:TheBrain.RealNameExtension.GetRealName(TheBrain.MyConstellation.PackageInstances)">
+            <summary>
+            Gets the real name of a Package's instance.
+            </summary>
+            <param name="package">The Package's instance.</param>
+            <returns>The real name.</returns>
+        </member>
+        <member name="T:TheBrain.ApiAI.MessageCallbacks.AIResponse">
+            <summary>
+            Type 'AIResponse'
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.AIResponse.Id">
+            <summary>
+            The Id.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.AIResponse.Timestamp">
+            <summary>
+            The Timestamp.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.AIResponse.Result">
+            <summary>
+            The Result.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.AIResponse.Status">
+            <summary>
+            The Status.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.AIResponse.SessionId">
+            <summary>
+            The SessionId.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.AIResponse.IsError">
+            <summary>
+            The IsError.
+            </summary>
+        </member>
+        <member name="T:TheBrain.ApiAI.MessageCallbacks.Result">
+            <summary>
+            Type 'Result'
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Result.ActionIncomplete">
+            <summary>
+            The ActionIncomplete.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Result.Action">
+            <summary>
+            The Action.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Result.Parameters">
+            <summary>
+            The Parameters.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Result.Contexts">
+            <summary>
+            The Contexts.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Result.Metadata">
+            <summary>
+            The Metadata.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Result.ResolvedQuery">
+            <summary>
+            The ResolvedQuery.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Result.Fulfillment">
+            <summary>
+            The Fulfillment.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Result.Source">
+            <summary>
+            The Source.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Result.Score">
+            <summary>
+            The Score.
+            </summary>
+        </member>
+        <member name="T:TheBrain.ApiAI.MessageCallbacks.AIOutputContext">
+            <summary>
+            Type 'AIOutputContext'
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.AIOutputContext.Name">
+            <summary>
+            The Name.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.AIOutputContext.Parameters">
+            <summary>
+            The Parameters.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.AIOutputContext.Lifespan">
+            <summary>
+            The Lifespan.
+            </summary>
+        </member>
+        <member name="T:TheBrain.ApiAI.MessageCallbacks.Metadata">
+            <summary>
+            Type 'Metadata'
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Metadata.IntentName">
+            <summary>
+            The IntentName.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Metadata.IntentId">
+            <summary>
+            The IntentId.
+            </summary>
+        </member>
+        <member name="T:TheBrain.ApiAI.MessageCallbacks.Fulfillment">
+            <summary>
+            Type 'Fulfillment'
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Fulfillment.Speech">
+            <summary>
+            The Speech.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Fulfillment.DisplayText">
+            <summary>
+            The DisplayText.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Fulfillment.Source">
+            <summary>
+            The Source.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Fulfillment.Data">
+            <summary>
+            The Data.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Fulfillment.Messages">
+            <summary>
+            The Messages.
+            </summary>
+        </member>
+        <member name="T:TheBrain.ApiAI.MessageCallbacks.Status">
+            <summary>
+            Type 'Status'
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Status.Code">
+            <summary>
+            The Code.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Status.ErrorType">
+            <summary>
+            The ErrorType.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Status.ErrorDetails">
+            <summary>
+            The ErrorDetails.
+            </summary>
+        </member>
+        <member name="P:TheBrain.ApiAI.MessageCallbacks.Status.ErrorID">
+            <summary>
+            The ErrorID.
+            </summary>
+        </member>
+        <member name="T:TheBrain.ApiAI.MessageCallbacks.ApiAIExtensions">
+            <summary>
+            Provides extension methods for the MessageScope to ApiAI
+            </summary>
+        </member>
+        <member name="M:TheBrain.ApiAI.MessageCallbacks.ApiAIExtensions.ToApiAIScope(Constellation.MessageScope)">
+            <summary>
+            Create a ApiAIScope
+            </summary>
+            <param name="scope">The Constellation MessageScope</param>
+        </member>
+        <member name="M:TheBrain.ApiAI.MessageCallbacks.ApiAIExtensions.CreateApiAIScope(TheBrain.MyConstellation.Sentinels)">
+            <summary>
+            Create a ApiAIScope to all packages of the specified sentinel
+            </summary>
+            <param name="sentinel">The sentinel</param>
+        </member>
+        <member name="M:TheBrain.ApiAI.MessageCallbacks.ApiAIExtensions.CreateApiAIScope(TheBrain.MyConstellation.PackageInstances)">
+            <summary>
+            Create a ApiAIScope to a specific package
+            </summary>
+            <param name="package">The package</param>
+        </member>
+        <member name="M:TheBrain.ApiAI.MessageCallbacks.ApiAIExtensions.CreateApiAIScope(TheBrain.MyConstellation.Packages)">
+            <summary>
+            Create a ApiAIScope to a specific package
+            </summary>
+            <param name="package">The package</param>
+        </member>
+        <member name="T:TheBrain.ApiAI.MessageCallbacks.ApiAIScope">
+            <summary>
+            Represent a message scope to ApiAI
+            </summary>
+        </member>
+        <member name="F:TheBrain.ApiAI.MessageCallbacks.ApiAIScope.currentScope">
+            <summary>
+            The current scope
+            </summary>
+        </member>
+        <member name="M:TheBrain.ApiAI.MessageCallbacks.ApiAIScope.#ctor(Constellation.MessageScope)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TheBrain.ApiAI.MessageCallbacks.ApiAIScope"/> class.
+            </summary>
+            <param name="scope">The scope.</param>
+        </member>
+        <member name="M:TheBrain.ApiAI.MessageCallbacks.ApiAIScope.TextRequest(System.String,System.Threading.CancellationToken,Constellation.Package.MessageContext@)">
+            <summary>
+            send your request.
+            </summary>
+            <param name="text">your request</param>
+            <returns>Task of AIResponse</returns>
+            <param name="cancellationToken">The CancellationToken that this task will observe.</param>		
+            <param name="context">The MessageContext of the received message.</param>
+        </member>
+        <member name="M:TheBrain.ApiAI.MessageCallbacks.ApiAIScope.TextRequest(System.String,Constellation.Package.MessageContext@)">
+            <summary>
+            send your request.
+            </summary>
+            <param name="text">your request</param>
+            <returns>Task of AIResponse</returns>
+            <param name="context">The MessageContext of the received message.</param>
+        </member>
+        <member name="M:TheBrain.ApiAI.MessageCallbacks.ApiAIScope.TextRequest(System.String,System.Threading.CancellationToken)">
+            <summary>
+            send your request.
+            </summary>
+            <param name="text">your request</param>
+            <returns>Task of AIResponse</returns>
+            <param name="cancellationToken">The CancellationToken that this task will observe.</param>
+        </member>
+        <member name="M:TheBrain.ApiAI.MessageCallbacks.ApiAIScope.TextRequest(System.String)">
+            <summary>
+            send your request.
+            </summary>
+            <param name="text">your request</param>
+            <returns>Task of AIResponse</returns>
+        </member>
+    </members>
+</doc>
