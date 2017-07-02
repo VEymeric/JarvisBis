@@ -47,5 +47,5 @@ function recall(meeting){
   console.log(meeting);
   constellation.server.sendMessage({
     Scope : 'Package', Args:['PushBullet']
-  }, 'PushNote',[meeting.title,meeing.start,'Device']);
+  }, 'PushNote',[meeting.title,meeting.start,'Device']);
 }

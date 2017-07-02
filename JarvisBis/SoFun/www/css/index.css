@@ -75,7 +75,7 @@ div.tab button.active {
 }
 
 
-#Task, #Option, #Home, #Agenda{
+#Task{
 	width:100%;
 	position:absolute;
 	top:25%;
@@ -90,6 +90,7 @@ div.tab button.active {
 	border-style: solid;
 	font-size:22px;
 }
+
 #Task button, #Option button{
 	
 	border-radius:6px;
@@ -126,10 +127,7 @@ div.tab button.active {
 	border-color:grey;
 	border-width: 1px;
 	font-size:20px;
-	margin:auto;
-	
-	
-	
+	margin:auto auto 8px auto;	
 }
 
  #Home{
@@ -157,16 +155,23 @@ div.tab button.active {
 	width:100%;
 	align-items: center; 
 	justify-content:center;
+
 }
+
 #calendar{
 	font-size: 10px;
 }
-.fc-showHide-button.fc-button.fc-state-default.fc-corner-left.fc-corner-right{
-	max-width:100px;
-	word-wrap: normal;
+
+.fc-left{
+	overflow-wrap: normal;
+	word-wrap: break-word;
 	flex-wrap: wrap;
 }
 
+.fc-showHide-button.fc-button.fc-state-default.fc-corner-left.fc-corner-right{
+	max-width:100px;
+	flex-wrap: wrap;
+}
 
 
 

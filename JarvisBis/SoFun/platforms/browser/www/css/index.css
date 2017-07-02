@@ -1,5 +1,6 @@
 html{
 	min-height: 100%;
+	margin:auto;
 }
 
 
@@ -45,7 +46,7 @@ div.tab {
 /* Style the buttons inside the tab */
 div.tab button {
 	background-color: inherit;
-	font-size:20px;
+	font-size:22px;
 	border: none;
 	outline: none;
 	cursor: pointer;
@@ -73,16 +74,8 @@ div.tab button.active {
 	transition: 0.3s;
 }
 
-#Option form{
-	padding: 15px 19px;
-	font-size:20px;
-	border-style: outset;
-	border-color: grey;
-	
-	
-}
 
-#Task{
+#Task, #Option, #Home, #Agenda{
 	width:100%;
 	position:absolute;
 	top:25%;
@@ -91,34 +84,92 @@ div.tab button.active {
 	font-size:22px;
 }
 
-.input{
-	width:80%;
+#Task textarea{
+	resize: none;
+	border-radius:6px;
+	border-style: solid;
 	font-size:22px;
 }
+#Task button, #Option button{
+	
+	border-radius:6px;
+	border-style: solid;
+	border-color:darkgrey;
+	font-size:22px;
+	border-width: 1px;
+	box-shadow:4px 4px 10px grey;
+	cursor: pointer;
+	margin:auto;
+}
 
+#Option{
+	width:100%;
+	position:absolute;
+	top:17%;
+	align-items: center; 
+	justify-content:center;
+	font-size:22px;
+}
+#Option input{
+	resize: none;
+	border-radius:6px;
+	border-style: solid;
+	border-color:silver;
+	border-width: 1px;
+	font-size:20px;
+}
+#Option div{
+	max-width:300px;
+	resize: none;
+	border-radius:6px;
+	border-style: solid;
+	border-color:grey;
+	border-width: 1px;
+	font-size:20px;
+	margin:auto;
+	
+	
+	
+}
 
+ #Home{
+	width:100%;
+	position:absolute;
+	top:15%;
+	align-items: center; 
+	justify-content:center;
+	font-size:22px;
+}
 
 #Home button{
 	border-radius:400px;
 	border-style: solid;
 	border-color:black;
 	border-width: 4px;
+	background-color:white;
 	outline: none;
 	cursor: pointer;
 	padding: 15px 19px;
 	background-color: rgba(255, 255, 255, 0);
 }
 
-#Option button{
-	
-
-	outline: none;
-	cursor: pointer;
-	padding: 15px 19px;
+ #Agenda{
+	width:100%;
+	align-items: center; 
+	justify-content:center;
+}
+#calendar{
+	font-size: 10px;
+}
+.fc-showHide-button.fc-button.fc-state-default.fc-corner-left.fc-corner-right{
+	max-width:100px;
+	word-wrap: normal;
+	flex-wrap: wrap;
 }
 
 
-/* Portrait layout (default) */
+
+
 .app {
 	position:absolute;             /* position in the center of the screen */
 	bottom:5%;
@@ -149,11 +200,13 @@ h1 {
 .event.listening {
 	background-color:#333333;
 	display:block;
+	font-size:22px;
 }
 
 .event.received {
 	background-color:#4B946A;
 	display:none;
+	font-size:22px;
 }
 
 
@@ -171,7 +224,7 @@ h1 {
 }
  
 #calendar {
-	max-width: 900px;
+	width: 100%;
 	margin: auto;
-	color: white;
+	color: black;
 }

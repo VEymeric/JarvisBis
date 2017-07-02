@@ -100,25 +100,35 @@
 		<div id="Task" class="tabcontent">
 		
 			<form  onsubmit="Press()">
-				<textarea id="input" type="texte" name="fname"rows="4" cols="40" placeholder="Entrez l'action :"></textarea> <br>
+				<textarea id="input" type="texte" name="fname"rows="4" cols="24" placeholder="Entrez l'action :"></textarea> <br><br>
 				<button  type="submit">Envoyer</button><br><br>
 			</form>
 			
-				<textarea disabled id="reponse" name="reponse" cols="40" rows="2" ></textarea><br>
+				<textarea disabled id="reponse" name="reponse" cols="24" rows="3" ></textarea><br>
+		
+
+				
+		</div>
 		
 		<div id="Option" class="tabcontent">
 			
 			<h1>Connection à Constellation</h1> <br>
 			
-			<label class="label">Entrez l'adresse IP de votre constellation:</label> <br>
-			<input id="IPConstellation" type="texte" value="http://localhost:8088" ></input> <br>
+			<div>
+			<label class="label">Adresse IP de votre constellation:</label> <br>
+			<input id="IPConstellation" type="texte" value="http://localhost:8088" ></input> <br><br>
+			</div>
 			
-			<label class="label">Entrez votre mot de passe pour constellation</label> <br>
-			<input id="pwConstellation" type="text" value="0123" ></input> <br>
+			<div>
+			<label class="label">Mot de passe pour constellation:</label> <br>
+			<input id="pwConstellation" type="text" value="0123" ></input> <br><br>
+			</div>
 			
-			<label class="label">Le nom que vous souhaitez donné à cette application dans votre console constellation</label> <br>
-			<input id="nameConstellation" type="texte" value="jarvis" ></input> <br>
-
+			<div>
+			<label class="label">Nom de cette application dans votre console constellation:</label> <br>
+			<input id="nameConstellation" type="texte" value="jarvis" ></input> <br><br>
+			</div>
+			
 			<button  onclick="connectionConstellation()">Envoyer</button><br>
 		</div>
 		
