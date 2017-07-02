@@ -1,13 +1,13 @@
 {
-    "name": "helloworld",
-    "displayName": "HelloCordova",
+    "name": "Vania",
+    "displayName": "Vania",
     "version": "1.0.0",
-    "description": "A sample Apache Cordova application that responds to the deviceready event.",
+    "description": "A application using Constellation to help you in controling your conected house.",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "Apache Cordova Team",
+    "author": "JarvisBis Team",
     "license": "Apache-2.0",
     "dependencies": {
         "cordova-android": "^6.2.3",

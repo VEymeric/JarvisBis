@@ -1,16 +1,18 @@
+setTimeout(function(){
+  GetGoogleCalendarEvents(); 
+}, 3000);
+
 var storage = window.localStorage;
+
+if (!storage.length) {
+  storage.setItem("meetings","[]");
+  storage.setItem("events","[]");
+}
 
 var meetings = JSON.parse(storage.getItem("meetings")); 
 var events = JSON.parse(storage.getItem("events"));
-<<<<<<< HEAD
 
-console.log(constellation);
-checkAll(meetings,events);
-
-=======
-console.log(meetings);
-console.log(events);
->>>>>>> 04409c95a0fab20a0ca2b8302e1edbbbcb81536d
+// Add google calendar meetings
 
 /*console.log(data);
 console.log(storage.getItem("meetings"));
@@ -18,7 +20,6 @@ console.log("------------------")
 console.log(JSON.parse(storage.getItem("meetings")));
 console.log(JSON.parse(storage.getItem("events")));
 console.log(storage);*/
-
 
 
 $("#colorPalette").spectrum({
@@ -37,8 +38,8 @@ $("#colorPalette").spectrum({
   ]
 });
 
-<<<<<<< HEAD
 function repeat59000(){
+  console.log(" taille de events : "+ events.length);
   checkAll(meetings,events);
 }
   setInterval(repeat59000,59000);
@@ -46,19 +47,12 @@ function repeat59000(){
 function deleteEvent (array, arrayName, eventToDelete) {
   for (var i = 0; i <= array.length - 1; i++) {
     if (JSON.stringify(array[i]) == JSON.stringify(eventToDelete)) {
-=======
-function deleteEvent (array, arrayName, eventToDelete) {
-  for (var i = 0; i <= array.length - 1; i++) {
-    if (JSON.stringify(array[i]) == JSON.stringify(eventToDelete)) {
-      console.log("AH");
->>>>>>> 04409c95a0fab20a0ca2b8302e1edbbbcb81536d
       var change = array[i];
       array[i] = array[array.length -1];
       array[array.length -1] = change;
       array.pop();
       window.localStorage.setItem(arrayName, JSON.stringify(array));
       $('#calendar').fullCalendar('removeEvents', function(event) {
-<<<<<<< HEAD
         if (eventToDelete.type == "rdv" ) {
           if ( (event.title == eventToDelete.title) && (event.start._i == eventToDelete.start) && (event.end._i == eventToDelete.end) ) {
             return true;
@@ -67,66 +61,23 @@ function deleteEvent (array, arrayName, eventToDelete) {
           if ( (event.title == eventToDelete.title) && (event.start._i == eventToDelete.start) ) {
             return true;
           }
-=======
-        if ( (event.title == eventToDelete.title) && (event.start._i == eventToDelete.start) && (event.end._i == eventToDelete.end) ) {
-          return true;
->>>>>>> 04409c95a0fab20a0ca2b8302e1edbbbcb81536d
         }
         return false;
       });
       break;
     }
-<<<<<<< HEAD
   }
 }
 
 function addEvent (array, arrayName, eventToAdd){
-  if( array.length != null){
-  for (var i = 0; i <= array.length - 1; i++) {
-    if (JSON.stringify(array[i]) == JSON.stringify(eventToAdd)) {
-      console.log("Event exists");
-      return false;
-    }
-  }
-  $('#calendar').fullCalendar('renderEvent', eventToAdd, true);
-  array.push(eventToAdd);
-  window.localStorage.setItem(arrayName, JSON.stringify(array));
-  meetings = JSON.parse(storage.getItem("meetings")); 
-  events = JSON.parse(storage.getItem("events"));
-
-  return true;
-}else {
+ /* if(array == null){
     $('#calendar').fullCalendar('renderEvent', eventToAdd, true);
   array.push(eventToAdd);
   window.localStorage.setItem(arrayName, JSON.stringify(array));
   meetings = JSON.parse(storage.getItem("meetings")); 
   events = JSON.parse(storage.getItem("events"));
-
-}
-}
-
-// Delete event
-$( "#dialog-confirm" ).dialog({
-  resizable: false,
-  height: "auto",
-  width: 400,
-  modal: true,
-  autoOpen: false,
-});
-
-// Add event
-$( "#dialog-form" ).dialog({
-  autoOpen: false,
-  height: 400,
-  width: 350,
-  modal: true
-});
-
-=======
-  }
-}
-
-function addEvent (array, arrayName, eventToAdd){
+  return true;
+  }*/
   for (var i = 0; i <= array.length - 1; i++) {
     if (JSON.stringify(array[i]) == JSON.stringify(eventToAdd)) {
       console.log("Event exists");
@@ -159,7 +110,6 @@ $( "#dialog-form" ).dialog({
   modal: true
 });
 
->>>>>>> 04409c95a0fab20a0ca2b8302e1edbbbcb81536d
 form = $( "#dialog-form" ).find( "form" ).on( "submit", function( event ) {
   event.preventDefault();
 
@@ -195,7 +145,7 @@ $('#calendar').fullCalendar({
   },
   defaultView : "agendaWeek",
   forceEventDuration: true,
-  defaultTimedEventDuration: "00:30:00",
+  defaultTimedEventDuration: "00:45:00",
   navLinks: true,
   eventLimit: true,
   selectable: true,
@@ -291,6 +241,7 @@ $('#calendar').fullCalendar({
               "color": color,
               "end": (moment(start).format()).substr(0,11) + end + ":00"
             };
+            console.log(meetings);
             addEvent(meetings, "meetings", eventToAdd);
             $( this ).dialog( "close" );
           }
@@ -304,8 +255,4 @@ $('#calendar').fullCalendar({
       }
     });
   }
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 04409c95a0fab20a0ca2b8302e1edbbbcb81536d

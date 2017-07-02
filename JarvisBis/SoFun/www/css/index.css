@@ -160,18 +160,11 @@ div.tab button.active {
 
 #calendar{
 	font-size: 10px;
+
+	color: black;
 }
 
-.fc-left{
-	overflow-wrap: normal;
-	word-wrap: break-word;
-	flex-wrap: wrap;
-}
 
-.fc-showHide-button.fc-button.fc-state-default.fc-corner-left.fc-corner-right{
-	max-width:100px;
-	flex-wrap: wrap;
-}
 
 
 
@@ -228,8 +221,3 @@ h1 {
 	to { opacity: 1.0; }
 }
  
-#calendar {
-	width: 100%;
-	margin: auto;
-	color: black;
-}
